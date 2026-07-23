@@ -1,3 +1,4 @@
+class_name Wizard
 extends CharacterBody2D
 
 @export var speed : int = 300
@@ -8,6 +9,7 @@ extends CharacterBody2D
 @export var wallslide_friction : int = 5
 @export var sticky : int = 15
 @export var wall_gravity_added : int = 30
+
 enum State {IDLE, WALK, JUMP, DOWN, WALLSLIDE}
 var current_state : State = State.IDLE
 var jump_locked = false
@@ -30,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	var previous_y_velocity := velocity.y
 	move_and_slide()
 	check_bouncy_platform(previous_y_velocity)
+	check_sticky_platform()
 
 func handle_input() -> void:
 	if Input.is_action_just_pressed("jump"):
@@ -144,4 +147,20 @@ func check_bouncy_platform(impact_velocity: float) -> void:
 				* bounce_multiplier
 			)
 			current_state = State.JUMP
+			return
+
+func check_sticky_platform() -> void:
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+		if collider is StickyPlatform:
+			# Slow X velocity while preserving direction.
+			if abs(velocity.x) > collider.velocity_mins.x:
+				velocity.x *= collider.velocity_changes.x
+			# Slow Y velocity while preserving direction.
+			if abs(velocity.y) > collider.velocity_mins.y:
+				velocity.y *= collider.velocity_changes.y
+			# Lower target wall-slide speed = stickier wall.
+			if is_on_wall():
+				sticky = collider.stickiness
 			return

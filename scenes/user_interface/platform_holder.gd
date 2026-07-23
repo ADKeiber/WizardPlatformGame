@@ -10,7 +10,8 @@ const MOVING_PLATFORM_ARROW = preload("res://assets/art/arrows.png")
 var image_dict: Dictionary = {
 	BasicMovingPlatform: preload("res://assets/art/arrows.png"),
 	BasicDisappearingPlatform: preload("res://assets/art/disappearing.png"),
-	BouncyPlatform: preload("res://assets/art/slime_block.png")
+	BouncyPlatform: preload("res://assets/art/slime_block.png"),
+	StickyPlatform: preload("res://assets/art/sticky_block.png")
 }
 
 var number_of_platforms_left: int
