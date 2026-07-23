@@ -72,3 +72,4 @@ shape = SubResource("RectangleShape2D_ct15x")
 
 [node name="Wizard" parent="." unique_id=3259477 instance=ExtResource("1_b81ow")]
 position = Vector2(585, 372)
+collision_layer = 1

@@ -1,3 +1,18 @@
 [gd_scene format=3 uid="uid://b1c8npiwqhdob"]
 
-[node name="Level1" type="Node2D" unique_id=1311284856]
+[ext_resource type="PackedScene" uid="uid://bnte2doq2swpu" path="res://scenes/user_interface/platform_placer_menu.tscn" id="1_4tcl0"]
+[ext_resource type="PackedScene" uid="uid://dq2ocxyvl6a2b" path="res://scenes/levels/testlevel.tscn" id="2_4tcl0"]
+
+[node name="Level1" type="Control" unique_id=943124275]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PlatformPlacerMenu" parent="." unique_id=1881788653 instance=ExtResource("1_4tcl0")]
+layout_mode = 1
+
+[node name="testlevel" parent="." unique_id=894645183 instance=ExtResource("2_4tcl0")]

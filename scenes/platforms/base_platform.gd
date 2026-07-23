@@ -4,6 +4,7 @@ extends Node2D
 var interactable: bool = false
 
 func place() -> void:
+	
 	interactable = true
 	self.modulate = Color.WHITE
 	
