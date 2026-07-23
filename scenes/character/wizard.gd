@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Wizard
 
 @export var speed : int = 300
 @export var acceleration : int = 60

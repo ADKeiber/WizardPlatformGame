@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dq2ocxyvl6a2b"]
 
+[ext_resource type="PackedScene" uid="uid://b0vnve3tive8s" path="res://scenes/platforms/spikes.tscn" id="1_3hckn"]
 [ext_resource type="PackedScene" uid="uid://c2drvg5n10vpi" path="res://scenes/character/wizard.tscn" id="1_b81ow"]
 [ext_resource type="Texture2D" uid="uid://tuupvmd0ge7k" path="res://icon.svg" id="2_wopdt"]
 
@@ -12,6 +13,14 @@ distance = -1.0
 size = Vector2(271.88177, 34.426548)
 
 [node name="testlevel" type="Node2D" unique_id=894645183]
+
+[node name="Spikes2" parent="." unique_id=1902292362 instance=ExtResource("1_3hckn")]
+position = Vector2(761, 455)
+_static = false
+
+[node name="Spikes" parent="." unique_id=254715732 instance=ExtResource("1_3hckn")]
+position = Vector2(794, 381.99997)
+rotation = -1.5761151
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2033979914]
 position = Vector2(595, 468)
