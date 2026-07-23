@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dq2ocxyvl6a2b"]
 
+[ext_resource type="PackedScene" uid="uid://b0vnve3tive8s" path="res://scenes/platforms/spikes.tscn" id="1_3hckn"]
 [ext_resource type="PackedScene" uid="uid://c2drvg5n10vpi" path="res://scenes/character/wizard.tscn" id="1_b81ow"]
 [ext_resource type="Texture2D" uid="uid://tuupvmd0ge7k" path="res://icon.svg" id="2_wopdt"]
 
@@ -19,8 +20,17 @@ size = Vector2(127.32631, 128)
 
 [node name="testlevel" type="Node2D" unique_id=894645183]
 
+[node name="Spikes2" parent="." unique_id=1902292362 instance=ExtResource("1_3hckn")]
+position = Vector2(761, 455)
+_static = false
+
+[node name="Spikes" parent="." unique_id=254715732 instance=ExtResource("1_3hckn")]
+position = Vector2(794, 381.99997)
+rotation = -1.5761151
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2033979914]
 position = Vector2(595, 468)
+collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_vgf6b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1100811784]
@@ -34,6 +44,7 @@ texture = ExtResource("2_wopdt")
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1581877813]
 position = Vector2(807, 300)
 rotation = -1.5667259
+collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_vgf6b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1298420361]
@@ -44,9 +55,27 @@ position = Vector2(-49.730938, 66.20295)
 scale = Vector2(5.1157737, 1)
 texture = ExtResource("2_wopdt")
 
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=163917237]
+position = Vector2(342, 392.00003)
+rotation = 0.023538344
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_vgf6b")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=708464797]
+position = Vector2(-0.58239937, -0.4991989)
+rotation = -0.03364645
+scale = Vector2(0.95706284, 0.27920341)
+texture = ExtResource("2_wopdt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1432379812]
+position = Vector2(-0.56660604, -0.64250183)
+rotation = -0.023380786
+shape = SubResource("RectangleShape2D_ct15x")
+
 [node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=301104329]
 position = Vector2(653.99994, 287)
 rotation = -1.5656674
+collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_vgf6b")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=1983995175]

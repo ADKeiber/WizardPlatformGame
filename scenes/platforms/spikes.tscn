@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://b0vnve3tive8s"]
+
+[ext_resource type="Script" uid="uid://csml8jryxsfh4" path="res://scenes/platforms/spikes.gd" id="1_alnme"]
+[ext_resource type="Texture2D" uid="uid://cplr756nm2og7" path="res://assets/art/platform/Spikes.png" id="1_e5nh7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alnme"]
+atlas = ExtResource("1_e5nh7")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl7le"]
+atlas = ExtResource("1_e5nh7")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c0ts"]
+atlas = ExtResource("1_e5nh7")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h68s7"]
+atlas = ExtResource("1_e5nh7")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evgsm"]
+atlas = ExtResource("1_e5nh7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khtoo"]
+atlas = ExtResource("1_e5nh7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yehrh"]
+atlas = ExtResource("1_e5nh7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vgf6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alnme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl7le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c0ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h68s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evgsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khtoo")
+}],
+"loop": 0,
+"name": &"activate",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yehrh")
+}],
+"loop": 0,
+"name": &"static",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgf6b"]
+size = Vector2(26, 20)
+
+[node name="Spikes" type="Node2D" unique_id=1902292362]
+script = ExtResource("1_alnme")
+_static = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1627421790]
+sprite_frames = SubResource("SpriteFrames_vgf6b")
+animation = &"activate"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1416144307]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=96463856]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_vgf6b")
+
+[node name="Timer" type="Timer" parent="." unique_id=691511950]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
