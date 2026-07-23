@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dfdb7tv2kl35f" path="res://scenes/platforms/basic_platform.tscn" id="3_u4db2"]
 [ext_resource type="PackedScene" uid="uid://ds3vd7won6fjk" path="res://scenes/platforms/basic_platform2.tscn" id="4_32wtq"]
 [ext_resource type="PackedScene" uid="uid://co7hugb752m3g" path="res://scenes/platforms/basic_moving_platform.tscn" id="5_71mg2"]
+[ext_resource type="PackedScene" uid="uid://cclphe60wts4s" path="res://scenes/platforms/basic_disappearing_platform.tscn" id="6_u4db2"]
+[ext_resource type="PackedScene" uid="uid://4doqjcsx63ji" path="res://scenes/platforms/bouncy_platform.tscn" id="7_32wtq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5ol4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -39,6 +41,6 @@ alignment = 1
 
 [node name="PlatformManager" type="Node2D" parent="." unique_id=2121095116 node_paths=PackedStringArray("platform_holder_row")]
 script = ExtResource("2_71mg2")
-available_platforms = Array[PackedScene]([ExtResource("3_u4db2"), ExtResource("4_32wtq"), ExtResource("5_71mg2")])
-num_available = Array[int]([2, 1, 2])
+available_platforms = Array[PackedScene]([ExtResource("3_u4db2"), ExtResource("4_32wtq"), ExtResource("5_71mg2"), ExtResource("6_u4db2"), ExtResource("7_32wtq")])
+num_available = Array[int]([2, 2, 2, 2, 2])
 platform_holder_row = NodePath("../PlatformHolderArea/PlatformHolderRow")

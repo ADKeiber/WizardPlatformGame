@@ -7,6 +7,12 @@ const MOVING_PLATFORM_ARROW = preload("res://assets/art/arrows.png")
 @onready var amt_of_platforms: Label = %AmtOfPlatforms
 @onready var visuals: NinePatchRect = $Visuals
 
+var image_dict: Dictionary = {
+	BasicMovingPlatform: preload("res://assets/art/arrows.png"),
+	BasicDisappearingPlatform: preload("res://assets/art/disappearing.png"),
+	BouncyPlatform: preload("res://assets/art/slime_block.png")
+}
+
 var number_of_platforms_left: int
 var platform_packed_scene: PackedScene
 
@@ -32,13 +38,16 @@ func set_platform(platform: PackedScene, amt: int) -> void:
 	platform_instance.scale = Vector2.ONE * scale_factor
 	if platform_instance is BasicMovingPlatform:
 		platform_instance.line_2d.queue_free()
-		var arrow := Sprite2D.new()
-		arrow.texture = MOVING_PLATFORM_ARROW
-		wrapper.add_child(arrow)
-		arrow.position = Vector2(
-			wrapper.size.x / 2.0,
-			10.0 + arrow.texture.get_height() / 4.0
-		)
+	for type in image_dict.keys():
+		if is_instance_of(platform_instance,type):
+			var icon := Sprite2D.new()
+			icon.texture = image_dict.get(type)
+			wrapper.add_child(icon)
+			icon.scale = Vector2(.75,.75)
+			icon.position = Vector2(
+				wrapper.size.x / 2.0,
+				10.0 + icon.texture.get_height() / 4.0
+			)
 
 	var new_size := platform_size * scale_factor
 	platform_instance.visuals.size = new_size

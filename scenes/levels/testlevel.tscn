@@ -11,6 +11,12 @@ distance = -1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ct15x"]
 size = Vector2(271.88177, 34.426548)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(189, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(127.32631, 128)
+
 [node name="testlevel" type="Node2D" unique_id=894645183]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2033979914]
@@ -38,22 +44,6 @@ position = Vector2(-49.730938, 66.20295)
 scale = Vector2(5.1157737, 1)
 texture = ExtResource("2_wopdt")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=163917237]
-position = Vector2(342, 392.00003)
-rotation = 0.023538344
-physics_material_override = SubResource("PhysicsMaterial_vgf6b")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=708464797]
-position = Vector2(-0.58239937, -0.4991989)
-rotation = -0.03364645
-scale = Vector2(0.95706284, 0.27920341)
-texture = ExtResource("2_wopdt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1432379812]
-position = Vector2(-0.56660604, -0.64250183)
-rotation = -0.023380786
-shape = SubResource("RectangleShape2D_ct15x")
-
 [node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=301104329]
 position = Vector2(653.99994, 287)
 rotation = -1.5656674
@@ -73,3 +63,23 @@ shape = SubResource("RectangleShape2D_ct15x")
 [node name="Wizard" parent="." unique_id=3259477 instance=ExtResource("1_b81ow")]
 position = Vector2(585, 372)
 collision_layer = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=485973763]
+position = Vector2(245, 299)
+scale = Vector2(1.484375, 1.1015625)
+texture = ExtResource("2_wopdt")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=995914918]
+position = Vector2(-165.05264, -271.43265)
+scale = Vector2(0.67368424, 0.90780145)
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1750100770]
+position = Vector2(244.50002, 299.00003)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D" unique_id=87797283]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" unique_id=300820887]
+position = Vector2(-0.33685303, -0.45394897)
+shape = SubResource("RectangleShape2D_yf5fn")

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://4doqjcsx63ji"]
+
+[ext_resource type="Script" uid="uid://clqtjbn73l1dh" path="res://scenes/platforms/bouncy_platform.gd" id="1_kj8p4"]
+[ext_resource type="Texture2D" uid="uid://bf11dpjcpsrp6" path="res://assets/speech_box3.png" id="2_8vtm3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
+size = Vector2(160, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(162, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
+size = Vector2(165, 36)
+
+[node name="BouncyPlatform" type="AnimatableBody2D" unique_id=2041258644]
+collision_layer = 4
+script = ExtResource("1_kj8p4")
+bounce_strength = 10.0
+
+[node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
+offset_right = 160.0
+offset_bottom = 32.0
+texture = ExtResource("2_8vtm3")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479657373]
+unique_name_in_owner = true
+position = Vector2(80, 16)
+shape = SubResource("RectangleShape2D_5obky")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=237486378]
+unique_name_in_owner = true
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1997437604]
+position = Vector2(80, 16.5)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1561633605]
+unique_name_in_owner = true
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1596479123]
+position = Vector2(80.5, 16)
+shape = SubResource("RectangleShape2D_g63xn")
+
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_entered"]
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
