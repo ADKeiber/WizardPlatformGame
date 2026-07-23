@@ -2,9 +2,10 @@ class_name PlatformHolder
 extends PanelContainer
 
 const CURRENT_SELECTED_PLATFORM = preload("res://resources/themes/current_selected_platform.tres")
-
+const MOVING_PLATFORM_ARROW = preload("res://assets/art/arrows.png")
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 @onready var amt_of_platforms: Label = %AmtOfPlatforms
+@onready var visuals: NinePatchRect = $Visuals
 
 var number_of_platforms_left: int
 var platform_packed_scene: PackedScene
@@ -29,6 +30,16 @@ func set_platform(platform: PackedScene, amt: int) -> void:
 		1.0
 	)
 	platform_instance.scale = Vector2.ONE * scale_factor
+	if platform_instance is BasicMovingPlatform:
+		platform_instance.line_2d.queue_free()
+		var arrow := Sprite2D.new()
+		arrow.texture = MOVING_PLATFORM_ARROW
+		wrapper.add_child(arrow)
+		arrow.position = Vector2(
+			wrapper.size.x / 2.0,
+			10.0 + arrow.texture.get_height() / 4.0
+		)
+
 	var new_size := platform_size * scale_factor
 	platform_instance.visuals.size = new_size
 	var scaled_size := platform_size * scale_factor

@@ -1,10 +1,9 @@
 class_name BasePlatform
-extends Node2D
+extends AnimatableBody2D
 
 var interactable: bool = false
 
 func place() -> void:
-	
 	interactable = true
 	self.modulate = Color.WHITE
 	
