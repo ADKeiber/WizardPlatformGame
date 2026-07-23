@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h1sx5lwh080f"
-path="res://.godot/imported/ProtoWizard.png-588d916f2467d3a8bcdadeed5e072330.ctex"
+uid="uid://cplr756nm2og7"
+path="res://.godot/imported/Spikes.png-20780ad28bfa3e20590198a29ceeaadb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/wizard/ProtoWizard.png"
-dest_files=["res://.godot/imported/ProtoWizard.png-588d916f2467d3a8bcdadeed5e072330.ctex"]
+source_file="res://assets/art/platform/Spikes.png"
+dest_files=["res://.godot/imported/Spikes.png-20780ad28bfa3e20590198a29ceeaadb.ctex"]
 
 [params]
 

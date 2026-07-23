@@ -17,6 +17,13 @@ var last_wall = 0
 @onready var coyote_timer : Timer = $CoyoteTimer
 
 
+
+
+
+
+
+
+
 func _physics_process(delta: float) -> void:
 	handle_input()
 	update_movement(delta)
@@ -109,11 +116,12 @@ func update_movement(delta : float) -> void:
 	
 func update_animation() -> void:
 	if velocity.x > 0:
-		$Sprite2D.flip_h = true
-	if velocity.x < 0:
 		$Sprite2D.flip_h = false
+	if velocity.x < 0:
+		$Sprite2D.flip_h = true
 
 func floor_reset():
 	if is_on_floor():
 		gravity = 1500
 		sticky = 15
+		
