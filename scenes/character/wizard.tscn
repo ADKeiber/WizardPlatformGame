@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c2drvg5n10vpi"]
+
+[ext_resource type="Texture2D" uid="uid://h1sx5lwh080f" path="res://assets/art/wizard/ProtoWizard.png" id="1_0isxx"]
+[ext_resource type="Script" uid="uid://xpjsch23trd0" path="res://scenes/character/wizard.gd" id="1_ct15x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgf6b"]
+radius = 14.0
+height = 60.0
+
+[node name="Wizard" type="CharacterBody2D" unique_id=3259477]
+script = ExtResource("1_ct15x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1003744036]
+shape = SubResource("CapsuleShape2D_vgf6b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=430193613]
+texture = ExtResource("1_0isxx")
+
+[node name="JumpBufferTimer" type="Timer" parent="." unique_id=877103710]
+wait_time = 0.1
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=170958282]
+wait_time = 0.077
+one_shot = true
