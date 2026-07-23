@@ -19,7 +19,6 @@ var movement_initialized: bool = false
 func _physics_process(delta: float) -> void:
 	if !interactable:
 		return
-
 	# interactable becoming true means the platform
 	# has finished being placed.
 	if !movement_initialized:
@@ -32,20 +31,15 @@ func _physics_process(delta: float) -> void:
 
 func setup_movement() -> void:
 	start_position = global_position
-
 	var movement_offset := (
 		line_2d.points[1] -
 		line_2d.points[0]
 	)
-
 	end_position = start_position + movement_offset - Vector2(visuals.size.x, 0)
-
-	# Preserve SpaceTakenUp's exact world position/transform.
 	var saved_space_transform := space_taken_up.global_transform
 
 	space_taken_up.top_level = true
 	space_taken_up.global_transform = saved_space_transform
-
 	moving_to_end = true
 	movement_initialized = true
 
@@ -57,9 +51,6 @@ func move_platform(delta: float) -> void:
 		else start_position
 	)
 
-	# Move the entire AnimatableBody2D.
-	# Visuals, CollisionShape2D, and InteractionArea
-	# automatically move with it.
 	global_position = global_position.move_toward(
 		target_position,
 		move_speed * delta
