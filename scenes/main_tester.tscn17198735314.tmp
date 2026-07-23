@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bnte2doq2swpu"]
+
+[ext_resource type="Script" uid="uid://cnk33ghre4mrw" path="res://scenes/main_tester.gd" id="1_4r6t7"]
+[ext_resource type="Script" uid="uid://y8wxccyjic1b" path="res://scenes/platform_manager.gd" id="7_wlx24"]
+[ext_resource type="PackedScene" uid="uid://dfdb7tv2kl35f" path="res://scenes/platforms/basic_platform.tscn" id="8_ce41e"]
+[ext_resource type="PackedScene" uid="uid://ds3vd7won6fjk" path="res://scenes/platforms/basic_platform2.tscn" id="9_410ai"]
+
+[node name="MainTester" type="Control" unique_id=1881788653]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4r6t7")
+
+[node name="PlatformHolderArea" type="PanelContainer" parent="." unique_id=448303658]
+custom_minimum_size = Vector2(1080, 200)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlatformHolderArea" unique_id=1034328165]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="PlatformManager" type="Node2D" parent="." unique_id=2121095116 node_paths=PackedStringArray("platform_holder")]
+script = ExtResource("7_wlx24")
+available_platforms = Array[PackedScene]([ExtResource("8_ce41e"), ExtResource("9_410ai")])
+num_available = Array[int]([2, 1])
+platform_holder = NodePath("../PlatformHolderArea")
