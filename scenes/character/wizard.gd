@@ -99,7 +99,6 @@ func update_movement(delta : float) -> void:
 		current_state = State.WALLSLIDE
 
 		
-		
 	if current_state == State.JUMP:
 		velocity.y += gravity * delta
 	elif current_state == State.WALLSLIDE:
