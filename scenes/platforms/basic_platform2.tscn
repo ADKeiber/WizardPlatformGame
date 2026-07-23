@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://ds3vd7won6fjk"]
+
+[ext_resource type="Script" uid="uid://bhhto3r1q7rxl" path="res://scenes/platforms/basic_platform.gd" id="1_ekbpe"]
+[ext_resource type="Texture2D" uid="uid://bf11dpjcpsrp6" path="res://assets/speech_box3.png" id="2_5cix0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(66, 33.97)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekbpe"]
+size = Vector2(66, 34)
+
+[node name="BasicPlatform2" type="AnimatableBody2D" unique_id=2041258644]
+script = ExtResource("1_ekbpe")
+
+[node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
+offset_right = 64.0
+offset_bottom = 32.0
+texture = ExtResource("2_5cix0")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479657373]
+position = Vector2(32, 16)
+shape = SubResource("RectangleShape2D_5obky")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=237486378]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1997437604]
+position = Vector2(32, 16)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="SpaceTakenUp" type="Area2D" parent="." unique_id=671039638]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=240803574]
+position = Vector2(32, 16)
+shape = SubResource("RectangleShape2D_ekbpe")
+
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_entered"]
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
