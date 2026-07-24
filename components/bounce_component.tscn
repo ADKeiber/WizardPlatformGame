@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cncqn7l4wgc5p"]
+
+[ext_resource type="Script" uid="uid://uw3gpxa7efnm" path="res://components/bounce_component.gd" id="1_dqmb4"]
+
+[node name="BounceComponent" type="Node" unique_id=959748051]
+script = ExtResource("1_dqmb4")
+bounce_strength = 1000.0

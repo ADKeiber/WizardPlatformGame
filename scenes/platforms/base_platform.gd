@@ -19,3 +19,9 @@ func _on_space_taken_up_area_exited(area: Area2D) -> void:
 
 func is_intersecting() -> bool:
 	return not intersecting_area == null
+
+func get_component(type) -> Node:
+	for child in get_children():
+		if is_instance_of(child, type):
+			return child
+	return null

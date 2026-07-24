@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b46a1i67t2xmt"]
+
+[ext_resource type="Script" uid="uid://cb2oial4cfst1" path="res://components/platform_interaction_area.gd" id="1_x5cpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(32, 32)
+
+[node name="BouncyInteractionArea" type="Area2D" unique_id=1257100442]
+collision_layer = 2
+script = ExtResource("1_x5cpn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1313383165]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
