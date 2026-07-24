@@ -1,3 +1,4 @@
+class_name Wizard
 extends CharacterBody2D
 
 @export var speed : int = 300
@@ -8,14 +9,18 @@ extends CharacterBody2D
 @export var wallslide_friction : int = 5
 @export var sticky : int = 15
 @export var wall_gravity_added : int = 30
+
 enum State {IDLE, WALK, JUMP, DOWN, WALLSLIDE}
 var current_state : State = State.IDLE
 var jump_locked = false
 var last_wall = 0
 
+#bounce related variables
+var last_bouncy_platform: BouncyPlatform = null
+var consecutive_bounces: int = 0
+
 @onready var jump_buffer_timer : Timer = $JumpBufferTimer
 @onready var coyote_timer : Timer = $CoyoteTimer
-
 
 func _physics_process(delta: float) -> void:
 	handle_input()
@@ -23,12 +28,14 @@ func _physics_process(delta: float) -> void:
 	update_state()
 	update_animation()
 	floor_reset()
+	var previous_y_velocity := velocity.y
 	move_and_slide()
+	check_bouncy_platform(previous_y_velocity)
+	check_sticky_platform()
 
 func handle_input() -> void:
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer.start()
-
 	
 	var direction = Input.get_axis("move_left", "move_right")
 	
@@ -74,6 +81,9 @@ func update_movement(delta : float) -> void:
 		current_state = State.JUMP
 		jump_buffer_timer.stop()
 		coyote_timer.stop()
+		# Reset consecutive bounces
+		last_bouncy_platform = null
+		consecutive_bounces = 0
 		
 	if (is_on_wall_only() or coyote_timer.time_left > 0) and jump_buffer_timer.time_left > 0:
 		var wall_normal := get_wall_normal()
@@ -94,11 +104,9 @@ func update_movement(delta : float) -> void:
 			velocity.x = -700
 		if collision.get_position().x < global_position.x:
 			velocity.x = 700
-	
+			
 	if is_on_wall_only() and (Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left")) :
 		current_state = State.WALLSLIDE
-
-		
 		
 	if current_state == State.JUMP:
 		velocity.y += gravity * delta
@@ -107,14 +115,51 @@ func update_movement(delta : float) -> void:
 		sticky += 5
 	else: 
 		velocity.y += gravity * down_gravity_factor * delta
-	
+		
+
 func update_animation() -> void:
 	if velocity.x > 0:
-		$Sprite2D.flip_h = true
-	if velocity.x < 0:
 		$Sprite2D.flip_h = false
+	if velocity.x < 0:
+		$Sprite2D.flip_h = true
 
 func floor_reset():
 	if is_on_floor():
 		gravity = 1500
 		sticky = 15
+
+func check_bouncy_platform(impact_velocity: float) -> void:
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+		if collider is BouncyPlatform:
+			if collider == last_bouncy_platform:
+				consecutive_bounces += 1
+			else:
+				last_bouncy_platform = collider
+				consecutive_bounces = 0
+			var impact_speed : float = max(impact_velocity, 0.0)
+			# Lose 15% for each consecutive bounce on the same platform.
+			var bounce_multiplier := pow(0.85, consecutive_bounces)
+			velocity.y = -(
+				(collider.bounce_strength + impact_speed)
+				* bounce_multiplier
+			)
+			current_state = State.JUMP
+			return
+
+func check_sticky_platform() -> void:
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+		if collider is StickyPlatform:
+			# Slow X velocity while preserving direction.
+			if abs(velocity.x) > collider.velocity_mins.x:
+				velocity.x *= collider.velocity_changes.x
+			# Slow Y velocity while preserving direction.
+			if abs(velocity.y) > collider.velocity_mins.y:
+				velocity.y *= collider.velocity_changes.y
+			# Lower target wall-slide speed = stickier wall.
+			if is_on_wall():
+				sticky = collider.stickiness
+			return

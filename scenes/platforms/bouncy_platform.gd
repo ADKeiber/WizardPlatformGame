@@ -1,5 +1,7 @@
-class_name BasicPlatform
+class_name BouncyPlatform
 extends BasePlatform
+
+@export var bounce_strength: float = 800 
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var visuals: NinePatchRect = $Visuals

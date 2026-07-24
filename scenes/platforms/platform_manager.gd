@@ -39,6 +39,7 @@ func toggle_on() -> void:
 		current_platform = available_platforms[current_index].instantiate()
 		current_platform.global_position = get_global_mouse_position()
 		add_child(current_platform)
+		current_platform.collision_shape_2d.disabled = true
 	else:
 		if current_platform != null:
 			current_platform.queue_free()
@@ -60,8 +61,7 @@ func update_current_selected_up() -> void:
 	current_platform = available_platforms[current_index].instantiate()
 	current_platform.global_position = get_global_mouse_position()
 	add_child(current_platform)
-	
-	current_platform.global_position = get_global_mouse_position()
+	current_platform.collision_shape_2d.disabled = true
 
 func update_current_selected_down() -> void:
 	current_index -= 1
@@ -74,11 +74,13 @@ func update_current_selected_down() -> void:
 	current_platform = available_platforms[current_index].instantiate()
 	current_platform.global_position = get_global_mouse_position()
 	add_child(current_platform)
+	current_platform.collision_shape_2d.disabled = true
 
 func attempt_to_place_platform() -> void:
 	if current_platform == null or current_platform.is_intersecting():
 		return
 	current_platform.place()
+	current_platform.collision_shape_2d.disabled = false
 	current_platform = null
 	num_available[current_index] -= 1
 	update_amt_for_index.emit(current_index, num_available[current_index])
@@ -94,6 +96,7 @@ func attempt_to_place_platform() -> void:
 		current_platform = available_platforms[current_index].instantiate()
 		current_platform.global_position = get_global_mouse_position()
 		add_child(current_platform)
+		current_platform.collision_shape_2d.disabled = true
 		print("NEW PLATFORM!")
 
 func set_available_platforms_visuals() -> void:

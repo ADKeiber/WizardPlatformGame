@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h1sx5lwh080f"
-path="res://.godot/imported/ProtoWizard.png-588d916f2467d3a8bcdadeed5e072330.ctex"
+uid="uid://djp2n7c2aowkr"
+path="res://.godot/imported/sticky_block.png-88ff50295dd12fd07aa7122b5e17c7fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/wizard/ProtoWizard.png"
-dest_files=["res://.godot/imported/ProtoWizard.png-588d916f2467d3a8bcdadeed5e072330.ctex"]
+source_file="res://assets/art/sticky_block.png"
+dest_files=["res://.godot/imported/sticky_block.png-88ff50295dd12fd07aa7122b5e17c7fb.ctex"]
 
 [params]
 
