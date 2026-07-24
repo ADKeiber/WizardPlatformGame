@@ -8,12 +8,15 @@ extends CharacterBody2D
 @export var down_gravity_factor: float = 1.5
 @export var wallslide_friction : int = 5
 @export var sticky : int = 15
-@export var wall_gravity_added : int = 30
-
+@export var wall_gravity_added : int = 50
 enum State {IDLE, WALK, JUMP, DOWN, WALLSLIDE}
+var last_state : State = State.IDLE
 var current_state : State = State.IDLE
 var jump_locked = false
 var last_wall = 0
+var current_wall : int
+var same_wall_jump : int = 0
+var current_wall_same : bool = false
 
 #bounce related variables
 var last_bouncy_platform: BouncyPlatform = null
@@ -21,21 +24,42 @@ var consecutive_bounces: int = 0
 
 @onready var jump_buffer_timer : Timer = $JumpBufferTimer
 @onready var coyote_timer : Timer = $CoyoteTimer
+@onready var animation : AnimatedSprite2D = $AnimatedSprite2D
+
+
+
+
+
+
+
 
 func _physics_process(delta: float) -> void:
 	handle_input()
 	update_movement(delta)
+	move_and_slide()
+	if is_on_wall():
+		update_current_wall()
+	update_state()
+	if last_state != current_state:
+		update_animation()
+		last_state = current_state
+	floor_reset()
+	
 	update_state()
 	update_animation()
 	floor_reset()
 	var previous_y_velocity := velocity.y
-	move_and_slide()
+
 	check_bouncy_platform(previous_y_velocity)
 	check_sticky_platform()
 
 func handle_input() -> void:
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer.start()
+		if current_wall_same == true:
+			gravity += wall_gravity_added
+			print(gravity)
+
 	
 	var direction = Input.get_axis("move_left", "move_right")
 	
@@ -69,10 +93,13 @@ func update_state() -> void:
 				current_state = State.DOWN
 			if is_on_wall():
 				current_state = State.WALLSLIDE
-		State.DOWN when is_on_floor():
-			if velocity.x == 0:
-				current_state = State.IDLE
-			else: current_state = State.WALK
+		State.DOWN:
+			if is_on_floor():
+				if velocity.x == 0:
+					current_state = State.IDLE
+				else: current_state = State.WALK
+			if is_on_wall():
+				current_state = State.WALLSLIDE
 			
 		
 func update_movement(delta : float) -> void:
@@ -86,15 +113,6 @@ func update_movement(delta : float) -> void:
 		consecutive_bounces = 0
 		
 	if (is_on_wall_only() or coyote_timer.time_left > 0) and jump_buffer_timer.time_left > 0:
-		var wall_normal := get_wall_normal()
-		var current_wall := int(sign(wall_normal.x))
-		if current_wall == last_wall or last_wall == 0:
-			gravity += wall_gravity_added
-			last_wall = current_wall
-		elif current_wall != last_wall:
-			gravity = 1500
-			sticky = 15
-			last_wall = current_wall
 		velocity.y = jump_speed
 		current_state = State.JUMP
 		jump_buffer_timer.stop()
@@ -118,15 +136,57 @@ func update_movement(delta : float) -> void:
 		
 
 func update_animation() -> void:
-	if velocity.x > 0:
-		$Sprite2D.flip_h = false
-	if velocity.x < 0:
-		$Sprite2D.flip_h = true
-
+	if current_state == State.IDLE:
+			animation.play("idle")
+	elif current_state == State.WALK:
+		animation.play("walk")
+		if velocity.x > 0:
+			animation.flip_h = false
+		if velocity.x < 0:
+			animation.flip_h = true
+	elif  current_state == State.DOWN:
+		animation.play("fall")
+		if velocity.x > 0:
+			animation.flip_h = false
+		if velocity.x < 0:
+			animation.flip_h = true
+	elif  current_state == State.JUMP:
+		animation.play("jump")
+		if velocity.x > 0:
+			animation.flip_h = false
+		if velocity.x < 0:
+			animation.flip_h = true
+	elif  current_state == State.WALLSLIDE:
+		animation.play("wallslide")
+		var direction = Input.get_axis("move_right", "move_left")
+		if direction > 0:
+			animation.flip_h = false
+		if direction < 0:
+			animation.flip_h = true
 func floor_reset():
 	if is_on_floor():
 		gravity = 1500
 		sticky = 15
+		same_wall_jump = 0
+		
+func update_current_wall() -> void:
+	if is_on_wall():
+		var wall_normal := get_wall_normal()
+		current_wall = int(sign(wall_normal.x))
+		if current_wall == last_wall:
+			current_wall_same = true
+			last_wall = current_wall
+			print(gravity)
+		elif current_wall != last_wall:
+			current_wall_same = false
+			gravity = 1500
+			sticky = 15
+			last_wall = current_wall
+			same_wall_jump = 0
+			print(gravity)
+	else:
+		current_wall = 0
+		
 
 func check_bouncy_platform(impact_velocity: float) -> void:
 	for i in get_slide_collision_count():

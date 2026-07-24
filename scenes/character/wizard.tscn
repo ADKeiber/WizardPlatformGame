@@ -1,24 +1,133 @@
 [gd_scene format=3 uid="uid://c2drvg5n10vpi"]
 
 [ext_resource type="Script" uid="uid://xpjsch23trd0" path="res://scenes/character/wizard.gd" id="1_ct15x"]
-[ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="2_oixhv"]
+[ext_resource type="Texture2D" uid="uid://btibvpsxdto56" path="res://assets/art/wizard/Wizard-Idle.png" id="2_oixhv"]
+[ext_resource type="Texture2D" uid="uid://hxtypw7gch3o" path="res://assets/art/wizard/Wizard-Fall.png" id="2_w8aeg"]
+[ext_resource type="Texture2D" uid="uid://46uyojgs22yb" path="res://assets/art/wizard/Wizard-Walk.png" id="3_oixhv"]
+[ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_eriyo"]
+[ext_resource type="Texture2D" uid="uid://bf0mnn5j4ghut" path="res://assets/art/wizard/Wizard-WallSlide.png" id="6_ma2ac"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgf6b"]
 radius = 9.0
-height = 26.0
+height = 24.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pby3c"]
+atlas = ExtResource("2_w8aeg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmdjw"]
+atlas = ExtResource("2_w8aeg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1who"]
+atlas = ExtResource("2_w8aeg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eriyo"]
+atlas = ExtResource("2_oixhv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma2ac"]
+atlas = ExtResource("2_oixhv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu5d6"]
+atlas = ExtResource("2_oixhv")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp8qq"]
+atlas = ExtResource("4_eriyo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xqj6"]
+atlas = ExtResource("3_oixhv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jeow8"]
+atlas = ExtResource("3_oixhv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8aeg"]
+atlas = ExtResource("3_oixhv")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wtck"]
+atlas = ExtResource("6_ma2ac")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vgf6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pby3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmdjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1who")
+}],
+"loop": 2,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eriyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma2ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu5d6")
+}],
+"loop": 2,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sp8qq")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xqj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jeow8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8aeg")
+}],
+"loop": 2,
+"name": &"walk",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wtck")
+}],
+"loop": 1,
+"name": &"wallslide",
+"speed": 5.0
+}]
 
 [node name="Wizard" type="CharacterBody2D" unique_id=3259477 groups=["Wizard"]]
 collision_layer = 17
 collision_mask = 5
 script = ExtResource("1_ct15x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1003744036 groups=["Wizard"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=299670868 groups=["Wizard"]]
 shape = SubResource("CapsuleShape2D_vgf6b")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=430193613]
-position = Vector2(34, 2)
-texture = ExtResource("2_oixhv")
-offset = Vector2(-33, -14)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1666762721]
+position = Vector2(1, -13)
+sprite_frames = SubResource("SpriteFrames_vgf6b")
+animation = &"fall"
 
 [node name="JumpBufferTimer" type="Timer" parent="." unique_id=877103710]
 wait_time = 0.1
