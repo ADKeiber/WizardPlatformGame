@@ -5,12 +5,78 @@
 [ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="3_g63xn"]
 [ext_resource type="Texture2D" uid="uid://da1bof1rxbkfy" path="res://assets/art/Slime_Bounce.png" id="3_ywf1w"]
 [ext_resource type="PackedScene" uid="uid://cncqn7l4wgc5p" path="res://components/bounce_component.tscn" id="4_kympc"]
+[ext_resource type="Texture2D" uid="uid://cyr7cvoenjavi" path="res://assets/art/cannon_fire.png" id="6_6ypjm"]
+[ext_resource type="Script" uid="uid://xcqpcmldjhtg" path="res://components/projectile_producer.gd" id="7_6ypjm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
 size = Vector2(64, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
 size = Vector2(67, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unerc"]
+atlas = ExtResource("6_6ypjm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bgnq"]
+atlas = ExtResource("6_6ypjm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sscdt"]
+atlas = ExtResource("6_6ypjm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8jh1"]
+atlas = ExtResource("6_6ypjm")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ljuv"]
+atlas = ExtResource("6_6ypjm")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_recug"]
+atlas = ExtResource("6_6ypjm")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyq11"]
+atlas = ExtResource("6_6ypjm")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofhr4"]
+atlas = ExtResource("6_6ypjm")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_unerc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bgnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sscdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8jh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ljuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_recug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyq11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofhr4")
+}],
+"loop": 1,
+"name": &"shooting",
+"speed": 10.0
+}]
 
 [node name="BasicPlatform" type="AnimatableBody2D" unique_id=2041258644]
 collision_layer = 4
@@ -60,6 +126,14 @@ shape = SubResource("RectangleShape2D_g63xn")
 
 [node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("4_kympc")]
 bounce_strength = 600.0
+
+[node name="ProjectileProducer" type="AnimatedSprite2D" parent="." unique_id=1939984882]
+unique_name_in_owner = true
+position = Vector2(15, -13)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"shooting"
+frame_progress = 0.9795313
+script = ExtResource("7_6ypjm")
 
 [connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
 [connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
