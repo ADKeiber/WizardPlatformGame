@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	update_animation()
 	floor_reset()
 	var previous_y_velocity := velocity.y
-	move_and_slide()
+
 	check_bouncy_platform(previous_y_velocity)
 	check_sticky_platform()
 
