@@ -1,6 +1,8 @@
 class_name BasePlatform
 extends AnimatableBody2D
 
+@export var point_cost: int = 10
+
 var interactable: bool = false
 
 func place() -> void:

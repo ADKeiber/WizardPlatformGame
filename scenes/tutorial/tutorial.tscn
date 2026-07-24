@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b36oidjq1j6mn"]
+
+[ext_resource type="Script" uid="uid://cnj7sjpm73se5" path="res://scenes/tutorial/tutorial.gd" id="1_ymgc8"]
+
+[node name="Tutorial" type="Control" unique_id=166448729]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ymgc8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=933170844]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=143924369]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Tutorial Scene!"
+horizontal_alignment = 1
+
+[node name="FinishTutorialButton" type="Button" parent="VBoxContainer" unique_id=1460291762]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Finish Tutorial"
+
+[connection signal="pressed" from="VBoxContainer/FinishTutorialButton" to="." method="complete_tutorial"]
