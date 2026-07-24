@@ -1,5 +1,5 @@
 class_name BasePlatform
-extends Node2D
+extends AnimatableBody2D
 
 var interactable: bool = false
 
