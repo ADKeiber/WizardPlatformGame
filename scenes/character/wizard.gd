@@ -10,7 +10,7 @@ signal landed
 @export var down_gravity_factor: float = 1.5
 @export var wallslide_friction : int = 5
 @export var sticky : int = 15
-@export var wall_gravity_added : int = 50
+@export var wall_gravity_added : int = 35
 enum State {IDLE, WALK, JUMP, DOWN, WALLSLIDE}
 var last_state : State = State.IDLE
 var current_state : State = State.IDLE
@@ -50,6 +50,7 @@ func handle_input() -> void:
 		last_bounce_component = null
 		consecutive_bounces = 0
 		if current_wall_same == true:
+			sticky = 15
 			gravity += wall_gravity_added
 			print(gravity)
 
