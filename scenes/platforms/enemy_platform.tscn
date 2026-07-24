@@ -38,32 +38,36 @@ collision_layer = 4
 script = ExtResource("1_nhlg0")
 enemy_speed = 0.3
 
-[node name="Path2D" type="Path2D" parent="." unique_id=734635160]
+[node name="Node2D" type="Node2D" parent="." unique_id=567031694]
+
+[node name="Line2D" type="Line2D" parent="Node2D" unique_id=1712055860]
+unique_name_in_owner = true
+visible = false
+position = Vector2(9, 4)
+points = PackedVector2Array(68, -20, 167, -20, 167, 43, -25, 43, -25, -20, 68, -20)
+width = 1.0
+
+[node name="Path2D" type="Path2D" parent="Node2D" unique_id=734635160]
 curve = SubResource("Curve2D_s1rk1")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=947702521]
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Path2D" unique_id=947702521]
+unique_name_in_owner = true
 position = Vector2(140.81494, -13)
 progress = 60.792084
 
-[node name="Enemy" type="AnimatedSprite2D" parent="Path2D/PathFollow2D" unique_id=1617980067]
+[node name="Enemy" type="AnimatedSprite2D" parent="Node2D/Path2D/PathFollow2D" unique_id=1617980067]
 unique_name_in_owner = true
 position = Vector2(4.5474735e-13, -1.1920929e-07)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Enemy" unique_id=597346152]
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D/PathFollow2D/Enemy" unique_id=597346152]
 position = Vector2(14.999961, -4.9999948)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Enemy/Area2D" unique_id=610885381]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Path2D/PathFollow2D/Enemy/Area2D" unique_id=610885381]
 position = Vector2(-14.999985, 5)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_s1rk1")
-
-[node name="Line2D" type="Line2D" parent="." unique_id=1712055860]
-visible = false
-position = Vector2(9, 4)
-points = PackedVector2Array(68, -20, 167, -20, 167, 43, -25, 43, -25, -20, 68, -20)
-width = 1.0
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
 offset_right = 160.0
@@ -96,7 +100,7 @@ collision_mask = 17
 position = Vector2(84, 16)
 shape = SubResource("RectangleShape2D_g63xn")
 
-[connection signal="area_entered" from="Path2D/PathFollow2D/Enemy/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Node2D/Path2D/PathFollow2D/Enemy/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_entered"]
 [connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
 [connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]

@@ -46,9 +46,6 @@ shape = SubResource("RectangleShape2D_g63xn")
 
 [node name="StickyComponent" type="Node" parent="." unique_id=527428581]
 script = ExtResource("3_vdg75")
-velocity_changes = null
-velocity_mins = null
-stickiness = null
 
 [connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
 [connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
