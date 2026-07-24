@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bhhto3r1q7rxl" path="res://scenes/platforms/basic_platform.gd" id="1_q8tx7"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_5obky"]
 [ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="3_g63xn"]
+[ext_resource type="Texture2D" uid="uid://da1bof1rxbkfy" path="res://assets/art/Slime_Bounce.png" id="3_ywf1w"]
 [ext_resource type="PackedScene" uid="uid://cncqn7l4wgc5p" path="res://components/bounce_component.tscn" id="4_kympc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
@@ -27,14 +28,24 @@ patch_margin_bottom = 15
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=63149371]
+offset_left = 35.0
+offset_right = 64.0
+offset_bottom = 26.0
+texture = ExtResource("3_ywf1w")
+region_rect = Rect2(5.8686814, 4.942972, 32.21316, 6.9408646)
+patch_margin_left = 10
+patch_margin_top = 1
+patch_margin_right = 6
+patch_margin_bottom = 2
+
 [node name="BouncyInteractionArea" parent="." unique_id=1257100442 node_paths=PackedStringArray("component") instance=ExtResource("3_g63xn")]
-position = Vector2(32, 11.000001)
-scale = Vector2(2, 1.2)
+position = Vector2(50, 13)
 component = NodePath("../BounceComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479657373]
 unique_name_in_owner = true
-position = Vector2(32, 33)
+position = Vector2(32, 18)
 shape = SubResource("RectangleShape2D_5obky")
 
 [node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1561633605]

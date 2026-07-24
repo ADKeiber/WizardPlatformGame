@@ -30,31 +30,19 @@ var consecutive_bounces: int = 0
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 
 
-
-
-
-
-
-
 func _physics_process(delta: float) -> void:
 	handle_input()
 	update_movement(delta)
-	move_and_slide()
-	if is_on_wall():
-		update_current_wall()
 	update_state()
 	if last_state != current_state:
 		update_animation()
 		last_state = current_state
-	floor_reset()
 	
-	update_state()
-	update_animation()
-	floor_reset()
 	impact_velocity = velocity
 	move_and_slide()
-	if is_on_floor():
-		landed.emit()
+	floor_reset()
+	if is_on_wall():
+		update_current_wall()
 
 func handle_input() -> void:
 	if Input.is_action_just_pressed("jump"):
@@ -171,6 +159,7 @@ func floor_reset():
 		gravity = 1500
 		sticky = 15
 		same_wall_jump = 0
+		landed.emit()
 		
 func update_current_wall() -> void:
 	if is_on_wall():

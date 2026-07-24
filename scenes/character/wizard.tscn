@@ -117,6 +117,7 @@ animations = [{
 }]
 
 [node name="Wizard" type="CharacterBody2D" unique_id=3259477 groups=["Wizard"]]
+scale = Vector2(2, 2)
 collision_layer = 17
 collision_mask = 5
 script = ExtResource("1_ct15x")
