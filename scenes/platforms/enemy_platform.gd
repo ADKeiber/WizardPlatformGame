@@ -6,9 +6,9 @@ extends BasePlatform
 @onready var visuals: NinePatchRect = $Visuals
 @onready var space_taken_up: Area2D = $SpaceTakenUp
 @onready var interaction_area: Area2D = %InteractionArea
-@onready var line_2d: Line2D = $Line2D
+@onready var line_2d: Line2D = %Line2D
 @onready var enemy: AnimatedSprite2D = %Enemy
-@onready var path_follow_2d: PathFollow2D = $Path2D/PathFollow2D
+@onready var path_follow_2d: PathFollow2D = %PathFollow2D
 
 var target_point_index: int = 0
 

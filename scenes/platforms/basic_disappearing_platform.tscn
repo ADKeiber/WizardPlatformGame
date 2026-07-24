@@ -20,6 +20,7 @@ script = ExtResource("1_djr4o")
 offset_right = 160.0
 offset_bottom = 32.0
 texture = ExtResource("1_jqmug")
+region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8

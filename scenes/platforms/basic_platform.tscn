@@ -1,52 +1,54 @@
 [gd_scene format=3 uid="uid://dfdb7tv2kl35f"]
 
 [ext_resource type="Script" uid="uid://bhhto3r1q7rxl" path="res://scenes/platforms/basic_platform.gd" id="1_q8tx7"]
-[ext_resource type="Texture2D" uid="uid://bf11dpjcpsrp6" path="res://assets/speech_box3.png" id="2_5obky"]
+[ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_5obky"]
+[ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="3_g63xn"]
+[ext_resource type="PackedScene" uid="uid://cncqn7l4wgc5p" path="res://components/bounce_component.tscn" id="4_kympc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
-size = Vector2(160, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(162, 33.97)
+size = Vector2(64, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
-size = Vector2(165, 36)
+size = Vector2(67, 30)
 
 [node name="BasicPlatform" type="AnimatableBody2D" unique_id=2041258644]
 collision_layer = 4
 script = ExtResource("1_q8tx7")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
-offset_right = 160.0
-offset_bottom = 32.0
+offset_right = 64.0
+offset_bottom = 36.0
 texture = ExtResource("2_5obky")
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
+region_rect = Rect2(57.673763, 58.0018, 32.110336, 32.125916)
+patch_margin_left = 5
+patch_margin_top = 21
+patch_margin_right = 5
+patch_margin_bottom = 15
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="BouncyInteractionArea" parent="." unique_id=1257100442 node_paths=PackedStringArray("component") instance=ExtResource("3_g63xn")]
+position = Vector2(32, 11.000001)
+scale = Vector2(2, 1.2)
+component = NodePath("../BounceComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479657373]
 unique_name_in_owner = true
-position = Vector2(80, 16)
+position = Vector2(32, 33)
 shape = SubResource("RectangleShape2D_5obky")
-
-[node name="InteractionArea" type="Area2D" parent="." unique_id=237486378]
-unique_name_in_owner = true
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1997437604]
-position = Vector2(80, 16)
-shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1561633605]
 unique_name_in_owner = true
+visible = false
 collision_layer = 17
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1596479123]
-position = Vector2(80.5, 16)
+position = Vector2(31.5, 21)
 shape = SubResource("RectangleShape2D_g63xn")
 
-[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_entered"]
+[node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("4_kympc")]
+bounce_strength = 600.0
+
 [connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
 [connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
