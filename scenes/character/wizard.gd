@@ -178,3 +178,6 @@ func update_current_wall() -> void:
 			print(gravity)
 	else:
 		current_wall = 0
+
+func die() -> void:
+	print("You died!")
