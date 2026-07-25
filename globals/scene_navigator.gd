@@ -17,5 +17,8 @@ var scenes: Dictionary[String, String] = {
 
 func navigate_to(scene_name:String) -> void:
 	if scene_name.contains("Level"):
-		current_level += 1
+		if current_level == 5:
+			scene_name = "EndScene"
+		else:
+			current_level += 1
 	get_tree().change_scene_to_file(scenes[scene_name])

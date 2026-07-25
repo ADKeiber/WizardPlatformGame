@@ -30,4 +30,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Next Level"
 
+[node name="Background" type="TextureRect" parent="." unique_id=1500016180]
+z_index = -1
+layout_mode = 0
+offset_right = 957.0
+offset_bottom = 537.0
+mouse_filter = 2
+
 [connection signal="pressed" from="VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]

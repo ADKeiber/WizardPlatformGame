@@ -29,9 +29,13 @@ var consecutive_bounces: int = 0
 @onready var jump_buffer_timer : Timer = $JumpBufferTimer
 @onready var coyote_timer : Timer = $CoyoteTimer
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var camera : Camera2D = $Camera2D
+@onready var world_boundry : Area2D = %WorldBoundry
 
 func _ready() -> void:
+	world_boundry.body_entered.connect(die)
+	camera.make_current()
+	animation.play("idle")
 	starting_position = global_position
 
 func _physics_process(delta: float) -> void:
@@ -190,7 +194,7 @@ func update_current_wall() -> void:
 	else:
 		current_wall = 0
 
-func die() -> void:
+func die(body : Wizard) -> void:
 	current_state = State.DEAD
 	animation.play("death")
 	await animation.animation_finished

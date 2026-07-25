@@ -52,7 +52,7 @@ func _on_timer_timeout() -> void:
 
 func check_death() -> void:
 	if up == true and player != null:
-		player.die()
+		player.die(player)
 
 	
 	else: 

@@ -10,6 +10,9 @@
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="PlatformPlacerMenu" type="Control" unique_id=1881788653]
+top_level = true
+z_index = 4096
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
