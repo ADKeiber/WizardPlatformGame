@@ -2,6 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bnte2doq2swpu" path="res://scenes/user_interface/platform_placer_menu.tscn" id="1_4tcl0"]
 [ext_resource type="PackedScene" uid="uid://dq2ocxyvl6a2b" path="res://scenes/levels/testlevel.tscn" id="2_4tcl0"]
+[ext_resource type="Script" uid="uid://dri8n2t8n40te" path="res://scenes/user_interface/pause_menu.gd" id="3_dd0lh"]
+[ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_bfxgj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_g4v7s"]
+frame_0/texture = ExtResource("4_bfxgj")
 
 [node name="Level1" type="Control" unique_id=943124275]
 layout_mode = 3
@@ -18,3 +25,58 @@ z_as_relative = false
 layout_mode = 1
 
 [node name="testlevel" parent="." unique_id=894645183 instance=ExtResource("2_4tcl0")]
+
+[node name="PauseMenu" type="PanelContainer" parent="." unique_id=1151462677]
+process_mode = 3
+visible = false
+z_index = 4096
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_dd0lh")
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu" unique_id=7086468]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/PanelContainer" unique_id=2094225828]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer/MarginContainer" unique_id=947244492]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=242670768]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=833402277]
+layout_mode = 2
+text = "Volume:"
+
+[node name="HSlider" type="HSlider" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=197678374]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Wizard" type="TextureRect" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=158277603]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AnimatedTexture_g4v7s")
+expand_mode = 5
+
+[node name="Quit" type="Button" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1897637580]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
