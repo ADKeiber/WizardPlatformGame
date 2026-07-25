@@ -1,7 +1,7 @@
 class_name StickyComponent
 extends Node
 
-@export var velocity_changes := Vector2(0.6, 0.4)
+@export var velocity_changes := Vector2(0.5, 0.8)
 @export var velocity_mins := Vector2(50.0, 50.0)
 @export var stickiness: float = 5.0
 @export var default_sticky: float = 100

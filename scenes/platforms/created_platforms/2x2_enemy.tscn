@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://b227f54sh6awm"]
+
+[ext_resource type="Script" uid="uid://of0xyd5cdth4" path="res://scenes/platforms/created_platforms/2x2_enemy.gd" id="1_trddn"]
+[ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_craeo"]
+[ext_resource type="Texture2D" uid="uid://tuupvmd0ge7k" path="res://icon.svg" id="3_cijr0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgf6b"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnun6"]
+size = Vector2(64, 64)
+
+[sub_resource type="Curve2D" id="Curve2D_6650l"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -10, 50, 0, 0, 0, 0, -10, 73, 0, 0, 0, 0, 30, 73, 0, 0, 0, 0, 84, 72, 0, 0, 0, 0, 86, 25, 0, 0, 0, 0, 86, -18, 0, 0, 0, 0, 27, -21, 0, 0, 0, 0, -12, -19, 0, 0, 0, 0, -11, 15, 0, 0, 0, 0, -10, 34, 0, 0, 0, 0, -10, 50)
+}
+point_count = 11
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lgndo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cijr0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5y66y"]
+size = Vector2(130.00003, 130.00003)
+
+[node name="2X2Enemy" type="AnimatableBody2D" unique_id=937422762]
+script = ExtResource("1_trddn")
+
+[node name="Visuals" type="NinePatchRect" parent="." unique_id=486572750]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_craeo")
+region_rect = Rect2(10, 10, 32, 32)
+patch_margin_left = 4
+patch_margin_top = 17
+patch_margin_right = 4
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1042836710]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_vgf6b")
+
+[node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1746149531]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=2136357805]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_wnun6")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=872590678]
+position = Vector2(-36, 18)
+
+[node name="Path2D" type="Path2D" parent="Node2D" unique_id=118270825]
+position = Vector2(30, -13)
+curve = SubResource("Curve2D_6650l")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Path2D" unique_id=1076476674]
+unique_name_in_owner = true
+position = Vector2(27.90507, 73)
+progress = 60.792084
+
+[node name="Enemy" type="AnimatedSprite2D" parent="Node2D/Path2D/PathFollow2D" unique_id=1566534386]
+unique_name_in_owner = true
+position = Vector2(4.5474735e-13, -1.1920929e-07)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_lgndo")
+
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D/PathFollow2D/Enemy" unique_id=219386737]
+position = Vector2(14.999961, -4.9999948)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Path2D/PathFollow2D/Enemy/Area2D" unique_id=1073309170]
+position = Vector2(-14.999985, 5)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_5y66y")
+
+[connection signal="body_entered" from="Node2D/Path2D/PathFollow2D/Enemy/Area2D" to="." method="_on_area_2d_body_entered"]

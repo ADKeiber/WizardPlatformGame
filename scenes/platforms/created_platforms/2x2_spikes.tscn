@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://d2dmj7krp4peo"]
+
+[ext_resource type="Script" uid="uid://83gydrl0bm01" path="res://scenes/platforms/created_platforms/2x2_base.gd" id="1_hhoe5"]
+[ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_xxvhv"]
+[ext_resource type="PackedScene" uid="uid://b0vnve3tive8s" path="res://scenes/platforms/spikes.tscn" id="3_vy8tu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgf6b"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnun6"]
+size = Vector2(64, 64)
+
+[node name="2X2Spikes" type="AnimatableBody2D" unique_id=937422762]
+script = ExtResource("1_hhoe5")
+
+[node name="Visuals" type="NinePatchRect" parent="." unique_id=486572750]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_xxvhv")
+region_rect = Rect2(10, 10, 32, 32)
+patch_margin_left = 4
+patch_margin_top = 17
+patch_margin_right = 4
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1042836710]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_vgf6b")
+
+[node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1746149531]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=2136357805]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_wnun6")
+
+[node name="Spikes" parent="." unique_id=1902292362 instance=ExtResource("3_vy8tu")]
+position = Vector2(80, 16.000002)
+rotation = 1.5707964
+_static = false
+down_time = 3.0
+up_time = 3.0
+
+[node name="Spikes2" parent="." unique_id=560916755 instance=ExtResource("3_vy8tu")]
+position = Vector2(80, 48)
+rotation = 1.5707964
+_static = false
+down_time = 3.0
+up_time = 3.0
+
+[node name="Spikes3" parent="." unique_id=923371121 instance=ExtResource("3_vy8tu")]
+position = Vector2(-16, 16)
+rotation = -1.5707964
+_static = false
+down_time = 3.0
+up_time = 3.0
+
+[node name="Spikes4" parent="." unique_id=1378175592 instance=ExtResource("3_vy8tu")]
+position = Vector2(-16, 48)
+rotation = -1.5707964
+_static = false
+down_time = 3.0
+up_time = 3.0
