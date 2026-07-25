@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://d1ud1h2nrthng"]
+
+[ext_resource type="Script" uid="uid://btptfe2uja73j" path="res://scenes/platforms/created_platforms/1x5_spikes_slime.gd" id="1_3lx1k"]
+[ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_lc01w"]
+[ext_resource type="Texture2D" uid="uid://da1bof1rxbkfy" path="res://assets/art/Slime_Bounce.png" id="3_kdgm7"]
+[ext_resource type="PackedScene" uid="uid://b0vnve3tive8s" path="res://scenes/platforms/spikes.tscn" id="4_3lx1k"]
+[ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="5_3lx1k"]
+[ext_resource type="PackedScene" uid="uid://cncqn7l4wgc5p" path="res://components/bounce_component.tscn" id="5_pmxai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
+size = Vector2(160, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
+size = Vector2(162, 48)
+
+[node name="1x5SpikesSlime" type="AnimatableBody2D" unique_id=2041258644]
+collision_layer = 4
+script = ExtResource("1_3lx1k")
+
+[node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
+offset_right = 160.0
+offset_bottom = 32.0
+texture = ExtResource("2_lc01w")
+region_rect = Rect2(10.008362, 9.72888, 31.959682, 32.29116)
+patch_margin_left = 5
+patch_margin_top = 17
+patch_margin_right = 5
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="SlimeBounce" type="NinePatchRect" parent="." unique_id=1798289586]
+offset_left = 37.0
+offset_top = -1.0
+offset_right = 122.0
+offset_bottom = 12.0
+texture = ExtResource("3_kdgm7")
+region_rect = Rect2(6, 5, 32, 7)
+patch_margin_left = 9
+patch_margin_top = 2
+patch_margin_right = 4
+patch_margin_bottom = 3
+axis_stretch_vertical = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479657373]
+unique_name_in_owner = true
+visible = false
+position = Vector2(80, 16)
+shape = SubResource("RectangleShape2D_5obky")
+
+[node name="Spikes" parent="." unique_id=1902292362 instance=ExtResource("4_3lx1k")]
+position = Vector2(18, -5)
+_static = false
+
+[node name="Spikes2" parent="." unique_id=121537007 instance=ExtResource("4_3lx1k")]
+position = Vector2(142, -5)
+
+[node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1561633605]
+unique_name_in_owner = true
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1596479123]
+position = Vector2(80, 9)
+shape = SubResource("RectangleShape2D_g63xn")
+
+[node name="BouncyInteractionArea" parent="." unique_id=1257100442 node_paths=PackedStringArray("component") instance=ExtResource("5_3lx1k")]
+position = Vector2(79, 5)
+scale = Vector2(2.75, 0.45)
+component = NodePath("../BounceComponent")
+
+[node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("5_pmxai")]
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]

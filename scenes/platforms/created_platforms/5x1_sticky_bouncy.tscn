@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://3dtnj6pcp3k4"]
+
+[ext_resource type="Script" uid="uid://cleelajhracxp" path="res://scenes/platforms/created_platforms/5x1_sticky_bouncy.gd" id="1_m1h23"]
+[ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_13p6c"]
+[ext_resource type="Texture2D" uid="uid://bgt5fi0y4kyff" path="res://assets/art/Goop.png" id="3_jjt4n"]
+[ext_resource type="Texture2D" uid="uid://da1bof1rxbkfy" path="res://assets/art/Slime_Bounce.png" id="4_wjaa5"]
+[ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="5_026rn"]
+[ext_resource type="Script" uid="uid://cvp3pbycuujp6" path="res://components/sticky_component.gd" id="6_e0bej"]
+[ext_resource type="PackedScene" uid="uid://cncqn7l4wgc5p" path="res://components/bounce_component.tscn" id="7_05lj6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
+size = Vector2(32, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
+size = Vector2(32, 159)
+
+[node name="5x1StickyBouncy" type="AnimatableBody2D" unique_id=2041258644]
+collision_layer = 4
+script = ExtResource("1_m1h23")
+
+[node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
+offset_right = 32.0
+offset_bottom = 160.0
+texture = ExtResource("2_13p6c")
+region_rect = Rect2(10, 10, 32, 32)
+patch_margin_left = 5
+patch_margin_top = 17
+patch_margin_right = 5
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=114804330]
+offset_top = 69.0
+offset_right = 64.0
+offset_bottom = 101.0
+rotation = -1.5707964
+texture = ExtResource("3_jjt4n")
+region_rect = Rect2(0, 0, 64, 16)
+patch_margin_left = 10
+patch_margin_top = 4
+patch_margin_right = 14
+axis_stretch_horizontal = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=1335520771]
+offset_left = -0.9999998
+offset_top = 154.91733
+offset_right = 57.571358
+offset_bottom = 162.91733
+rotation = -1.5707964
+texture = ExtResource("4_wjaa5")
+region_rect = Rect2(6, 5, 32, 7)
+patch_margin_left = 31
+patch_margin_top = 1
+patch_margin_right = 23
+patch_margin_bottom = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479657373]
+unique_name_in_owner = true
+position = Vector2(16, 80)
+shape = SubResource("RectangleShape2D_5obky")
+
+[node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1561633605]
+unique_name_in_owner = true
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1596479123]
+position = Vector2(16, 80.5)
+shape = SubResource("RectangleShape2D_g63xn")
+
+[node name="StickyInteractionArea" parent="." unique_id=1257100442 node_paths=PackedStringArray("component") instance=ExtResource("5_026rn")]
+position = Vector2(16, 36)
+scale = Vector2(1.1, 2)
+component = NodePath("../StickyComponent")
+
+[node name="BouncyInteractionArea2" parent="." unique_id=1774164420 node_paths=PackedStringArray("component") instance=ExtResource("5_026rn")]
+position = Vector2(16, 126.00001)
+scale = Vector2(1.1, 1.85)
+component = NodePath("../BounceComponent")
+
+[node name="StickyComponent" type="Node" parent="." unique_id=171989068]
+script = ExtResource("6_e0bej")
+velocity_changes = Vector2(0.5, 0.8)
+default_sticky = 15.0
+
+[node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("7_05lj6")]
+is_floor = false
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]

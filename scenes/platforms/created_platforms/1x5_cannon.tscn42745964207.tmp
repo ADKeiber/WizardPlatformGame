@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://d2ij7ifrd8v5r"]
+
+[ext_resource type="Script" uid="uid://bhych0gaugf4f" path="res://scenes/platforms/created_platforms/1x5_cannon.gd" id="1_l56h7"]
+[ext_resource type="PackedScene" uid="uid://qceefgr2lat0" path="res://components/projectile_producer.tscn" id="2_e7kgd"]
+[ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_l56h7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
+size = Vector2(160, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
+size = Vector2(162, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(42, 38)
+
+[node name="1x5Cannon" type="AnimatableBody2D" unique_id=2041258644]
+collision_layer = 4
+script = ExtResource("1_l56h7")
+
+[node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
+offset_right = 160.0
+offset_bottom = 32.0
+texture = ExtResource("2_l56h7")
+region_rect = Rect2(10.008362, 9.72888, 31.959682, 32.29116)
+patch_margin_left = 5
+patch_margin_top = 17
+patch_margin_right = 5
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479657373]
+unique_name_in_owner = true
+position = Vector2(80, 16)
+shape = SubResource("RectangleShape2D_5obky")
+
+[node name="ProjectileProducer" parent="." unique_id=1472871402 instance=ExtResource("2_e7kgd")]
+position = Vector2(136, -13)
+scale = Vector2(1.5, 1.5)
+flip_h = true
+direction = Vector2(-1, 0)
+
+[node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1561633605]
+unique_name_in_owner = true
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1596479123]
+position = Vector2(80, 16)
+shape = SubResource("RectangleShape2D_g63xn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1962379656]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=149850432]
+position = Vector2(134, -9)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]

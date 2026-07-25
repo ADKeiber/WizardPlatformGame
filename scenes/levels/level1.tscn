@@ -82,6 +82,7 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Button" type="Button" parent="." unique_id=1307281504]
+visible = false
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0

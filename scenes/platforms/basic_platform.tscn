@@ -5,78 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="3_g63xn"]
 [ext_resource type="Texture2D" uid="uid://da1bof1rxbkfy" path="res://assets/art/Slime_Bounce.png" id="3_ywf1w"]
 [ext_resource type="PackedScene" uid="uid://cncqn7l4wgc5p" path="res://components/bounce_component.tscn" id="4_kympc"]
-[ext_resource type="Texture2D" uid="uid://cyr7cvoenjavi" path="res://assets/art/cannon_fire.png" id="6_6ypjm"]
-[ext_resource type="Script" uid="uid://xcqpcmldjhtg" path="res://components/projectile_producer.gd" id="7_6ypjm"]
+[ext_resource type="PackedScene" uid="uid://qceefgr2lat0" path="res://components/projectile_producer.tscn" id="5_6ypjm"]
+[ext_resource type="Script" uid="uid://cvp3pbycuujp6" path="res://components/sticky_component.gd" id="7_unerc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
 size = Vector2(64, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
 size = Vector2(67, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_unerc"]
-atlas = ExtResource("6_6ypjm")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5bgnq"]
-atlas = ExtResource("6_6ypjm")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sscdt"]
-atlas = ExtResource("6_6ypjm")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h8jh1"]
-atlas = ExtResource("6_6ypjm")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ljuv"]
-atlas = ExtResource("6_6ypjm")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_recug"]
-atlas = ExtResource("6_6ypjm")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xyq11"]
-atlas = ExtResource("6_6ypjm")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ofhr4"]
-atlas = ExtResource("6_6ypjm")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
-animations = [{
-"frames": [{
-"duration": 15.0,
-"texture": SubResource("AtlasTexture_unerc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5bgnq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sscdt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h8jh1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7ljuv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_recug")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xyq11")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ofhr4")
-}],
-"loop": 1,
-"name": &"shooting",
-"speed": 10.0
-}]
 
 [node name="BasicPlatform" type="AnimatableBody2D" unique_id=2041258644]
 collision_layer = 4
@@ -106,7 +42,7 @@ patch_margin_right = 6
 patch_margin_bottom = 2
 
 [node name="BouncyInteractionArea" parent="." unique_id=1257100442 node_paths=PackedStringArray("component") instance=ExtResource("3_g63xn")]
-position = Vector2(50, 13)
+position = Vector2(50, 4)
 component = NodePath("../BounceComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479657373]
@@ -124,16 +60,14 @@ collision_mask = 17
 position = Vector2(31.5, 21)
 shape = SubResource("RectangleShape2D_g63xn")
 
-[node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("4_kympc")]
-bounce_strength = 600.0
-
-[node name="ProjectileProducer" type="AnimatedSprite2D" parent="." unique_id=1939984882]
+[node name="ProjectileProducer" parent="." unique_id=1472871402 instance=ExtResource("5_6ypjm")]
 unique_name_in_owner = true
-position = Vector2(15, -13)
-sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"shooting"
-frame_progress = 0.9795313
-script = ExtResource("7_6ypjm")
+position = Vector2(16, -15)
+
+[node name="StickyComponent" type="Node" parent="." unique_id=1923941179]
+script = ExtResource("7_unerc")
+
+[node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("4_kympc")]
 
 [connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
 [connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]

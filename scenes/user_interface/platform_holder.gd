@@ -37,7 +37,7 @@ func set_platform(platform: PackedScene, amt: int) -> void:
 		1.0
 	)
 	platform_instance.scale = Vector2.ONE * scale_factor
-	if platform_instance is BasicMovingPlatform or platform_instance is EnemyPlatform:
+	if platform_instance is BasicMovingPlatform:
 		platform_instance.line_2d.queue_free()
 	for type in image_dict.keys():
 		if is_instance_of(platform_instance,type):

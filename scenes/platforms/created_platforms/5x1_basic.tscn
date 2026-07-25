@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cacrsscvsj7lo"]
+
+[ext_resource type="Script" uid="uid://c7yv31l1wsgos" path="res://scenes/platforms/created_platforms/5x1_basic.gd" id="1_4ww3s"]
+[ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_0q6ha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
+size = Vector2(32, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
+size = Vector2(32, 159)
+
+[node name="5x1Basic" type="AnimatableBody2D" unique_id=2041258644]
+collision_layer = 4
+script = ExtResource("1_4ww3s")
+
+[node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
+offset_right = 32.0
+offset_bottom = 160.0
+texture = ExtResource("2_0q6ha")
+region_rect = Rect2(10, 10, 32, 32)
+patch_margin_left = 5
+patch_margin_top = 17
+patch_margin_right = 5
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479657373]
+unique_name_in_owner = true
+position = Vector2(16, 80)
+shape = SubResource("RectangleShape2D_5obky")
+
+[node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1561633605]
+unique_name_in_owner = true
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1596479123]
+position = Vector2(16, 80.5)
+shape = SubResource("RectangleShape2D_g63xn")
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
