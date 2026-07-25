@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneNavigator="*uid://dxyy4yit86uac"
-Inventory="*uid://deowpix57uuit"
 
 [display]
 

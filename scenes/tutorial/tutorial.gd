@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 	pass
 
 func complete_tutorial() -> void:
-	SceneNavigator.navigate_to("Shop")
+	SceneNavigator.navigate_to("ProgressMap")
