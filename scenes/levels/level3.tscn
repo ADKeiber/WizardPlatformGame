@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbvovbibgms2l" path="res://scenes/levels/level.gd" id="1_f5jb5"]
 [ext_resource type="PackedScene" uid="uid://bnte2doq2swpu" path="res://scenes/user_interface/platform_placer_menu.tscn" id="1_t275y"]
-[ext_resource type="PackedScene" uid="uid://d18f5vbpsa32e" path="res://scenes/levels/level_1_map.tscn" id="2_f5jb5"]
+[ext_resource type="PackedScene" uid="uid://dvmnglom61lk7" path="res://scenes/levels/level_3_map.tscn" id="2_f5jb5"]
 [ext_resource type="Script" uid="uid://dri8n2t8n40te" path="res://scenes/user_interface/pause_menu.gd" id="3_frjko"]
 [ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_f7rt6"]
 
@@ -15,7 +15,7 @@ frame_0/texture = ExtResource("4_f7rt6")
 script = ExtResource("1_f5jb5")
 metadata/_edit_use_anchors_ = true
 
-[node name="Level 1 Map" parent="." unique_id=600446408 instance=ExtResource("2_f5jb5")]
+[node name="Level3Map" parent="." unique_id=600446408 instance=ExtResource("2_f5jb5")]
 
 [node name="PlatformPlacerMenu" parent="." unique_id=1881788653 instance=ExtResource("1_t275y")]
 

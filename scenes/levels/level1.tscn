@@ -5,11 +5,15 @@
 [ext_resource type="Script" uid="uid://dri8n2t8n40te" path="res://scenes/user_interface/pause_menu.gd" id="3_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://d18f5vbpsa32e" path="res://scenes/levels/level_1_map.tscn" id="3_dywbp"]
 [ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_bfxgj"]
+[ext_resource type="Texture2D" uid="uid://bogc8tgmn7ghb" path="res://assets/art/Finish Flag.png" id="6_1seuy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dywbp"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_1seuy"]
 frame_0/texture = ExtResource("4_bfxgj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgf6b"]
+size = Vector2(34, 38)
 
 [node name="Level1" type="Node2D" unique_id=1005037984]
 script = ExtResource("1_dywbp")
@@ -18,11 +22,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Level 1 Map" parent="." unique_id=600446408 instance=ExtResource("3_dywbp")]
 
 [node name="PlatformPlacerMenu" parent="." unique_id=1881788653 instance=ExtResource("1_4tcl0")]
-
-[node name="Button" type="Button" parent="." unique_id=1307281504]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Complete Level 1"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=767433512]
 
@@ -82,5 +81,16 @@ expand_mode = 5
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="Button" to="." method="complete_level"]
+[node name="Area2D" type="Area2D" parent="." unique_id=319866314]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=146369485]
+position = Vector2(2829, 286)
+shape = SubResource("RectangleShape2D_vgf6b")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1226526762]
+position = Vector2(2829, 289)
+texture = ExtResource("6_1seuy")
+
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Quit" to="CanvasLayer/PauseMenu" method="_on_quit_pressed"]
+[connection signal="body_entered" from="Area2D" to="." method="complete_level"]

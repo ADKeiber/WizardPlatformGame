@@ -9,5 +9,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func complete_level() -> void:
-	SceneNavigator.navigate_to("ProgressMap")
+func complete_level(body : Wizard) -> void:
+	if body is Wizard:
+		SceneNavigator.navigate_to("ProgressMap")
