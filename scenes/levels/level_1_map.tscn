@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c2drvg5n10vpi" path="res://scenes/character/wizard.tscn" id="3_gtejc"]
 [ext_resource type="PackedScene" uid="uid://cpwo4ovxfg3nn" path="res://scenes/platforms/created_platforms/2x2_base.tscn" id="4_rnqn2"]
 [ext_resource type="PackedScene" uid="uid://6b3hl3hnihl3" path="res://scenes/platforms/created_platforms/l_shape_bounce.tscn" id="5_j7uhm"]
+[ext_resource type="PackedScene" uid="uid://d2dmj7krp4peo" path="res://scenes/platforms/created_platforms/2x2_spikes.tscn" id="6_rnqn2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5j0f8"]
 texture = ExtResource("1_f3vxo")
@@ -672,7 +673,7 @@ limit_right = 3000
 limit_bottom = 543
 
 [node name="Wizard" parent="." unique_id=3259477 instance=ExtResource("3_gtejc")]
-position = Vector2(63, 379)
+position = Vector2(67, 398)
 
 [node name="Platforms" type="Node2D" parent="." unique_id=362712526]
 
@@ -681,3 +682,6 @@ position = Vector2(607, 359)
 
 [node name="LShapeBase" parent="." unique_id=1181529869 instance=ExtResource("5_j7uhm")]
 position = Vector2(178, 338)
+
+[node name="2X2Spikes" parent="." unique_id=662546854 instance=ExtResource("6_rnqn2")]
+position = Vector2(188, 369)

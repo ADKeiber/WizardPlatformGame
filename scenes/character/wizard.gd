@@ -11,7 +11,7 @@ signal landed
 @export var wallslide_friction : int = 5
 @export var sticky : int = 15
 @export var wall_gravity_added : int = 30
-enum State {IDLE, WALK, JUMP, DOWN, WALLSLIDE}
+enum State {IDLE, WALK, JUMP, DOWN, WALLSLIDE, DEAD}
 var last_state : State = State.IDLE
 var current_state : State = State.IDLE
 var jump_locked = false
@@ -19,6 +19,7 @@ var last_wall = 0
 var current_wall : int
 var same_wall_jump : int = 0
 var current_wall_same : bool = false
+var starting_position : Vector2 
 
 #bounce related variables
 var impact_velocity: Vector2
@@ -30,7 +31,12 @@ var consecutive_bounces: int = 0
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 
 
+func _ready() -> void:
+	starting_position = global_position
+
 func _physics_process(delta: float) -> void:
+	if current_state == State.DEAD:
+		return
 	handle_input()
 	update_movement(delta)
 	update_state()
@@ -185,4 +191,9 @@ func update_current_wall() -> void:
 		current_wall = 0
 
 func die() -> void:
-	print("You died!")
+	current_state = State.DEAD
+	animation.play("death")
+	await animation.animation_finished
+	velocity = Vector2.ZERO
+	global_position = starting_position
+	current_state = State.IDLE
