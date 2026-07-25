@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://7v4ghjpvnvlo"]
+
+[ext_resource type="Script" uid="uid://jedpgjp8va5j" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+
+[node name="MainMenu" type="Control" unique_id=1524112131]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fsom3")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=81232254]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=705717507]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1651312245]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="PlayButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer" unique_id=947415541]
+layout_mode = 2
+text = "Start Game"
+
+[node name="TutorialQuestionPopup" type="Popup" parent="." unique_id=1377527461]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(500, 400)
+visible = true
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialQuestionPopup" unique_id=980795464]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialQuestionPopup/MarginContainer" unique_id=1349940243]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=940127458]
+layout_mode = 2
+text = "Would you like to play the tutorial?"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=2064181631]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="YesButton" type="Button" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=70725091]
+layout_mode = 2
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=1747659634]
+layout_mode = 2
+text = "No"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="TutorialQuestionPopup/MarginContainer/VBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="TutorialQuestionPopup/MarginContainer/VBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

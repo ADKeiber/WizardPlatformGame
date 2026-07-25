@@ -1,10 +1,11 @@
-[gd_scene format=3 uid="uid://cpvm12q7k5tmg"]
+[gd_scene format=3 uid="uid://dugvjvw5ugr4p"]
 
-[ext_resource type="Texture2D" uid="uid://tuupvmd0ge7k" path="res://icon.svg" id="2_x61fo"]
-[ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_ya7qj"]
-[ext_resource type="Texture2D" uid="uid://bgt5fi0y4kyff" path="res://assets/art/Goop.png" id="3_ux8ao"]
-[ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="5_ya7qj"]
-[ext_resource type="Script" uid="uid://cvp3pbycuujp6" path="res://components/sticky_component.gd" id="6_ux8ao"]
+[ext_resource type="Script" uid="uid://b7tahnsijpo3u" path="res://scenes/platforms/created_platforms/1x5_sticky_enemy.gd" id="1_jrxlq"]
+[ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_1wyj7"]
+[ext_resource type="Texture2D" uid="uid://bgt5fi0y4kyff" path="res://assets/art/Goop.png" id="3_hbj3a"]
+[ext_resource type="Texture2D" uid="uid://tuupvmd0ge7k" path="res://icon.svg" id="4_463qy"]
+[ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="5_51vgd"]
+[ext_resource type="Script" uid="uid://cvp3pbycuujp6" path="res://components/sticky_component.gd" id="6_j4lr7"]
 
 [sub_resource type="Curve2D" id="Curve2D_s1rk1"]
 _data = {
@@ -16,7 +17,7 @@ point_count = 10
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_x61fo")
+"texture": ExtResource("4_463qy")
 }],
 "loop": 1,
 "name": &"default",
@@ -32,13 +33,14 @@ size = Vector2(160, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
 size = Vector2(214, 86)
 
-[node name="EnemyPlatform" type="AnimatableBody2D" unique_id=2041258644]
+[node name="1x5StickyEnemy" type="AnimatableBody2D" unique_id=2041258644]
 collision_layer = 4
+script = ExtResource("1_jrxlq")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
 offset_right = 160.0
 offset_bottom = 32.0
-texture = ExtResource("2_ya7qj")
+texture = ExtResource("2_1wyj7")
 region_rect = Rect2(58.20176, 57.962288, 31.959682, 32.29116)
 patch_margin_left = 5
 patch_margin_top = 17
@@ -50,7 +52,7 @@ axis_stretch_vertical = 1
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=166773542]
 offset_right = 160.0
 offset_bottom = 24.0
-texture = ExtResource("3_ux8ao")
+texture = ExtResource("3_hbj3a")
 region_rect = Rect2(0.008232117, -0.29835892, 63.83663, 16.279182)
 patch_margin_left = 5
 patch_margin_top = 4
@@ -63,7 +65,7 @@ offset_top = 32.0
 offset_right = 319.48456
 offset_bottom = 56.0
 rotation = 3.1415927
-texture = ExtResource("3_ux8ao")
+texture = ExtResource("3_hbj3a")
 region_rect = Rect2(0.008232117, -0.29835892, 63.83663, 16.279182)
 patch_margin_left = 5
 patch_margin_top = 4
@@ -76,7 +78,7 @@ offset_top = 3.0
 offset_right = 186.33386
 offset_bottom = 23.495056
 rotation = 1.5707964
-texture = ExtResource("3_ux8ao")
+texture = ExtResource("3_hbj3a")
 region_rect = Rect2(0.008232117, -0.29835892, 63.83663, 16.279182)
 patch_margin_left = 5
 patch_margin_top = 4
@@ -88,7 +90,7 @@ offset_top = 30.0
 offset_right = 26.333862
 offset_bottom = 50.495056
 rotation = -1.5707964
-texture = ExtResource("3_ux8ao")
+texture = ExtResource("3_hbj3a")
 region_rect = Rect2(0.008232117, -0.29835892, 63.83663, 16.279182)
 patch_margin_left = 5
 patch_margin_top = 4
@@ -119,7 +121,7 @@ position = Vector2(-14.999985, 5)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_s1rk1")
 
-[node name="StickyInteractionArea" parent="." unique_id=1257100442 node_paths=PackedStringArray("component") instance=ExtResource("5_ya7qj")]
+[node name="StickyInteractionArea" parent="." unique_id=1257100442 node_paths=PackedStringArray("component") instance=ExtResource("5_51vgd")]
 position = Vector2(80, 16)
 scale = Vector2(5.1, 1.1)
 component = NodePath("../StickyComponent")
@@ -139,7 +141,8 @@ position = Vector2(79, 16)
 shape = SubResource("RectangleShape2D_g63xn")
 
 [node name="StickyComponent" type="Node" parent="." unique_id=1308650594]
-script = ExtResource("6_ux8ao")
+script = ExtResource("6_j4lr7")
+velocity_changes = Vector2(0.5, 0.8)
 stickiness = 15.0
 default_sticky = 15.0
 

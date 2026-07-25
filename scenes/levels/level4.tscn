@@ -1,32 +1,32 @@
-[gd_scene format=3 uid="uid://b1c8npiwqhdob"]
+[gd_scene format=3 uid="uid://dtrfyverchx32"]
 
-[ext_resource type="PackedScene" uid="uid://bnte2doq2swpu" path="res://scenes/user_interface/platform_placer_menu.tscn" id="1_4tcl0"]
-[ext_resource type="Script" uid="uid://dbvovbibgms2l" path="res://scenes/levels/level.gd" id="1_dywbp"]
-[ext_resource type="PackedScene" uid="uid://dq2ocxyvl6a2b" path="res://scenes/levels/testlevel.tscn" id="2_4tcl0"]
-[ext_resource type="Script" uid="uid://dri8n2t8n40te" path="res://scenes/user_interface/pause_menu.gd" id="3_dd0lh"]
-[ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_bfxgj"]
+[ext_resource type="PackedScene" uid="uid://bnte2doq2swpu" path="res://scenes/user_interface/platform_placer_menu.tscn" id="1_o34q2"]
+[ext_resource type="Script" uid="uid://dbvovbibgms2l" path="res://scenes/levels/level.gd" id="1_rdsj4"]
+[ext_resource type="PackedScene" uid="uid://dq2ocxyvl6a2b" path="res://scenes/levels/testlevel.tscn" id="2_rdsj4"]
+[ext_resource type="Script" uid="uid://dri8n2t8n40te" path="res://scenes/user_interface/pause_menu.gd" id="3_e127x"]
+[ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_heu5o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_g4v7s"]
-frame_0/texture = ExtResource("4_bfxgj")
+frame_0/texture = ExtResource("4_heu5o")
 
-[node name="Level1" type="Control" unique_id=943124275]
+[node name="Level4" type="Control" unique_id=943124275]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_dywbp")
+script = ExtResource("1_rdsj4")
 metadata/_edit_use_anchors_ = true
 
-[node name="PlatformPlacerMenu" parent="." unique_id=1881788653 instance=ExtResource("1_4tcl0")]
+[node name="PlatformPlacerMenu" parent="." unique_id=1881788653 instance=ExtResource("1_o34q2")]
 z_index = 4096
 z_as_relative = false
 layout_mode = 1
 
-[node name="testlevel" parent="." unique_id=894645183 instance=ExtResource("2_4tcl0")]
+[node name="testlevel" parent="." unique_id=894645183 instance=ExtResource("2_rdsj4")]
 
 [node name="PauseMenu" type="PanelContainer" parent="." unique_id=1151462677]
 process_mode = 3
@@ -39,7 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_dd0lh")
+script = ExtResource("3_e127x")
 
 [node name="PanelContainer" type="PanelContainer" parent="PauseMenu" unique_id=7086468]
 custom_minimum_size = Vector2(250, 300)
@@ -81,12 +81,11 @@ expand_mode = 5
 layout_mode = 2
 text = "Quit"
 
-[node name="Button" type="Button" parent="." unique_id=1307281504]
-visible = false
+[node name="Button" type="Button" parent="." unique_id=108238161]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
-text = "Complete Level 1"
+text = "Complete Level 4"
 
 [connection signal="pressed" from="PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
 [connection signal="pressed" from="Button" to="." method="complete_level"]

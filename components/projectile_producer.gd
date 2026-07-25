@@ -1,7 +1,10 @@
 class_name ProjectileProducer
 extends AnimatedSprite2D
 
-const PROJECTILE = preload("uid://xxmt3qxjir0b")
+@export var PROJECTILE: PackedScene
+@export var speed := 500.0
+@export var direction := Vector2.RIGHT
+@export var rotate_ball := 0.0
 var started: bool = false
 
 func _ready() -> void:
@@ -15,7 +18,9 @@ func start() -> void:
 func shoot_projectile() -> void:
 	var projectile: Projectile = PROJECTILE.instantiate()
 	add_child(projectile)
-	projectile.position = projectile.position + Vector2(20,0)
+	projectile.position = projectile.position + Vector2(20,0) * direction
+	projectile.set_velocity_and_speed(direction, speed)
+	projectile.rotate_sprite(180)
 	projectile.fly()
 
 func _on_frame_changed():

@@ -5,6 +5,7 @@ extends Node
 @export var velocity_mins := Vector2(50.0, 50.0)
 @export var stickiness: float = 5.0
 @export var default_sticky: float = 100
+
 func while_inside(wizard: Wizard,  _delta: float) -> void:
 	if abs(wizard.velocity.x) > velocity_mins.x:
 		wizard.velocity.x *= velocity_changes.x

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bdhamdliq2ali"]
+
+[ext_resource type="Script" uid="uid://cp57xpkh6rla7" path="res://new_platform.gd" id="1_q6wfa"]
+[ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_43bhu"]
+[ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="3_ktxjw"]
+[ext_resource type="Script" uid="uid://cvp3pbycuujp6" path="res://components/sticky_component.gd" id="4_yb82u"]
+[ext_resource type="Texture2D" uid="uid://da1bof1rxbkfy" path="res://assets/art/Slime_Bounce.png" id="5_43bhu"]
+[ext_resource type="PackedScene" uid="uid://cncqn7l4wgc5p" path="res://components/bounce_component.tscn" id="6_ktxjw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(33, 158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(36, 165)
+
+[node name="NewPlatform" type="AnimatableBody2D" unique_id=572797659]
+script = ExtResource("1_q6wfa")
+
+[node name="Visuals" type="NinePatchRect" parent="." unique_id=970204222]
+offset_right = 32.0
+offset_bottom = 160.0
+texture = ExtResource("2_43bhu")
+region_rect = Rect2(9.892681, 9.741512, 31.939945, 32.788456)
+patch_margin_left = 5
+patch_margin_top = 17
+patch_margin_right = 5
+patch_margin_bottom = 10
+
+[node name="Bouncy" type="NinePatchRect" parent="." unique_id=764430779]
+offset_top = -32.0
+offset_right = 32.0
+texture = ExtResource("5_43bhu")
+region_rect = Rect2(6.135081, 4.956244, 31.967272, 6.9343333)
+patch_margin_left = 9
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1166959289]
+position = Vector2(16.5, 80)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="StickyInteractionArea" parent="." unique_id=1257100442 node_paths=PackedStringArray("component") instance=ExtResource("3_ktxjw")]
+position = Vector2(16, 97)
+scale = Vector2(1.1, 4)
+component = NodePath("../StickyNode")
+
+[node name="BouncyInteractionArea" parent="." unique_id=535784573 node_paths=PackedStringArray("component") instance=ExtResource("3_ktxjw")]
+position = Vector2(16, -17)
+scale = Vector2(1.1, 1.1)
+component = NodePath("../BounceComponent")
+
+[node name="SpaceTakenUp" type="Area2D" parent="." unique_id=915174215]
+position = Vector2(118, -11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1702888227]
+position = Vector2(4, 84)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="StickyNode" type="Node" parent="." unique_id=1578568601]
+script = ExtResource("4_yb82u")
+
+[node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("6_ktxjw")]

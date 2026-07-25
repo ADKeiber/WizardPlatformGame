@@ -6,7 +6,6 @@ extends BasePlatform
 @onready var space_taken_up: Area2D = $SpaceTakenUp
 @onready var interaction_area: Area2D = %InteractionArea
 @onready var projectile_producer: ProjectileProducer = %ProjectileProducer
-	
 
 func _process(delta: float) -> void:
 	if interactable:

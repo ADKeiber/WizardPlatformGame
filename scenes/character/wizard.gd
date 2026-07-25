@@ -40,9 +40,12 @@ func _physics_process(delta: float) -> void:
 	
 	impact_velocity = velocity
 	move_and_slide()
+	
 	floor_reset()
 	if is_on_wall():
 		update_current_wall()
+	if is_on_wall() or is_on_floor():
+		landed.emit()
 
 func handle_input() -> void:
 	if Input.is_action_just_pressed("jump"):
@@ -52,7 +55,7 @@ func handle_input() -> void:
 		if current_wall_same == true:
 			sticky = 15
 			gravity += wall_gravity_added
-			print(gravity)
+			#print(gravity)
 
 	
 	var direction = Input.get_axis("move_left", "move_right")
@@ -162,7 +165,6 @@ func floor_reset():
 		gravity = 1500
 		sticky = 15
 		same_wall_jump = 0
-		landed.emit()
 		
 func update_current_wall() -> void:
 	if is_on_wall():
@@ -171,14 +173,14 @@ func update_current_wall() -> void:
 		if current_wall == last_wall:
 			current_wall_same = true
 			last_wall = current_wall
-			print(gravity)
+			#print(gravity)
 		elif current_wall != last_wall:
 			current_wall_same = false
 			gravity = 1500
 			sticky = 15
 			last_wall = current_wall
 			same_wall_jump = 0
-			print(gravity)
+			#print(gravity)
 	else:
 		current_wall = 0
 

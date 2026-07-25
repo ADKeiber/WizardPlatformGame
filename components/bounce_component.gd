@@ -13,7 +13,6 @@ func on_enter(wizard: Wizard) -> void:
 	if wizard.landed.is_connected(bounce):
 		return
 	wizard.landed.connect(bounce,CONNECT_ONE_SHOT)
-	
 
 func bounce() -> void:
 	if not wizard.is_on_floor() and not wizard.is_on_wall():
