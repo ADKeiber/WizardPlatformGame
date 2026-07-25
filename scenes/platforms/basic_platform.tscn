@@ -109,7 +109,7 @@ patch_margin_bottom = 2
 position = Vector2(50, 13)
 component = NodePath("../BounceComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479657373]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1479657373]
 unique_name_in_owner = true
 position = Vector2(32, 18)
 shape = SubResource("RectangleShape2D_5obky")
