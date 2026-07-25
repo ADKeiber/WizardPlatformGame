@@ -31,6 +31,7 @@ var consecutive_bounces: int = 0
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera : Camera2D = $Camera2D
 @onready var world_boundry : Area2D = %WorldBoundry
+@onready var audio : AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	world_boundry.body_entered.connect(die)
@@ -47,6 +48,9 @@ func _physics_process(delta: float) -> void:
 	if last_state != current_state:
 		update_animation()
 		last_state = current_state
+		audio.stop()
+		if current_state == State.WALK:
+			audio.play()
 	
 	impact_velocity = velocity
 	move_and_slide()

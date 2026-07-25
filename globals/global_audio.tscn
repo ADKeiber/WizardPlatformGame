@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dtny6j45sckq"]
+
+[ext_resource type="Script" uid="uid://qyvn5738ffsv" path="res://global_audio.gd" id="1_ss17r"]
+[ext_resource type="AudioStream" uid="uid://cjhv0pf5ym7pk" path="res://assets/sound/nojisuma-rain-362782.mp3" id="2_nvdxq"]
+
+[node name="GlobalAudio" type="Node" unique_id=423814542]
+script = ExtResource("1_ss17r")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1974988684]
+stream = ExtResource("2_nvdxq")
+volume_db = -14.776

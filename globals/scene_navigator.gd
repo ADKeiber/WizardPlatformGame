@@ -12,13 +12,15 @@ var scenes: Dictionary[String, String] = {
 	"Level4": "res://scenes/levels/level4.tscn",
 	"Level5": "res://scenes/levels/level5.tscn",
 	"ProgressMap": "res://scenes/progress_page/progress_page.tscn",
-	"EndScene": "res://scenes/end_scene/end_scene.tscn"
+	"EndScene": "res://scenes/end_scene/end_scene.tscn",
+	"LoseScreen": "res://scenes/end_scene/lose_screen.tscn"
 }
 
 func navigate_to(scene_name:String) -> void:
 	if scene_name.contains("Level"):
 		if current_level == 5:
 			scene_name = "EndScene"
+			GlobalTimer.timer.stop()
 		else:
 			current_level += 1
 	get_tree().change_scene_to_file(scenes[scene_name])
