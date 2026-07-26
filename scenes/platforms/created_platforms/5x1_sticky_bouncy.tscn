@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cleelajhracxp" path="res://scenes/platforms/created_platforms/5x1_sticky_bouncy.gd" id="1_m1h23"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_13p6c"]
+[ext_resource type="Texture2D" uid="uid://qguabhnc3d1q" path="res://assets/art/platform_holder_art/5x1StickyBouncy.png" id="2_jjt4n"]
 [ext_resource type="Texture2D" uid="uid://bgt5fi0y4kyff" path="res://assets/art/Goop.png" id="3_jjt4n"]
 [ext_resource type="Texture2D" uid="uid://da1bof1rxbkfy" path="res://assets/art/Slime_Bounce.png" id="4_wjaa5"]
 [ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="5_026rn"]
@@ -17,6 +18,7 @@ size = Vector2(32, 159)
 [node name="5x1StickyBouncy" type="AnimatableBody2D" unique_id=2041258644]
 collision_layer = 4
 script = ExtResource("1_m1h23")
+holder_image = ExtResource("2_jjt4n")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
 offset_right = 32.0
@@ -85,8 +87,8 @@ default_sticky = 15.0
 
 [node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("7_05lj6")]
 
-[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
-[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
 [connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
 [connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
 [connection signal="area_entered" from="BouncyInteractionArea2" to="." method="wizard_entered"]

@@ -19,5 +19,5 @@ func _process(delta: float) -> void:
 		path_follow_2d.progress_ratio += delta * enemy_speed
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Wizard:
-		print("dead")
+	if body is Wizard and interactable:
+		body.die(body)

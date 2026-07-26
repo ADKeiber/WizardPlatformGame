@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://biuuvq42x33yk"]
 
 [ext_resource type="Script" uid="uid://w0m2qwrhr8vu" path="res://l_shape_spike.gd" id="1_qknq5"]
+[ext_resource type="Texture2D" uid="uid://bsx1kf14bdq4r" path="res://assets/art/platform_holder_art/LShapeSpike.png" id="2_r5jtm"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_tscl4"]
 [ext_resource type="PackedScene" uid="uid://b0vnve3tive8s" path="res://scenes/platforms/spikes.tscn" id="3_tscl4"]
 
@@ -12,148 +13,21 @@ size = Vector2(32, 159.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpmmm"]
 resource_local_to_scene = true
-size = Vector2(162, 59)
+size = Vector2(127, 59)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw7gp"]
 size = Vector2(36, 159)
-
-[sub_resource type="GDScript" id="GDScript_tscl4"]
-resource_local_to_scene = true
-script/source = "extends Node2D
-
-
-@export var _static : bool
-@export var down_time : float = 2.0
-@export var up_time : float = 2.0
-
-
-@onready var timer : Timer = $Timer
-@onready var animation : AnimatedSprite2D = $AnimatedSprite2D
-@onready var area : Area2D = $Area2D
-var up : bool = false
-var player : Wizard
-
-func  _ready() -> void:
-	if _static  == true:
-		animation.play(\"static\")
-		up = true
-	else:
-		timer.wait_time = down_time
-		timer.start()
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Wizard:
-		player = body
-	if up == true:
-		check_death()
-
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body is Wizard:
-		player = null
-
-
-
-
-func _on_timer_timeout() -> void:
-	if up == false: 
-		animation.play(\"activate\")
-		up = true
-		check_death()
-		timer.wait_time = up_time
-		timer.start()
-
-	
-	elif up == true: 
-		animation.play_backwards(\"activate\")
-		up = false
-		timer.wait_time = down_time
-		timer.start()
-
-func check_death() -> void:
-	if up == true and player != null:
-		#player.dies()
-		print(\"death\")
-	
-	else: 
-		return
-"
-
-[sub_resource type="GDScript" id="GDScript_r5jtm"]
-resource_local_to_scene = true
-script/source = "extends Node2D
-
-
-@export var _static : bool
-@export var down_time : float = 2.0
-@export var up_time : float = 2.0
-
-
-@onready var timer : Timer = $Timer
-@onready var animation : AnimatedSprite2D = $AnimatedSprite2D
-@onready var area : Area2D = $Area2D
-var up : bool = false
-var player : Wizard
-
-func  _ready() -> void:
-	if _static  == true:
-		animation.play(\"static\")
-		up = true
-	else:
-		timer.wait_time = down_time
-		timer.start()
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Wizard:
-		player = body
-	if up == true:
-		check_death()
-
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body is Wizard:
-		player = null
-
-
-
-
-func _on_timer_timeout() -> void:
-	if up == false: 
-		animation.play(\"activate\")
-		up = true
-		check_death()
-		timer.wait_time = up_time
-		timer.start()
-
-	
-	elif up == true: 
-		animation.play_backwards(\"activate\")
-		up = false
-		timer.wait_time = down_time
-		timer.start()
-
-func check_death() -> void:
-	if up == true and player != null:
-		#player.dies()
-		print(\"death\")
-	
-	else: 
-		return
-"
 
 [node name="LShapeSpike" type="AnimatableBody2D" unique_id=1181529869]
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_qknq5")
+holder_image = ExtResource("2_r5jtm")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=1827703350]
 z_index = 1
-offset_left = 1.0
-offset_top = 128.0
-offset_right = 161.0
-offset_bottom = 160.0
+offset_left = -160.0
+offset_top = -32.0
 texture = ExtResource("2_tscl4")
 region_rect = Rect2(58, 10, 32, 32)
 patch_margin_left = 4
@@ -164,9 +38,8 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=889148157]
-offset_left = 128.0
-offset_right = 160.0
-offset_bottom = 160.0
+offset_left = -32.0
+offset_top = -160.0
 texture = ExtResource("2_tscl4")
 region_rect = Rect2(58, 10, 32, 32)
 patch_margin_left = 4
@@ -177,11 +50,11 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1423495406]
-position = Vector2(81.5, 144)
+position = Vector2(-81, -18)
 shape = SubResource("RectangleShape2D_wnun6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1533025818]
-position = Vector2(145, 80.25)
+position = Vector2(-16, -80)
 shape = SubResource("RectangleShape2D_vgf6b")
 
 [node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1379300663]
@@ -190,7 +63,7 @@ collision_layer = 17
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1302665163]
-position = Vector2(66, 123.5)
+position = Vector2(-113.5, -40)
 shape = SubResource("RectangleShape2D_mpmmm")
 
 [node name="SpaceTakenUp2" type="Area2D" parent="." unique_id=148345512]
@@ -198,22 +71,20 @@ collision_layer = 17
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp2" unique_id=617439599]
-position = Vector2(144, 80.5)
+position = Vector2(-15, -81)
 shape = SubResource("RectangleShape2D_lw7gp")
 
 [node name="Spikes" parent="." unique_id=1902292362 instance=ExtResource("3_tscl4")]
 z_index = 1
-position = Vector2(33, 117)
+position = Vector2(-126, -42)
 
-[node name="Spikes2" parent="." unique_id=352841114 instance=ExtResource("3_tscl4")]
+[node name="Spikes2" parent="." unique_id=703707542 instance=ExtResource("3_tscl4")]
 z_index = 1
-position = Vector2(65, 117)
-script = SubResource("GDScript_tscl4")
+position = Vector2(-89, -42)
 
-[node name="Spikes3" parent="." unique_id=309371130 instance=ExtResource("3_tscl4")]
+[node name="Spikes3" parent="." unique_id=505265764 instance=ExtResource("3_tscl4")]
 z_index = 1
-position = Vector2(97, 117)
-script = SubResource("GDScript_r5jtm")
+position = Vector2(-52, -42)
 
 [connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
 [connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]

@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://buy6716h7j47m"]
 
 [ext_resource type="Script" uid="uid://cgf13bso8gs5f" path="res://scenes/platforms/created_platforms/5x1_enemy.gd" id="1_o6dh7"]
+[ext_resource type="Texture2D" uid="uid://pgyq7a05bvi" path="res://assets/art/platform_holder_art/5x1Enemy.png" id="2_8ivrx"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_o6dh7"]
-[ext_resource type="Texture2D" uid="uid://tuupvmd0ge7k" path="res://icon.svg" id="3_o6dh7"]
+[ext_resource type="Texture2D" uid="uid://baip7gghtbbj5" path="res://assets/art/Ghost.png" id="3_o6dh7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
 size = Vector2(32, 160)
@@ -16,11 +17,36 @@ _data = {
 }
 point_count = 9
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ivrx"]
+atlas = ExtResource("3_o6dh7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne8pp"]
+atlas = ExtResource("3_o6dh7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfeoh"]
+atlas = ExtResource("3_o6dh7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7ln1"]
+atlas = ExtResource("3_o6dh7")
+region = Rect2(32, 32, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ivrx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_o6dh7")
+"texture": SubResource("AtlasTexture_8ivrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne8pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfeoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7ln1")
 }],
 "loop": 1,
 "name": &"default",
@@ -28,11 +54,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ne8pp"]
-size = Vector2(130.00003, 130.00003)
+size = Vector2(13.81509, 12.900564)
 
 [node name="5x1Enemy" type="AnimatableBody2D" unique_id=2041258644]
 collision_layer = 4
 script = ExtResource("1_o6dh7")
+holder_image = ExtResource("2_8ivrx")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
 offset_right = 32.0
@@ -73,17 +100,21 @@ rotation = 1.022247
 [node name="Enemy" type="AnimatedSprite2D" parent="Path2D/PathFollow2D" unique_id=2074199926]
 unique_name_in_owner = true
 position = Vector2(4.5474735e-13, -1.1920929e-07)
-scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_8ivrx")
+autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Enemy" unique_id=144287857]
 position = Vector2(14.999961, -4.9999948)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Enemy/Area2D" unique_id=373388271]
-position = Vector2(-14.999985, 5)
+position = Vector2(-9.43144, -0.39590788)
+rotation = -3.1062756
+scale = Vector2(0.9999999, 1)
 shape = SubResource("RectangleShape2D_ne8pp")
 
-[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
-[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
 [connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
 [connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="body_entered" from="Path2D/PathFollow2D/Enemy/Area2D" to="." method="_on_area_2d_body_entered"]

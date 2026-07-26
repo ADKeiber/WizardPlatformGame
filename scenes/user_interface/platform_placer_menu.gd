@@ -11,17 +11,15 @@ func _ready() -> void:
 	platform_manager.update_selected.connect(select_platform)
 	select_platform(0)
 
-func _input(event: InputEvent) -> void:
-	if get_viewport().is_input_handled():
-		return
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("L-Shift"): #toggles on and off build menu
 		platform_manager.toggle_on()
 		select_platform(platform_manager.current_index)
 	if event.is_action_pressed("L-Click"): # attempts to place platform
 		platform_manager.attempt_to_place_platform()
-	if event.is_action("Up-Scroll") or event.is_action_pressed("E-Key"):
+	if event.is_action_pressed("E-Key"):
 		platform_manager.update_current_selected_up()
-	if event.is_action("Down-Scroll") or event.is_action_pressed("Q-Key"):
+	if event.is_action_pressed("Q-Key"):
 		platform_manager.update_current_selected_down()
 
 func update_platform_holder(index:int, amt:int) -> void:

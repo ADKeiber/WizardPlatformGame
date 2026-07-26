@@ -164,7 +164,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="5thButton" type="Button" parent="5th" unique_id=170710557]
+[node name="5thButton" type="Button" parent="5th" unique_id=1617022949]
 layout_mode = 2
 text = "Press to Continue"
 
@@ -196,10 +196,9 @@ autowrap_mode = 2
 layout_mode = 2
 text = "Press to Continue"
 
-[connection signal="pressed" from="1st/ColorRect/MarginContainer2/1stButton" to="." method="_1st_button_pressed"]
+[connection signal="gui_input" from="1st/ColorRect/MarginContainer2/1stButton" to="." method="_on_st_button_gui_input"]
 [connection signal="gui_input" from="2nd/MarginContainer2/2ndButton" to="." method="_on_nd_button_gui_input"]
-[connection signal="pressed" from="2nd/MarginContainer2/2ndButton" to="." method="_2nd_button_pressed"]
-[connection signal="pressed" from="3rd/3rdButton" to="." method="_3rd_button_pressed"]
-[connection signal="pressed" from="4th/4thButton" to="." method="_4th_button_pressed"]
-[connection signal="pressed" from="5th/5thButton" to="." method="_5th_button_pressed"]
-[connection signal="pressed" from="6th/6thButton" to="." method="_6th_button_pressed"]
+[connection signal="gui_input" from="3rd/3rdButton" to="." method="_on_rd_button_gui_input"]
+[connection signal="gui_input" from="4th/4thButton" to="." method="_on_4th_button_gui_input"]
+[connection signal="gui_input" from="5th/5thButton" to="." method="_on_5th_button_gui_input"]
+[connection signal="gui_input" from="6th/6thButton" to="." method="_on_6th_button_gui_input"]

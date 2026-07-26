@@ -1,0 +1,16 @@
+[gd_resource type="Theme" format=3 uid="uid://5p2dys3lh8q2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cocsm"]
+bg_color = Color(0.51299876, 0.63096035, 0.5930263, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_cocsm")

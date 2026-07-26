@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxe35gc5tbnky" path="res://scenes/platforms/created_platforms/1x5_disappearing.gd" id="1_6thv2"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_77w4w"]
+[ext_resource type="Texture2D" uid="uid://ceu25wyqoyvbe" path="res://assets/art/platform_holder_art/1x5base.png" id="2_tnpun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
 size = Vector2(160, 32)
@@ -16,6 +17,7 @@ size = Vector2(163, 35)
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_6thv2")
+holder_image = ExtResource("2_tnpun")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
 offset_right = 160.0
@@ -53,9 +55,9 @@ collision_mask = 17
 position = Vector2(80.5, 15.5)
 shape = SubResource("RectangleShape2D_6thv2")
 
-[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
-[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
-[connection signal="body_entered" from="SpaceTakenUp" to="." method="body_entered"]
-[connection signal="body_exited" from="SpaceTakenUp" to="." method="body_exited"]
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_interaction_area_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

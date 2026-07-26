@@ -2,16 +2,41 @@
 
 [ext_resource type="Script" uid="uid://kq4rje153t41" path="res://scenes/user_interface/platform_holder.gd" id="1_qfygs"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8m3h"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+
 [node name="PlatformHolder" type="PanelContainer" unique_id=1380810843]
 offset_right = 78.0
 offset_bottom = 55.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_i8m3h")
 script = ExtResource("1_qfygs")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1753287840]
 layout_mode = 2
 alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1909326625]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PlatformArt" type="TextureRect" parent="VBoxContainer/MarginContainer" unique_id=533807013]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 2
 
 [node name="AmtOfPlatforms" type="Label" parent="VBoxContainer" unique_id=643414014]
 unique_name_in_owner = true

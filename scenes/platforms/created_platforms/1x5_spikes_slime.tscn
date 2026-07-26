@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btptfe2uja73j" path="res://scenes/platforms/created_platforms/1x5_spikes_slime.gd" id="1_3lx1k"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_lc01w"]
+[ext_resource type="Texture2D" uid="uid://b6kwu5nivb553" path="res://assets/art/platform_holder_art/1x5StickySpikes.png" id="2_pmxai"]
 [ext_resource type="Texture2D" uid="uid://da1bof1rxbkfy" path="res://assets/art/Slime_Bounce.png" id="3_kdgm7"]
 [ext_resource type="PackedScene" uid="uid://b0vnve3tive8s" path="res://scenes/platforms/spikes.tscn" id="4_3lx1k"]
 [ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="5_3lx1k"]
@@ -17,6 +18,7 @@ size = Vector2(162, 48)
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_3lx1k")
+holder_image = ExtResource("2_pmxai")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
 offset_right = 160.0
@@ -45,7 +47,6 @@ axis_stretch_vertical = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479657373]
 unique_name_in_owner = true
-visible = false
 position = Vector2(80, 16)
 shape = SubResource("RectangleShape2D_5obky")
 

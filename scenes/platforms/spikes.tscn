@@ -77,6 +77,7 @@ sprite_frames = SubResource("SpriteFrames_vgf6b")
 animation = &"activate"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1416144307]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=96463856]
 position = Vector2(0, 2)

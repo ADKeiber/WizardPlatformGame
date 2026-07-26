@@ -2,7 +2,7 @@ class_name BasePlatform
 extends AnimatableBody2D
 
 @export var interactable: bool = false
-
+@export var holder_image: Texture2D
 var wizard:Node2D
 var entered_area: Area2D
 
@@ -30,6 +30,11 @@ func area_exited(area: Area2D) -> void:
 
 func is_intersecting() -> bool:
 	return not wizard == null || not entered_area == null
+
+func disable_collision(disabled: bool) -> void:
+	for child in get_children():
+		if child.name.contains("CollisionShape2D"):
+			child.disabled = disabled
 
 func get_component(type) -> Node:
 	for child in get_children():

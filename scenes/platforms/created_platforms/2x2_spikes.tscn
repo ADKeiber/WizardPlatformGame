@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d2dmj7krp4peo"]
 
-[ext_resource type="Script" uid="uid://83gydrl0bm01" path="res://scenes/platforms/created_platforms/2x2_base.gd" id="1_hhoe5"]
+[ext_resource type="Script" uid="uid://bjqphrmetrtxw" path="res://scenes/platforms/created_platforms/2x_2_spikes.gd" id="1_xxvhv"]
+[ext_resource type="Texture2D" uid="uid://dtl11l0ov8pvk" path="res://assets/art/platform_holder_art/2x2Spikes.png" id="2_vy8tu"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_xxvhv"]
 [ext_resource type="PackedScene" uid="uid://b0vnve3tive8s" path="res://scenes/platforms/spikes.tscn" id="3_vy8tu"]
 
@@ -13,7 +14,8 @@ size = Vector2(114, 66)
 [node name="2X2Spikes" type="AnimatableBody2D" unique_id=937422762]
 collision_layer = 17
 collision_mask = 17
-script = ExtResource("1_hhoe5")
+script = ExtResource("1_xxvhv")
+holder_image = ExtResource("2_vy8tu")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=486572750]
 offset_right = 64.0
@@ -67,7 +69,7 @@ _static = false
 down_time = 3.0
 up_time = 3.0
 
-[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
-[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
 [connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
 [connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]

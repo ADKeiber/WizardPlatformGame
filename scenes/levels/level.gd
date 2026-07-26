@@ -20,7 +20,6 @@ func complete_level(body : Wizard) -> void:
 		SceneNavigator.navigate_to("ProgressMap")
 		GlobalTimer.timer.paused = true
 		
-
-
+		
 func game_over() -> void:
 	SceneNavigator.navigate_to("LoseScreen")
