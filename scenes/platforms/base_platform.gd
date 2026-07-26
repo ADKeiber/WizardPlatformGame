@@ -11,6 +11,7 @@ func place() -> void:
 var intersecting_body:Node2D
 
 func body_entered(body:Node2D) -> void:
+	print(body)
 	intersecting_body = body
 
 func body_exited(body:Node2D) -> void:

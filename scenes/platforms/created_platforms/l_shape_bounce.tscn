@@ -85,6 +85,8 @@ component = NodePath("../BounceComponent")
 z_index = 1
 position = Vector2(131, 70)
 scale = Vector2(0.45, 3.6)
+collision_layer = 17
+collision_mask = 17
 component = NodePath("../BounceComponent")
 
 [node name="Bounce 1" type="NinePatchRect" parent="." unique_id=1169652239]
