@@ -8,4 +8,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	text = "Time Left: " + str(snapped(GlobalTimer.timer.time_left, 0.01))
+	text = "Time Left: " + format_time(int(round(GlobalTimer.timer.time_left)))
+
+func format_time(total_seconds: int) -> String:
+	var minutes := total_seconds / 60
+	var seconds := total_seconds % 60
+	return "%d:%02d" % [minutes, seconds]

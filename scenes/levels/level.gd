@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var platform_manager: PlatformManager = %PlatformManager
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalTimer.timer.timeout.connect(game_over, CONNECT_ONE_SHOT)
@@ -24,3 +26,4 @@ func complete_level(body : Wizard) -> void:
 func game_over() -> void:
 	SceneNavigator.navigate_to("LoseScreen")
 	GlobalAudio.lose.play()
+	

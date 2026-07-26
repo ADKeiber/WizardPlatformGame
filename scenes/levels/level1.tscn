@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bogc8tgmn7ghb" path="res://assets/art/Finish Flag.png" id="6_1seuy"]
 [ext_resource type="Script" uid="uid://dteh8eoa6cw8g" path="res://scenes/user_interface/time_left.gd" id="6_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://cmskxf1pn6yey" path="res://scenes/user_interface/platform_manager.tscn" id="7_8a7m2"]
+[ext_resource type="PackedScene" uid="uid://d2dmj7krp4peo" path="res://scenes/platforms/created_platforms/2x2_spikes.tscn" id="10_nkeig"]
+[ext_resource type="PackedScene" uid="uid://buy6716h7j47m" path="res://scenes/platforms/created_platforms/5x1_enemy.tscn" id="11_jprdt"]
+[ext_resource type="PackedScene" uid="uid://d2ij7ifrd8v5r" path="res://scenes/platforms/created_platforms/1x5_cannon.tscn" id="11_nfihu"]
+[ext_resource type="PackedScene" uid="uid://cpwo4ovxfg3nn" path="res://scenes/platforms/created_platforms/2x2_base.tscn" id="12_lgguw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dywbp"]
 
@@ -29,16 +33,11 @@ layer = 2
 
 [node name="PauseMenu" type="PanelContainer" parent="CanvasLayer" unique_id=731992722]
 process_mode = 3
-visible = false
 z_index = 4096
 z_as_relative = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -187.5
-offset_top = -225.0
-offset_right = 62.5
-offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_dd0lh")
@@ -110,6 +109,8 @@ position = Vector2(2829, 289)
 texture = ExtResource("6_1seuy")
 
 [node name="PlatformManager" parent="." unique_id=411797401 instance=ExtResource("7_8a7m2")]
+available_platforms = Array[PackedScene]([ExtResource("11_jprdt"), ExtResource("10_nkeig"), ExtResource("11_nfihu"), ExtResource("12_lgguw")])
+num_available = Array[int]([2, 2, 1, 2])
 
 [node name="PlatformPlacerMenu" parent="." unique_id=701604679 instance=ExtResource("1_4tcl0")]
 unique_name_in_owner = true
