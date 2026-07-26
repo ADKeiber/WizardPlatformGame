@@ -23,7 +23,8 @@ func _on_body_entered(body: Node2D) -> void:
 	animated_sprite_2d.play("explode")
 	animated_sprite_2d.animation_finished.connect(remove)
 	if body is Wizard:
-		body.die()
+		#body.die()
+		print("Wizard death")
 
 func rotate_sprite(amt: float) -> void:
 	rotation_degrees = amt

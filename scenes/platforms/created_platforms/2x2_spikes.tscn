@@ -8,7 +8,7 @@
 size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnun6"]
-size = Vector2(64, 64)
+size = Vector2(114, 66)
 
 [node name="2X2Spikes" type="AnimatableBody2D" unique_id=937422762]
 collision_layer = 17
@@ -66,3 +66,8 @@ rotation = -1.5707964
 _static = false
 down_time = 3.0
 up_time = 3.0
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]

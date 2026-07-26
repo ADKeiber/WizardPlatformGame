@@ -53,6 +53,8 @@ collision_mask = 17
 position = Vector2(80.5, 15.5)
 shape = SubResource("RectangleShape2D_6thv2")
 
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
 [connection signal="body_entered" from="SpaceTakenUp" to="." method="body_entered"]
 [connection signal="body_exited" from="SpaceTakenUp" to="." method="body_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_interaction_area_area_entered"]

@@ -118,3 +118,12 @@ patch_margin_right = 3
 patch_margin_bottom = 2
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="area_entered" from="SpaceTakenUp2" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp2" to="." method="area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp2" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp2" to="." method="wizard_exited"]

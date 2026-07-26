@@ -83,5 +83,7 @@ position = Vector2(14.999961, -4.9999948)
 position = Vector2(-14.999985, 5)
 shape = SubResource("RectangleShape2D_ne8pp")
 
-[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
-[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]

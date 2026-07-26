@@ -704,3 +704,4 @@ shape = SubResource("WorldBoundaryShape2D_lw7gp")
 
 [node name="1x5Cannon" parent="." unique_id=2041258644 instance=ExtResource("4_5j0f8")]
 position = Vector2(173, 383)
+interactable = true

@@ -71,5 +71,7 @@ component = NodePath("../BounceComponent")
 
 [node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("5_pmxai")]
 
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
 [connection signal="body_entered" from="SpaceTakenUp" to="." method="body_entered"]
 [connection signal="body_exited" from="SpaceTakenUp" to="." method="body_exited"]

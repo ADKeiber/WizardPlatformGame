@@ -1,14 +1,10 @@
+class_name TutorialInstructions
 extends Control
-
-
-
-
 
 
 func _1st_button_pressed() -> void:
 	$"1st".hide()
 	$"2nd".show()
-
 
 func _2nd_button_pressed() -> void:
 	$"2nd".hide()

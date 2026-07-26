@@ -214,3 +214,12 @@ script = SubResource("GDScript_tscl4")
 z_index = 1
 position = Vector2(97, 117)
 script = SubResource("GDScript_r5jtm")
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="area_entered" from="SpaceTakenUp2" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp2" to="." method="area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp2" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp2" to="." method="wizard_exited"]

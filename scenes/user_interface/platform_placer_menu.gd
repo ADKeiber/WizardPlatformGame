@@ -12,6 +12,8 @@ func _ready() -> void:
 	select_platform(0)
 
 func _input(event: InputEvent) -> void:
+	if get_viewport().is_input_handled():
+		return
 	if event.is_action_pressed("L-Shift"): #toggles on and off build menu
 		platform_manager.toggle_on()
 		select_platform(platform_manager.current_index)

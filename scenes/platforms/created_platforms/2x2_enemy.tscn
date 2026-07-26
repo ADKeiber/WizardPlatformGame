@@ -85,4 +85,8 @@ position = Vector2(-14.999985, 5)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_5y66y")
 
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
 [connection signal="body_entered" from="Node2D/Path2D/PathFollow2D/Enemy/Area2D" to="." method="_on_area_2d_body_entered"]

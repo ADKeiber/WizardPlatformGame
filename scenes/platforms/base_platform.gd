@@ -1,25 +1,35 @@
 class_name BasePlatform
 extends AnimatableBody2D
 
-var interactable: bool = false
+@export var interactable: bool = false
+
+var wizard:Node2D
+var entered_area: Area2D
 
 func place() -> void:
 	interactable = true
 	self.modulate = Color.WHITE
-	
 ## These are used for the placement areas
-var intersecting_body:Node2D
 
-func body_entered(body:Node2D) -> void:
+func wizard_entered(body:Node2D) -> void:
 	print(body)
-	intersecting_body = body
+	wizard = body
 
-func body_exited(body:Node2D) -> void:
-	if intersecting_body != body:
+func wizard_exited(body:Node2D) -> void:
+	if wizard != body:
 		return
-	intersecting_body = null
+	wizard = null
+
+func area_entered(area: Area2D) -> void:
+	entered_area = area 
+
+func area_exited(area: Area2D) -> void:
+	if entered_area != area:
+		return
+	entered_area = null
+
 func is_intersecting() -> bool:
-	return not intersecting_body == null
+	return not wizard == null || not entered_area == null
 
 func get_component(type) -> Node:
 	for child in get_children():

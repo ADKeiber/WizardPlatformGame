@@ -96,6 +96,7 @@ script = ExtResource("6_gs1om")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=319866314]
 position = Vector2(-1990, 47)
+collision_layer = 17
 monitorable = false
 metadata/_edit_group_ = true
 
@@ -107,11 +108,12 @@ shape = SubResource("RectangleShape2D_vgf6b")
 position = Vector2(2829, 289)
 texture = ExtResource("7_i8m3h")
 
-[node name="PlatformManager" type="Node2D" parent="." unique_id=1341710215]
+[node name="PlatformManager" type="Node2D" parent="." unique_id=1341710215 node_paths=PackedStringArray("platform_holder_row")]
 unique_name_in_owner = true
 script = ExtResource("8_gs1om")
 available_platforms = Array[PackedScene]([ExtResource("9_i8m3h"), ExtResource("10_ey2yj"), ExtResource("11_2iuaq")])
 num_available = Array[int]([2, 2, 2])
+platform_holder_row = NodePath("../CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
 
 [node name="PlatformPlacerMenu" parent="." unique_id=1881788653 instance=ExtResource("3_8r123")]
 unique_name_in_owner = true

@@ -7,7 +7,7 @@
 size = Vector2(160, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
-size = Vector2(162, 34)
+size = Vector2(164, 36)
 
 [node name="1x5Base" type="AnimatableBody2D" unique_id=2041258644]
 collision_layer = 17
@@ -40,5 +40,7 @@ collision_mask = 17
 position = Vector2(80, 16)
 shape = SubResource("RectangleShape2D_g63xn")
 
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
 [connection signal="body_entered" from="SpaceTakenUp" to="." method="body_entered"]
 [connection signal="body_exited" from="SpaceTakenUp" to="." method="body_exited"]

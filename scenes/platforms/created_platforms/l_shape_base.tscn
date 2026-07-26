@@ -73,3 +73,12 @@ collision_mask = 17
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp2" unique_id=617439599]
 position = Vector2(144, 80.5)
 shape = SubResource("RectangleShape2D_lw7gp")
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="area_entered" from="SpaceTakenUp2" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp2" to="." method="area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp2" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp2" to="." method="wizard_exited"]
