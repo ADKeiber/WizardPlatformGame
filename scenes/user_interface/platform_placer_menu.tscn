@@ -1,10 +1,6 @@
 [gd_scene format=3 uid="uid://bnte2doq2swpu"]
 
 [ext_resource type="Script" uid="uid://cnk33ghre4mrw" path="res://scenes/user_interface/platform_placer_menu.gd" id="1_a3nki"]
-[ext_resource type="Script" uid="uid://y8wxccyjic1b" path="res://scenes/platforms/platform_manager.gd" id="2_71mg2"]
-[ext_resource type="PackedScene" uid="uid://bx7jhcjdxlt8d" path="res://scenes/platforms/created_platforms/1x5_basic.tscn" id="3_32wtq"]
-[ext_resource type="PackedScene" uid="uid://d1ud1h2nrthng" path="res://scenes/platforms/created_platforms/1x5_spikes_slime.tscn" id="6_iggwe"]
-[ext_resource type="PackedScene" uid="uid://dugvjvw5ugr4p" path="res://scenes/platforms/created_platforms/1x5_sticky_enemy.tscn" id="7_0fnfs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5ol4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -31,9 +27,3 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
-
-[node name="PlatformManager" type="Node2D" parent="." unique_id=2121095116 node_paths=PackedStringArray("platform_holder_row")]
-script = ExtResource("2_71mg2")
-available_platforms = Array[PackedScene]([ExtResource("3_32wtq"), ExtResource("7_0fnfs"), ExtResource("6_iggwe")])
-num_available = Array[int]([2, 2, 2])
-platform_holder_row = NodePath("../PlatformHolderArea/PlatformHolderRow")
