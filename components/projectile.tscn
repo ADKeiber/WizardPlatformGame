@@ -104,6 +104,7 @@ animations = [{
 radius = 7.0
 
 [node name="Projectile" type="Area2D" unique_id=476707307]
+collision_mask = 21
 script = ExtResource("1_oc5yy")
 speed = 300.0
 
@@ -111,12 +112,9 @@ speed = 300.0
 position = Vector2(-5.722046e-06, 4.7683716e-07)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 animation = &"explode"
+frame_progress = 0.80120087
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1068132403]
 shape = SubResource("CircleShape2D_oc5yy")
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=768262242]
-position = Vector2(71, 0)
-rect = Rect2(-80, -10, 17, 20)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bogc8tgmn7ghb" path="res://assets/art/Finish Flag.png" id="6_1seuy"]
 [ext_resource type="Script" uid="uid://dteh8eoa6cw8g" path="res://scenes/user_interface/time_left.gd" id="6_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://cmskxf1pn6yey" path="res://scenes/user_interface/platform_manager.tscn" id="7_8a7m2"]
+[ext_resource type="PackedScene" uid="uid://d2dmj7krp4peo" path="res://scenes/platforms/created_platforms/2x2_spikes.tscn" id="10_nkeig"]
+[ext_resource type="PackedScene" uid="uid://buy6716h7j47m" path="res://scenes/platforms/created_platforms/5x1_enemy.tscn" id="11_jprdt"]
+[ext_resource type="PackedScene" uid="uid://d2ij7ifrd8v5r" path="res://scenes/platforms/created_platforms/1x5_cannon.tscn" id="11_nfihu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dywbp"]
 
@@ -108,6 +111,7 @@ position = Vector2(2829, 289)
 texture = ExtResource("6_1seuy")
 
 [node name="PlatformManager" parent="." unique_id=411797401 instance=ExtResource("7_8a7m2")]
+available_platforms = Array[PackedScene]([ExtResource("11_jprdt"), ExtResource("10_nkeig"), ExtResource("11_nfihu")])
 
 [node name="PlatformPlacerMenu" parent="." unique_id=701604679 instance=ExtResource("1_4tcl0")]
 unique_name_in_owner = true
