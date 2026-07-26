@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://celp8o1s6x4nt" path="res://l_shape_sticky.gd" id="1_cmq0x"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_fpt1k"]
+[ext_resource type="Texture2D" uid="uid://kk8icyxypxhy" path="res://assets/art/platform_holder_art/LShapeStickyCannon.png" id="2_ocuar"]
 [ext_resource type="Texture2D" uid="uid://bgt5fi0y4kyff" path="res://assets/art/Goop.png" id="3_ocuar"]
 [ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="4_8iw2f"]
 [ext_resource type="Script" uid="uid://cvp3pbycuujp6" path="res://components/sticky_component.gd" id="5_lbu45"]
@@ -15,7 +16,7 @@ size = Vector2(32, 159.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpmmm"]
 resource_local_to_scene = true
-size = Vector2(162, 59)
+size = Vector2(129, 59)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw7gp"]
 size = Vector2(63, 173)
@@ -24,13 +25,12 @@ size = Vector2(63, 173)
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_cmq0x")
+holder_image = ExtResource("2_ocuar")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=1827703350]
 z_index = 1
-offset_left = 1.0
-offset_top = 128.0
-offset_right = 161.0
-offset_bottom = 160.0
+offset_left = -160.0
+offset_top = -32.0
 texture = ExtResource("2_fpt1k")
 region_rect = Rect2(58, 10, 32, 32)
 patch_margin_left = 4
@@ -41,9 +41,8 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=889148157]
-offset_left = 128.0
-offset_right = 160.0
-offset_bottom = 160.0
+offset_left = -32.0
+offset_top = -160.0
 texture = ExtResource("2_fpt1k")
 region_rect = Rect2(58, 10, 32, 32)
 patch_margin_left = 4
@@ -55,10 +54,10 @@ axis_stretch_vertical = 1
 
 [node name="Sticky" type="NinePatchRect" parent="." unique_id=973238751]
 z_index = 2
-offset_left = 6.0
-offset_top = 128.0
-offset_right = 125.0
-offset_bottom = 140.0
+offset_left = -151.0
+offset_top = -32.0
+offset_right = -32.0
+offset_bottom = -20.0
 texture = ExtResource("3_ocuar")
 region_rect = Rect2(8, 0, 27, 9)
 patch_margin_top = 4
@@ -69,10 +68,9 @@ axis_stretch_vertical = 1
 
 [node name="Sticky2" type="NinePatchRect" parent="." unique_id=1987702852]
 z_index = 2
-offset_left = 161.0
-offset_top = 99.0
-offset_right = 189.69968
-offset_bottom = 111.0
+offset_top = -63.0
+offset_right = 28.699677
+offset_bottom = -51.0
 rotation = 1.5707964
 texture = ExtResource("3_ocuar")
 region_rect = Rect2(8, 0, 27, 9)
@@ -83,11 +81,11 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1423495406]
-position = Vector2(81.5, 144)
+position = Vector2(-80, -17)
 shape = SubResource("RectangleShape2D_wnun6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1533025818]
-position = Vector2(145, 80.25)
+position = Vector2(-16, -81)
 shape = SubResource("RectangleShape2D_vgf6b")
 
 [node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1379300663]
@@ -96,7 +94,7 @@ collision_layer = 17
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1302665163]
-position = Vector2(66, 134)
+position = Vector2(-116.5, -36)
 shape = SubResource("RectangleShape2D_mpmmm")
 
 [node name="SpaceTakenUp2" type="Area2D" parent="." unique_id=148345512]
@@ -104,12 +102,12 @@ collision_layer = 17
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp2" unique_id=617439599]
-position = Vector2(157.5, 87.5)
+position = Vector2(-3, -82)
 shape = SubResource("RectangleShape2D_lw7gp")
 
 [node name="BouncyInteractionArea" parent="." unique_id=1257100442 node_paths=PackedStringArray("component") instance=ExtResource("4_8iw2f")]
 z_index = 2
-position = Vector2(65.00001, 132)
+position = Vector2(-91, -27)
 scale = Vector2(3.8, 0.4)
 component = NodePath("../Sticky Component")
 
@@ -117,7 +115,16 @@ component = NodePath("../Sticky Component")
 script = ExtResource("5_lbu45")
 
 [node name="ProjectileProducer" parent="." unique_id=1472871402 instance=ExtResource("6_fpt1k")]
-position = Vector2(177, 112)
+position = Vector2(17, -49)
 rotation = -1.5707964
 flip_v = true
 rotate_ball = 90.0
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="area_entered" from="SpaceTakenUp2" to="." method="wizard_entered"]
+[connection signal="area_exited" from="SpaceTakenUp2" to="." method="wizard_exited"]
+[connection signal="body_entered" from="SpaceTakenUp2" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp2" to="." method="wizard_exited"]

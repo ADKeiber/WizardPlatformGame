@@ -7,6 +7,8 @@ extends Node
 @export var default_sticky: float = 100
 
 func while_inside(wizard: Wizard,  _delta: float) -> void:
+	if not get_parent().interactable:
+		return
 	if abs(wizard.velocity.x) > velocity_mins.x:
 		wizard.velocity.x *= velocity_changes.x
 	if abs(wizard.velocity.y) > velocity_mins.y:

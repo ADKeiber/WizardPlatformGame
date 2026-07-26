@@ -2,31 +2,31 @@
 
 [ext_resource type="Script" uid="uid://cfymna583iu6j" path="res://scenes/platforms/created_platforms/l_shape_base.gd" id="1_mpmmm"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="1_rxmw6"]
+[ext_resource type="Texture2D" uid="uid://cmnmqge45e4h4" path="res://assets/art/platform_holder_art/LShapeBasic.png" id="2_a6q15"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnun6"]
-size = Vector2(159, 32)
+size = Vector2(126.5, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgf6b"]
 size = Vector2(32, 159.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpmmm"]
 resource_local_to_scene = true
-size = Vector2(162, 38)
+size = Vector2(128, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw7gp"]
-size = Vector2(36, 159)
+size = Vector2(36, 163.5)
 
 [node name="LShapeBase" type="AnimatableBody2D" unique_id=1181529869]
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_mpmmm")
+holder_image = ExtResource("2_a6q15")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=1827703350]
 z_index = 1
-offset_left = 1.0
-offset_top = 128.0
-offset_right = 161.0
-offset_bottom = 160.0
+offset_left = -160.0
+offset_top = -32.0
 texture = ExtResource("1_rxmw6")
 region_rect = Rect2(58, 10, 32, 32)
 patch_margin_left = 4
@@ -37,9 +37,8 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=889148157]
-offset_left = 128.0
-offset_right = 160.0
-offset_bottom = 160.0
+offset_left = -32.0
+offset_top = -160.0
 texture = ExtResource("1_rxmw6")
 region_rect = Rect2(58, 10, 32, 32)
 patch_margin_left = 4
@@ -50,20 +49,20 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1423495406]
-position = Vector2(81.5, 144)
+position = Vector2(-97.25, -16)
 shape = SubResource("RectangleShape2D_wnun6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1533025818]
-position = Vector2(145, 80.25)
+position = Vector2(-16, -80)
 shape = SubResource("RectangleShape2D_vgf6b")
 
 [node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1379300663]
-position = Vector2(16, 10)
+position = Vector2(-81, -16)
 collision_layer = 17
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1302665163]
-position = Vector2(66, 134)
+position = Vector2(-18, 0)
 shape = SubResource("RectangleShape2D_mpmmm")
 
 [node name="SpaceTakenUp2" type="Area2D" parent="." unique_id=148345512]
@@ -71,5 +70,14 @@ collision_layer = 17
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp2" unique_id=617439599]
-position = Vector2(144, 80.5)
+position = Vector2(-16, -78.75)
 shape = SubResource("RectangleShape2D_lw7gp")
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="area_entered" from="SpaceTakenUp2" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp2" to="." method="area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp2" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp2" to="." method="wizard_exited"]

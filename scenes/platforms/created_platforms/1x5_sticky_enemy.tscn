@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b7tahnsijpo3u" path="res://scenes/platforms/created_platforms/1x5_sticky_enemy.gd" id="1_jrxlq"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_1wyj7"]
+[ext_resource type="Texture2D" uid="uid://b0ypkcdsa6e2c" path="res://assets/art/platform_holder_art/1x5StickyEnemy.png" id="2_botu8"]
 [ext_resource type="Texture2D" uid="uid://bgt5fi0y4kyff" path="res://assets/art/Goop.png" id="3_hbj3a"]
-[ext_resource type="Texture2D" uid="uid://tuupvmd0ge7k" path="res://icon.svg" id="4_463qy"]
+[ext_resource type="Texture2D" uid="uid://baip7gghtbbj5" path="res://assets/art/Ghost.png" id="4_jrxlq"]
 [ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="5_51vgd"]
 [ext_resource type="Script" uid="uid://cvp3pbycuujp6" path="res://components/sticky_component.gd" id="6_j4lr7"]
 
@@ -13,11 +14,36 @@ _data = {
 }
 point_count = 10
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_botu8"]
+atlas = ExtResource("4_jrxlq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7xl1"]
+atlas = ExtResource("4_jrxlq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw0wo"]
+atlas = ExtResource("4_jrxlq")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u3sq"]
+atlas = ExtResource("4_jrxlq")
+region = Rect2(32, 32, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_463qy")
+"texture": SubResource("AtlasTexture_botu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7xl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uw0wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u3sq")
 }],
 "loop": 1,
 "name": &"default",
@@ -25,18 +51,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1rk1"]
-size = Vector2(130.00003, 130.00003)
+size = Vector2(14, 15.000008)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5obky"]
 size = Vector2(160, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
-size = Vector2(214, 86)
+size = Vector2(214, 88)
 
 [node name="1x5StickyEnemy" type="AnimatableBody2D" unique_id=2041258644]
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_jrxlq")
+holder_image = ExtResource("2_botu8")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
 offset_right = 160.0
@@ -111,14 +138,15 @@ progress = 60.792084
 [node name="Enemy" type="AnimatedSprite2D" parent="Node2D/Path2D/PathFollow2D" unique_id=1617980067]
 unique_name_in_owner = true
 position = Vector2(4.5474735e-13, -1.1920929e-07)
-scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
+autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="Node2D/Path2D/PathFollow2D/Enemy" unique_id=597346152]
 position = Vector2(14.999961, -4.9999948)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Path2D/PathFollow2D/Enemy/Area2D" unique_id=610885381]
-position = Vector2(-14.999985, 5)
+position = Vector2(-9.814896, -1.0000057)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_s1rk1")
 
@@ -138,7 +166,7 @@ collision_layer = 17
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1596479123]
-position = Vector2(80, 17)
+position = Vector2(80, 16)
 shape = SubResource("RectangleShape2D_g63xn")
 
 [node name="StickyComponent" type="Node" parent="." unique_id=1308650594]
@@ -146,6 +174,8 @@ script = ExtResource("6_j4lr7")
 stickiness = 15.0
 default_sticky = 15.0
 
-[connection signal="area_entered" from="Node2D/Path2D/PathFollow2D/Enemy/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="SpaceTakenUp" to="." method="body_entered"]
-[connection signal="body_exited" from="SpaceTakenUp" to="." method="body_exited"]
+[connection signal="body_entered" from="Node2D/Path2D/PathFollow2D/Enemy/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]

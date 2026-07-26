@@ -24,7 +24,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_next_level_button_pressed() -> void:
 	var next_level:= SceneNavigator.current_level+1
 	SceneNavigator.navigate_to("Level%s" % next_level)

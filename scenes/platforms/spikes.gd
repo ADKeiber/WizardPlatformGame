@@ -1,10 +1,11 @@
+class_name Spikes
 extends Node2D
 
 
 @export var _static : bool
 @export var down_time : float = 2.0
 @export var up_time : float = 2.0
-
+@export var interactable: bool = false
 
 @onready var timer : Timer = $Timer
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
@@ -22,6 +23,8 @@ func  _ready() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if not interactable:
+		return
 	if body is Wizard:
 		player = body
 	if up == true:
@@ -42,8 +45,6 @@ func _on_timer_timeout() -> void:
 		check_death()
 		timer.wait_time = up_time
 		timer.start()
-
-	
 	elif up == true: 
 		animation.play_backwards("activate")
 		up = false
@@ -53,7 +54,5 @@ func _on_timer_timeout() -> void:
 func check_death() -> void:
 	if up == true and player != null:
 		player.die(player)
-
-	
 	else: 
 		return

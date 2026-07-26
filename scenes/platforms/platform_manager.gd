@@ -38,7 +38,7 @@ func toggle_on() -> void:
 		current_platform = available_platforms[current_index].instantiate()
 		current_platform.global_position = get_global_mouse_position()
 		add_child(current_platform)
-		current_platform.collision_shape_2d.disabled = true
+		current_platform.disable_collision(true)
 	else:
 		if current_platform != null:
 			current_platform.queue_free()
@@ -60,7 +60,7 @@ func update_current_selected_up() -> void:
 	current_platform = available_platforms[current_index].instantiate()
 	current_platform.global_position = get_global_mouse_position()
 	add_child(current_platform)
-	current_platform.collision_shape_2d.disabled = true
+	current_platform.disable_collision(true)
 
 func update_current_selected_down() -> void:
 	current_index -= 1
@@ -73,13 +73,13 @@ func update_current_selected_down() -> void:
 	current_platform = available_platforms[current_index].instantiate()
 	current_platform.global_position = get_global_mouse_position()
 	add_child(current_platform)
-	current_platform.collision_shape_2d.disabled = true
+	current_platform.disable_collision(true)
 
 func attempt_to_place_platform() -> void:
 	if current_platform == null or current_platform.is_intersecting():
 		return
 	current_platform.place()
-	current_platform.collision_shape_2d.disabled = false
+	current_platform.disable_collision(false)
 	current_platform = null
 	num_available[current_index] -= 1
 	update_amt_for_index.emit(current_index, num_available[current_index])
@@ -95,11 +95,12 @@ func attempt_to_place_platform() -> void:
 		current_platform = available_platforms[current_index].instantiate()
 		current_platform.global_position = get_global_mouse_position()
 		add_child(current_platform)
-		current_platform.collision_shape_2d.disabled = true
+		current_platform.disable_collision(true)
 		print("NEW PLATFORM!")
 
 func set_available_platforms_visuals() -> void:
 	for i in range(available_platforms.size()):
 		var platform_holder := PLATFORM_HOLDER.instantiate() as PlatformHolder
 		platform_placer_menu.platform_holder_area.get_child(0).add_child(platform_holder)
+		platform_holder.scale = Vector2(0.75, 0.75)
 		platform_holder.set_platform(available_platforms[i], num_available[i])

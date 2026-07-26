@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drl1wiairuncv" path="res://scenes/platforms/created_platforms/l_shape_bounce.gd" id="1_5hl7f"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_5hl7f"]
+[ext_resource type="Texture2D" uid="uid://dal6w6j0eu8ex" path="res://assets/art/platform_holder_art/LShapeBounce.png" id="2_yacd5"]
 [ext_resource type="PackedScene" uid="uid://cncqn7l4wgc5p" path="res://components/bounce_component.tscn" id="3_yacd5"]
 [ext_resource type="PackedScene" uid="uid://b46a1i67t2xmt" path="res://components/platform_interaction_area.tscn" id="4_4dmre"]
 [ext_resource type="Texture2D" uid="uid://da1bof1rxbkfy" path="res://assets/art/Slime_Bounce.png" id="5_5hl7f"]
@@ -14,20 +15,19 @@ size = Vector2(32, 159.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpmmm"]
 resource_local_to_scene = true
-size = Vector2(162, 59)
+size = Vector2(125, 59)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw7gp"]
-size = Vector2(36, 159)
+size = Vector2(38, 168.5)
 
 [node name="LShapeBase" type="AnimatableBody2D" unique_id=1181529869]
 script = ExtResource("1_5hl7f")
+holder_image = ExtResource("2_yacd5")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=1827703350]
 z_index = 1
-offset_left = 1.0
-offset_top = 128.0
-offset_right = 161.0
-offset_bottom = 160.0
+offset_left = -160.0
+offset_top = -32.0
 texture = ExtResource("2_5hl7f")
 region_rect = Rect2(58, 10, 32, 32)
 patch_margin_left = 4
@@ -38,9 +38,8 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=889148157]
-offset_left = 128.0
-offset_right = 160.0
-offset_bottom = 160.0
+offset_left = -32.0
+offset_top = -160.0
 texture = ExtResource("2_5hl7f")
 region_rect = Rect2(58, 10, 32, 32)
 patch_margin_left = 4
@@ -51,11 +50,11 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1423495406]
-position = Vector2(81.5, 144)
+position = Vector2(-80, -17)
 shape = SubResource("RectangleShape2D_wnun6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1533025818]
-position = Vector2(145, 80.25)
+position = Vector2(-17, -80)
 shape = SubResource("RectangleShape2D_vgf6b")
 
 [node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1379300663]
@@ -64,36 +63,36 @@ collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1302665163]
-position = Vector2(66, 134)
+position = Vector2(-116.5, -33)
 shape = SubResource("RectangleShape2D_mpmmm")
 
 [node name="SpaceTakenUp2" type="Area2D" parent="." unique_id=148345512]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp2" unique_id=617439599]
-position = Vector2(144, 80.5)
+position = Vector2(-18, -77.25)
 shape = SubResource("RectangleShape2D_lw7gp")
 
 [node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("3_yacd5")]
 
 [node name="BouncyInteractionArea" parent="." unique_id=1257100442 node_paths=PackedStringArray("component") instance=ExtResource("4_4dmre")]
 z_index = 2
-position = Vector2(65.00001, 131)
+position = Vector2(-93.99999, -26.999985)
 scale = Vector2(3.8, 0.45)
 component = NodePath("../BounceComponent")
 
 [node name="BouncyInteractionArea2" parent="." unique_id=1752883676 node_paths=PackedStringArray("component") instance=ExtResource("4_4dmre")]
 z_index = 1
-position = Vector2(131, 70)
+position = Vector2(-27, -90.00001)
 scale = Vector2(0.45, 3.6)
 collision_layer = 17
 collision_mask = 17
 component = NodePath("../BounceComponent")
 
 [node name="Bounce 1" type="NinePatchRect" parent="." unique_id=1169652239]
-offset_left = 137.80396
-offset_top = 13.093082
-offset_right = 251.35742
-offset_bottom = 24.897038
+offset_left = -21.0
+offset_top = -147.0
+offset_right = 92.55347
+offset_bottom = -135.19604
 rotation = 1.5707964
 texture = ExtResource("5_5hl7f")
 region_rect = Rect2(54, 21, 32, 7)
@@ -106,10 +105,10 @@ axis_stretch_vertical = 1
 
 [node name="Bounce 2" type="NinePatchRect" parent="." unique_id=1706972803]
 z_index = 1
-offset_left = 5.0
-offset_top = 126.0
-offset_right = 126.0
-offset_bottom = 138.0
+offset_left = -155.0
+offset_top = -33.0
+offset_right = -34.0
+offset_bottom = -21.0
 texture = ExtResource("5_5hl7f")
 region_rect = Rect2(54, 21, 32, 7)
 patch_margin_left = 9
@@ -118,3 +117,12 @@ patch_margin_right = 3
 patch_margin_bottom = 2
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="area_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="area_entered" from="SpaceTakenUp2" to="." method="wizard_entered"]
+[connection signal="area_exited" from="SpaceTakenUp2" to="." method="wizard_exited"]
+[connection signal="body_entered" from="SpaceTakenUp2" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp2" to="." method="wizard_exited"]

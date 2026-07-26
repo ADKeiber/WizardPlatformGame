@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cpwo4ovxfg3nn"]
 
 [ext_resource type="Script" uid="uid://83gydrl0bm01" path="res://scenes/platforms/created_platforms/2x2_base.gd" id="1_q70wg"]
+[ext_resource type="Texture2D" uid="uid://dxb8rcvnar8k1" path="res://assets/art/platform_holder_art/2x2Base.png" id="2_u8gbu"]
 [ext_resource type="Texture2D" uid="uid://dgcii34wgpyc3" path="res://assets/art/Basic_Platforms.png" id="2_yygm2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgf6b"]
@@ -13,6 +14,7 @@ size = Vector2(64, 64)
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_q70wg")
+holder_image = ExtResource("2_u8gbu")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=486572750]
 offset_right = 64.0
@@ -37,3 +39,8 @@ collision_mask = 17
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=2136357805]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_wnun6")
+
+[connection signal="area_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="area_exited" from="SpaceTakenUp" to="." method="wizard_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="wizard_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="wizard_exited"]

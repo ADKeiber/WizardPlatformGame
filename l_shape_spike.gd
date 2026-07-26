@@ -6,11 +6,13 @@ extends BasePlatform
 @onready var visuals: NinePatchRect = $Visuals
 @onready var space_taken_up: Area2D = $SpaceTakenUp
 
-
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var spikes: Spikes = $Spikes
+@onready var spikes_2: Spikes = $Spikes2
+@onready var spikes_3: Spikes = $Spikes3
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	spikes.interactable = interactable
+	spikes_2.interactable = interactable
+	spikes_3.interactable = interactable

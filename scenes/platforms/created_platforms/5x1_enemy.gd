@@ -15,6 +15,6 @@ func _on_interaction_area_entered(area: Area2D) -> void:
 	if interactable:
 		print("USER IS INTERACTING with %s!", name)
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.get_groups().has("Wizard"):
-		print("Player dead!")
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if interactable and body is Wizard:
+		body.die(body)

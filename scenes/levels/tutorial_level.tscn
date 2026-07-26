@@ -90,9 +90,11 @@ offset_bottom = 75.0
 script = ExtResource("6_gs1om")
 
 [node name="TutorialInstructions" parent="CanvasLayer" unique_id=1040012268 instance=ExtResource("7_8r123")]
+mouse_filter = 2
 
 [node name="Area2D" type="Area2D" parent="." unique_id=319866314]
 position = Vector2(-1990, 47)
+collision_layer = 17
 monitorable = false
 metadata/_edit_group_ = true
 

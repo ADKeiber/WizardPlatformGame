@@ -210,7 +210,7 @@ func update_current_wall() -> void:
 	else:
 		current_wall = 0
 
-func die(body : Wizard) -> void:
+func die(body: Wizard) -> void:
 	current_state = State.DEAD
 	die_sound.play()
 	animation.play("death")

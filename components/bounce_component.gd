@@ -15,6 +15,8 @@ func on_enter(wizard: Wizard) -> void:
 	wizard.landed.connect(bounce,CONNECT_ONE_SHOT)
 
 func bounce() -> void:
+	if not get_parent().interactable:
+		return
 	if not wizard.is_on_floor() and not wizard.is_on_wall():
 			return
 	if wizard.is_on_floor():
