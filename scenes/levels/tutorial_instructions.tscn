@@ -319,7 +319,7 @@ offset_right = 591.0
 offset_bottom = 206.0
 
 [node name="ColorRect" type="NinePatchRect" parent="6th" unique_id=2041809678]
-custom_minimum_size = Vector2(20, 75)
+custom_minimum_size = Vector2(20, 125)
 layout_mode = 2
 texture = ExtResource("2_nsdm3")
 patch_margin_left = 6
@@ -329,12 +329,15 @@ patch_margin_bottom = 6
 
 [node name="Label" type="Label" parent="6th/ColorRect" unique_id=481883333]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "Good luck and thank you for playing!"
+text = "Press Escape to pause the game. If you ever get stuck click the reset button in the pause menu."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

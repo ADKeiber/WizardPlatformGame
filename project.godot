@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneNavigator="*uid://dxyy4yit86uac"
-GlobalTimer="*uid://bwsog27dff1u7"
 GlobalAudio="*uid://dtny6j45sckq"
+GlobalTimer="*uid://buntq4xy4i50v"
 
 [display]
 

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://buntq4xy4i50v"]
+
+[ext_resource type="Script" uid="uid://bwsog27dff1u7" path="res://globals/global_timer.gd" id="1_6egax"]
+
+[node name="GlobalTimer" type="Node" unique_id=1103717817]
+script = ExtResource("1_6egax")
+
+[node name="Timer" type="Timer" parent="." unique_id=1667125103]
