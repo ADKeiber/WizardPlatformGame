@@ -1,14 +1,15 @@
 extends Node2D
 
-# Called when the node enters the scene tree for the first time.
+@onready var timer : Timer = GlobalTimer.timer 
+
 func _ready() -> void:
-	GlobalTimer.timer.timeout.connect(game_over, CONNECT_ONE_SHOT)
-	if GlobalTimer.timer.paused == false:
-		GlobalTimer.timer.start()
-	if GlobalTimer.timer.paused == true:
-		GlobalTimer.timer.paused = false
+	timer.timeout.connect(game_over, CONNECT_ONE_SHOT)
+	if timer.paused == false:
+		timer.start()
+	if timer.paused == true:
+		timer.paused = false
 	if name.contains("Tutorial"):
-		GlobalTimer.timer.paused = true
+		timer.paused = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,9 +19,15 @@ func _process(delta: float) -> void:
 func complete_level(body : Wizard) -> void:
 	if body is Wizard:
 		SceneNavigator.navigate_to("ProgressMap")
-		GlobalTimer.timer.paused = true
+		timer.paused = true
 		
 		
 func game_over() -> void:
 	SceneNavigator.navigate_to("LoseScreen")
 	GlobalAudio.lose.play()
+
+
+func _on_reset_pressed() -> void:
+	get_tree().paused = false
+	timer.paused = true
+	get_tree().reload_current_scene()

@@ -79,6 +79,10 @@ size_flags_vertical = 3
 texture = SubResource("AnimatedTexture_frjko")
 expand_mode = 5
 
+[node name="Reset" type="Button" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1869786559]
+layout_mode = 2
+text = "Reset"
+
 [node name="Quit" type="Button" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=295468577]
 layout_mode = 2
 text = "Quit"
@@ -110,5 +114,6 @@ texture = ExtResource("7_f7rt6")
 [node name="PlatformPlacerMenu" parent="." unique_id=701604679 instance=ExtResource("1_t275y")]
 unique_name_in_owner = true
 
+[connection signal="pressed" from="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Quit" to="CanvasLayer/PauseMenu" method="_on_quit_pressed"]
 [connection signal="body_entered" from="Area2D" to="." method="complete_level"]
