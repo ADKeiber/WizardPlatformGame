@@ -12,4 +12,6 @@ func _input(event: InputEvent) -> void:
 			get_tree().paused = false
 
 func _on_quit_pressed() -> void:
-	print("Navigating to Main Menu")
+	get_tree().paused = false
+	SceneNavigator.navigate_to("MainMenu")
+	

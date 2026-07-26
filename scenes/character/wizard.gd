@@ -31,7 +31,10 @@ var consecutive_bounces: int = 0
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera : Camera2D = $Camera2D
 @onready var world_boundry : Area2D = %WorldBoundry
-@onready var audio : AudioStreamPlayer = $AudioStreamPlayer
+@onready var steps : AudioStreamPlayer = $Steps
+@onready var landing : AudioStreamPlayer = $Landing
+@onready var jump : AudioStreamPlayer = $Jump
+@onready var die_sound : AudioStreamPlayer = $Die
 @onready var jump_fx : Resource = load("res://scenes/character/jump_fx.tscn")
 
 
@@ -51,9 +54,9 @@ func _physics_process(delta: float) -> void:
 	if last_state != current_state:
 		update_animation()
 		last_state = current_state
-		audio.stop()
+		steps.stop()
 		if current_state == State.WALK:
-			audio.play()
+			steps.play()
 	
 	impact_velocity = velocity
 	move_and_slide()
@@ -74,6 +77,7 @@ func handle_input() -> void:
 			gravity += wall_gravity_added
 			#print(gravity)
 		create_jump_effect()
+		jump.play()
 
 	
 	var direction = Input.get_axis("move_left", "move_right")
@@ -108,14 +112,18 @@ func update_state() -> void:
 				current_state = State.DOWN
 			if is_on_wall():
 				current_state = State.WALLSLIDE
+				landing.play()
 		State.DOWN:
 			if is_on_floor():
 				if velocity.x == 0:
 					current_state = State.IDLE
-				else: current_state = State.WALK
+					landing.play()
+				else: 
+					current_state = State.WALK
+					landing.play()
 			if is_on_wall():
 				current_state = State.WALLSLIDE
-			
+				landing.play()
 		
 func update_movement(delta : float) -> void:
 	if (is_on_floor() or coyote_timer.time_left > 0) and jump_buffer_timer.time_left > 0:
@@ -204,11 +212,13 @@ func update_current_wall() -> void:
 
 func die(body : Wizard) -> void:
 	current_state = State.DEAD
+	die_sound.play()
 	animation.play("death")
 	await animation.animation_finished
 	velocity = Vector2.ZERO
 	global_position = starting_position
 	current_state = State.IDLE
+	
 	
 func create_jump_effect() -> void:
 	if is_on_floor() or is_on_wall():

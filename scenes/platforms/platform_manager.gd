@@ -10,7 +10,6 @@ signal update_selected(index:int)
 @export var platform_holder_row: HBoxContainer
 
 @onready var platform_placer_menu: PlatformPlacerMenu = %PlatformPlacerMenu
-
 var current_platform: Node2D
 var displaying_platform: bool = false
 var valid_placement: bool = false
