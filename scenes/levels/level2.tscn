@@ -25,6 +25,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(1, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1263382893]
+layer = 2
 
 [node name="PauseMenu" type="PanelContainer" parent="CanvasLayer" unique_id=1530682773]
 process_mode = 3

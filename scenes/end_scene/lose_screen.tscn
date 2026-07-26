@@ -1,5 +1,25 @@
 [gd_scene format=3 uid="uid://bc38y1cimtr5u"]
 
+[ext_resource type="Texture2D" uid="uid://dqs2upwu4aj4h" path="res://assets/art/Wizard-Game-Over.png" id="1_fdcqa"]
+[ext_resource type="Script" uid="uid://8twq3gvi1bm4" path="res://scenes/end_scene/lose_screen.gd" id="1_jsk2u"]
+[ext_resource type="Texture2D" uid="uid://ck80y7kwi6pjn" path="res://scenes/main_menu/MainMenuButton.png" id="2_5uxx3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wnun6"]
+texture = ExtResource("2_5uxx3")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 128, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lw7gp"]
+texture = ExtResource("2_5uxx3")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.4627451, 0.4627451, 0.4627451, 0.5294118)
+
 [node name="Lose Screen" type="Control" unique_id=1594232953]
 layout_mode = 3
 anchors_preset = 15
@@ -7,12 +27,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jsk2u")
 
-[node name="Label" type="Label" parent="." unique_id=1188553193]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1332652853]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fdcqa")
+
+[node name="Button" type="Button" parent="." unique_id=1497017587]
 layout_mode = 0
-offset_left = 302.0
-offset_top = 210.0
-offset_right = 561.0
-offset_bottom = 293.0
-theme_override_font_sizes/font_size = 60
-text = "You Lose"
+offset_left = 424.0
+offset_top = 185.0
+offset_right = 516.0
+offset_bottom = 244.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_wnun6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lw7gp")
+text = "Menu
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

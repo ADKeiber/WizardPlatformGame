@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dri8n2t8n40te" path="res://scenes/user_interface/pause_menu.gd" id="3_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://d18f5vbpsa32e" path="res://scenes/levels/level_1_map.tscn" id="3_dywbp"]
 [ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_bfxgj"]
+[ext_resource type="Script" uid="uid://cb7w2axxt6m85" path="res://scenes/user_interface/volume_slider.gd" id="4_plydf"]
 [ext_resource type="Texture2D" uid="uid://bogc8tgmn7ghb" path="res://assets/art/Finish Flag.png" id="6_1seuy"]
 [ext_resource type="Script" uid="uid://dteh8eoa6cw8g" path="res://scenes/user_interface/time_left.gd" id="6_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://cmskxf1pn6yey" path="res://scenes/user_interface/platform_manager.tscn" id="7_8a7m2"]
@@ -24,6 +25,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Level1Map" parent="." unique_id=600446408 instance=ExtResource("3_dywbp")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=767433512]
+layer = 2
 
 [node name="PauseMenu" type="PanelContainer" parent="CanvasLayer" unique_id=731992722]
 process_mode = 3
@@ -70,6 +72,10 @@ text = "Volume:"
 [node name="HSlider" type="HSlider" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1292495691]
 layout_mode = 2
 size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("4_plydf")
 
 [node name="Wizard" type="TextureRect" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=199144089]
 layout_mode = 2

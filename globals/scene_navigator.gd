@@ -24,4 +24,6 @@ func navigate_to(scene_name:String) -> void:
 			GlobalAudio.win.play()
 		else:
 			current_level += 1
+	if scene_name.contains("MainMenu"):
+		current_level = 0
 	get_tree().change_scene_to_file(scenes[scene_name])

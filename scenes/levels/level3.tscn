@@ -24,6 +24,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Level3Map" parent="." unique_id=600446408 instance=ExtResource("2_f5jb5")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1431477555]
+layer = 2
 
 [node name="PauseMenu" type="PanelContainer" parent="CanvasLayer" unique_id=1528970988]
 process_mode = 3
