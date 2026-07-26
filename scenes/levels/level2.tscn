@@ -9,7 +9,10 @@
 [ext_resource type="Script" uid="uid://dteh8eoa6cw8g" path="res://scenes/user_interface/time_left.gd" id="6_ok6xr"]
 [ext_resource type="Texture2D" uid="uid://bogc8tgmn7ghb" path="res://assets/art/Finish Flag.png" id="7_dj4wq"]
 [ext_resource type="PackedScene" uid="uid://cmskxf1pn6yey" path="res://scenes/user_interface/platform_manager.tscn" id="7_k0mew"]
-[ext_resource type="PackedScene" uid="uid://6b3hl3hnihl3" path="res://scenes/platforms/created_platforms/l_shape_bounce.tscn" id="8_b0vvs"]
+[ext_resource type="PackedScene" uid="uid://bx7jhcjdxlt8d" path="res://scenes/platforms/created_platforms/1x5_basic.tscn" id="9_8i1lk"]
+[ext_resource type="PackedScene" uid="uid://dugvjvw5ugr4p" path="res://scenes/platforms/created_platforms/1x5_sticky_enemy.tscn" id="10_hgky1"]
+[ext_resource type="PackedScene" uid="uid://o1ljng80wo5j" path="res://scenes/platforms/created_platforms/1x5_disappearing.tscn" id="11_b4tpv"]
+[ext_resource type="PackedScene" uid="uid://3dtnj6pcp3k4" path="res://scenes/platforms/created_platforms/5x1_sticky_bouncy.tscn" id="12_hgky1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
 
@@ -109,7 +112,8 @@ position = Vector2(2829, 289)
 texture = ExtResource("7_dj4wq")
 
 [node name="PlatformManager" parent="." unique_id=411797401 instance=ExtResource("7_k0mew")]
-available_platforms = Array[PackedScene]([ExtResource("8_b0vvs")])
+available_platforms = Array[PackedScene]([ExtResource("9_8i1lk"), ExtResource("10_hgky1"), ExtResource("11_b4tpv"), ExtResource("12_hgky1")])
+num_available = Array[int]([2, 2, 5, 2])
 
 [node name="PlatformPlacerMenu" parent="." unique_id=701604679 instance=ExtResource("1_niitk")]
 unique_name_in_owner = true

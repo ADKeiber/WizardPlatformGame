@@ -31,3 +31,4 @@ func _on_reset_pressed() -> void:
 	get_tree().paused = false
 	timer.paused = true
 	get_tree().reload_current_scene()
+	

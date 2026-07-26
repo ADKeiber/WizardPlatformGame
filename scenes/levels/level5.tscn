@@ -9,6 +9,10 @@
 [ext_resource type="Script" uid="uid://dteh8eoa6cw8g" path="res://scenes/user_interface/time_left.gd" id="6_v1pya"]
 [ext_resource type="PackedScene" uid="uid://cmskxf1pn6yey" path="res://scenes/user_interface/platform_manager.tscn" id="7_dju2a"]
 [ext_resource type="Texture2D" uid="uid://bogc8tgmn7ghb" path="res://assets/art/Finish Flag.png" id="7_qsj6i"]
+[ext_resource type="PackedScene" uid="uid://6b3hl3hnihl3" path="res://scenes/platforms/created_platforms/l_shape_bounce.tscn" id="9_lsgss"]
+[ext_resource type="PackedScene" uid="uid://o1ljng80wo5j" path="res://scenes/platforms/created_platforms/1x5_disappearing.tscn" id="10_pm1y0"]
+[ext_resource type="PackedScene" uid="uid://buy6716h7j47m" path="res://scenes/platforms/created_platforms/5x1_enemy.tscn" id="11_2eb3b"]
+[ext_resource type="PackedScene" uid="uid://bx7jhcjdxlt8d" path="res://scenes/platforms/created_platforms/1x5_basic.tscn" id="12_2eb3b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0yael"]
 
@@ -110,6 +114,8 @@ position = Vector2(2829, 289)
 texture = ExtResource("7_qsj6i")
 
 [node name="PlatformManager" parent="." unique_id=411797401 instance=ExtResource("7_dju2a")]
+available_platforms = Array[PackedScene]([ExtResource("9_lsgss"), ExtResource("10_pm1y0"), ExtResource("11_2eb3b"), ExtResource("12_2eb3b")])
+num_available = Array[int]([2, 2, 3, 5])
 
 [node name="PlatformPlacerMenu" parent="." unique_id=701604679 instance=ExtResource("1_37jyc")]
 unique_name_in_owner = true

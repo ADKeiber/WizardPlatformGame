@@ -104,3 +104,7 @@ func set_available_platforms_visuals() -> void:
 		platform_placer_menu.platform_holder_area.get_child(0).add_child(platform_holder)
 		platform_holder.scale = Vector2(0.75, 0.75)
 		platform_holder.set_platform(available_platforms[i], num_available[i])
+
+func reset() -> void:
+	for child in get_children():
+		child.queue_free()

@@ -9,6 +9,11 @@
 [ext_resource type="Script" uid="uid://dteh8eoa6cw8g" path="res://scenes/user_interface/time_left.gd" id="6_e127x"]
 [ext_resource type="Texture2D" uid="uid://bogc8tgmn7ghb" path="res://assets/art/Finish Flag.png" id="7_heu5o"]
 [ext_resource type="PackedScene" uid="uid://cmskxf1pn6yey" path="res://scenes/user_interface/platform_manager.tscn" id="7_s45gt"]
+[ext_resource type="PackedScene" uid="uid://t1jvrpnm5uym" path="res://scenes/platforms/created_platforms/l_shape_sticky.tscn" id="9_xx6b8"]
+[ext_resource type="PackedScene" uid="uid://3dtnj6pcp3k4" path="res://scenes/platforms/created_platforms/5x1_sticky_bouncy.tscn" id="10_f62st"]
+[ext_resource type="PackedScene" uid="uid://dnsqut7rw15eo" path="res://scenes/platforms/created_platforms/2x2_sticky_spikes.tscn" id="11_f62st"]
+[ext_resource type="PackedScene" uid="uid://cacrsscvsj7lo" path="res://scenes/platforms/created_platforms/5x1_basic.tscn" id="12_f62st"]
+[ext_resource type="PackedScene" uid="uid://bx7jhcjdxlt8d" path="res://scenes/platforms/created_platforms/1x5_basic.tscn" id="13_w24lh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdsj4"]
 
@@ -110,6 +115,8 @@ position = Vector2(2829, 289)
 texture = ExtResource("7_heu5o")
 
 [node name="PlatformManager" parent="." unique_id=411797401 instance=ExtResource("7_s45gt")]
+available_platforms = Array[PackedScene]([ExtResource("9_xx6b8"), ExtResource("10_f62st"), ExtResource("11_f62st"), ExtResource("12_f62st"), ExtResource("13_w24lh")])
+num_available = Array[int]([2, 2, 3, 2, 3])
 
 [node name="PlatformPlacerMenu" parent="." unique_id=701604679 instance=ExtResource("1_o34q2")]
 unique_name_in_owner = true
