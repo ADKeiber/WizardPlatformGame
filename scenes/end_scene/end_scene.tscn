@@ -1,5 +1,25 @@
 [gd_scene format=3 uid="uid://wcn7yshgrvdj"]
 
+[ext_resource type="Script" uid="uid://jvkoawwaera6" path="res://scenes/end_scene/end_scene.gd" id="1_eoerb"]
+[ext_resource type="Texture2D" uid="uid://do2ttiruwyykt" path="res://assets/tile_maps/clouds.png" id="2_6ef2h"]
+[ext_resource type="Texture2D" uid="uid://ck80y7kwi6pjn" path="res://scenes/main_menu/MainMenuButton.png" id="2_n06uv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ef2h"]
+texture = ExtResource("2_n06uv")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 128, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2s2l0"]
+texture = ExtResource("2_n06uv")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.4627451, 0.4627451, 0.4627451, 0.5294118)
+
 [node name="EndScene" type="Control" unique_id=1054069676]
 layout_mode = 3
 anchors_preset = 15
@@ -7,12 +27,63 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_eoerb")
 
-[node name="Label" type="Label" parent="." unique_id=263446265]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1793324656]
 layout_mode = 0
-offset_left = 286.0
-offset_top = 204.0
-offset_right = 615.0
-offset_bottom = 347.0
-theme_override_font_sizes/font_size = 70
-text = "YOU WIN!"
+offset_right = 956.0
+offset_bottom = 543.0
+color = Color(0.09534923, 0.6553008, 0.8893163, 1)
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1605272225]
+texture_filter = 1
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(2494, 0)
+autoscroll = Vector2(-7, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=207009534]
+texture_filter = 1
+position = Vector2(1093, 136)
+scale = Vector2(1.0208501, 1)
+texture = ExtResource("2_6ef2h")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1612165326]
+texture_filter = 1
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-639, 11)
+repeat_size = Vector2(2494, 0)
+autoscroll = Vector2(-7, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1767422014]
+texture_filter = 1
+position = Vector2(851, 405)
+scale = Vector2(1.0208501, 1)
+texture = ExtResource("2_6ef2h")
+
+[node name="Label" type="Label" parent="." unique_id=1035705068]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 119.0
+offset_right = 653.0
+offset_bottom = 232.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
+text = "You Win!"
+
+[node name="Button" type="Button" parent="." unique_id=1112378158]
+z_index = 1
+layout_mode = 0
+offset_left = 421.0
+offset_top = 299.0
+offset_right = 513.0
+offset_bottom = 358.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_6ef2h")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2s2l0")
+text = "Menu
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

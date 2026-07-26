@@ -14,6 +14,14 @@ texture_margin_top = 5.0
 texture_margin_right = 10.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wem23"]
+texture = ExtResource("2_0ebjn")
+texture_margin_left = 10.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.37254903, 0.37254903, 0.37254903, 0.7294118)
+
 [node name="MainMenu" type="Control" unique_id=1524112131]
 layout_mode = 3
 anchors_preset = 15
@@ -49,13 +57,16 @@ theme_override_constants/margin_bottom = 30
 [node name="PlayButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer" unique_id=947415541]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxTexture_apqvv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wem23")
 text = "Start Game"
 
 [node name="TutorialQuestionPopup" type="Popup" parent="." unique_id=1377527461]
 oversampling_override = 1.0
 initial_position = 1
-size = Vector2i(500, 400)
+size = Vector2i(331, 200)
+visible = true
 
 [node name="MarginContainer" type="MarginContainer" parent="TutorialQuestionPopup" unique_id=980795464]
 anchors_preset = 15
@@ -77,8 +88,10 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=940127458]
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Would you like to play the tutorial?"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=2064181631]
 layout_mode = 2
@@ -86,10 +99,12 @@ size_flags_vertical = 3
 
 [node name="YesButton" type="Button" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=70725091]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "Yes"
 
 [node name="NoButton" type="Button" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=1747659634]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "No"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/PlayButton" to="." method="_on_play_button_pressed"]

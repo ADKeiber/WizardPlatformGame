@@ -22,6 +22,7 @@ func _on_body_entered(body: Node2D) -> void:
 	flying = false
 	animated_sprite_2d.play("explode")
 	animated_sprite_2d.animation_finished.connect(remove)
+	GlobalAudio.cannon_ball.play()
 	if body is Wizard:
 		#body.die()
 		body.die(body)

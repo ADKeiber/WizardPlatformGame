@@ -9,6 +9,8 @@ var entered_area: Area2D
 func place() -> void:
 	interactable = true
 	self.modulate = Color.WHITE
+	GlobalAudio.platform.play()	
+	
 ## These are used for the placement areas
 
 func wizard_entered(body:Node2D) -> void:
