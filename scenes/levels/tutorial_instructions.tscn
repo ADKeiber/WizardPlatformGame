@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://ba7421oa0qk1i"]
+
+[ext_resource type="Script" uid="uid://b5glnoj8lyvmd" path="res://scenes/levels/tutorial_instructions.gd" id="1_fo7ag"]
+
+[node name="TutorialInstructions" type="Control" unique_id=1040012268]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fo7ag")
+
+[node name="1st" type="VBoxContainer" parent="." unique_id=532869272]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 214.0
+offset_right = 510.0
+offset_bottom = 272.0
+
+[node name="Label" type="Label" parent="1st" unique_id=137692031]
+layout_mode = 2
+text = "Use the A and D Keys to Move"
+
+[node name="1stButton" type="Button" parent="1st" unique_id=691590849]
+layout_mode = 2
+text = "Press to Continue"
+
+[node name="2nd" type="VBoxContainer" parent="." unique_id=1247213389]
+visible = false
+layout_mode = 0
+offset_left = 324.0
+offset_top = 218.0
+offset_right = 469.0
+offset_bottom = 276.0
+
+[node name="Label" type="Label" parent="2nd" unique_id=1949897390]
+layout_mode = 2
+text = "Use Space to Jump"
+
+[node name="2ndButton" type="Button" parent="2nd" unique_id=140595071]
+layout_mode = 2
+text = "Press to Continue"
+
+[node name="3rd" type="VBoxContainer" parent="." unique_id=1206933600]
+visible = false
+layout_mode = 0
+offset_left = 242.0
+offset_top = 217.0
+offset_right = 538.0
+offset_bottom = 275.0
+
+[node name="Label" type="Label" parent="3rd" unique_id=480146418]
+layout_mode = 2
+text = "Use the scroll wheel to pick a platform"
+
+[node name="3rdButton" type="Button" parent="3rd" unique_id=471850023]
+layout_mode = 2
+text = "Press to Continue"
+
+[node name="4th" type="VBoxContainer" parent="." unique_id=1028201728]
+visible = false
+layout_mode = 0
+offset_left = 239.0
+offset_top = 206.0
+offset_right = 539.0
+offset_bottom = 290.0
+
+[node name="Label" type="Label" parent="4th" unique_id=2119213779]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Press Shift to enter Build Mode and Left Click to place Platform"
+autowrap_mode = 2
+
+[node name="4thButton" type="Button" parent="4th" unique_id=1002380830]
+layout_mode = 2
+text = "Press to Continue"
+
+[node name="5th" type="VBoxContainer" parent="." unique_id=691923923]
+visible = false
+layout_mode = 0
+offset_left = 245.0
+offset_top = 212.0
+offset_right = 545.0
+offset_bottom = 296.0
+
+[node name="Label" type="Label" parent="5th" unique_id=309907841]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "The Platform will glow green if placement is allowed and red if not."
+autowrap_mode = 2
+
+[node name="5thButton" type="Button" parent="5th" unique_id=170710557]
+layout_mode = 2
+text = "Press to Continue"
+
+[node name="6th" type="VBoxContainer" parent="." unique_id=599737055]
+visible = false
+layout_mode = 0
+offset_left = 242.0
+offset_top = 216.0
+offset_right = 542.0
+offset_bottom = 300.0
+
+[node name="Label" type="Label" parent="6th" unique_id=481883333]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Good luck and thank you for playing!"
+autowrap_mode = 2
+
+[node name="6thButton" type="Button" parent="6th" unique_id=112687101]
+layout_mode = 2
+text = "Press to Continue"
+
+[connection signal="pressed" from="1st/1stButton" to="." method="_1st_button_pressed"]
+[connection signal="pressed" from="2nd/2ndButton" to="." method="_2nd_button_pressed"]
+[connection signal="pressed" from="3rd/3rdButton" to="." method="_3rd_button_pressed"]
+[connection signal="pressed" from="4th/4thButton" to="." method="_4th_button_pressed"]
+[connection signal="pressed" from="5th/5thButton" to="." method="_5th_button_pressed"]
+[connection signal="pressed" from="6th/6thButton" to="." method="_6th_button_pressed"]

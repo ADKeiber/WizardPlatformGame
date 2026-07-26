@@ -1,7 +1,7 @@
 extends Node
 
 var timer : Timer = Timer.new()
-var count_down_time : float = 30.0
+var count_down_time : float = 200.0
 
 func _ready() -> void:
 	add_child(timer)

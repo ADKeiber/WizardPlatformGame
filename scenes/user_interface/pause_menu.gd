@@ -1,7 +1,6 @@
 class_name PauseMenu
 extends PanelContainer
 
-@onready var camera : Camera2D = %Camera2D
 
 
 func _input(event: InputEvent) -> void:

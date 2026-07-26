@@ -4,7 +4,7 @@ var current_level: int = 0
 
 var scenes: Dictionary[String, String] = {
 	"MainMenu": "res://scenes/main_menu/main_menu.tscn",
-	"Tutorial": "res://scenes/tutorial/tutorial.tscn",
+	"Tutorial": "res://scenes/levels/tutorial_level.tscn",
 	"Shop": "res://scenes/platform_shop/platform_shop.tscn",
 	"Level1": "res://scenes/levels/level1.tscn",
 	"Level2": "res://scenes/levels/level2.tscn",

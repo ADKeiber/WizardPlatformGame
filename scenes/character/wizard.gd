@@ -32,6 +32,9 @@ var consecutive_bounces: int = 0
 @onready var camera : Camera2D = $Camera2D
 @onready var world_boundry : Area2D = %WorldBoundry
 @onready var audio : AudioStreamPlayer = $AudioStreamPlayer
+@onready var jump_fx : Resource = load("res://scenes/character/jump_fx.tscn")
+
+
 
 func _ready() -> void:
 	world_boundry.body_entered.connect(die)
@@ -70,6 +73,7 @@ func handle_input() -> void:
 			sticky = 15
 			gravity += wall_gravity_added
 			#print(gravity)
+		create_jump_effect()
 
 	
 	var direction = Input.get_axis("move_left", "move_right")
@@ -205,3 +209,11 @@ func die(body : Wizard) -> void:
 	velocity = Vector2.ZERO
 	global_position = starting_position
 	current_state = State.IDLE
+	
+func create_jump_effect() -> void:
+	if is_on_floor() or is_on_wall():
+		var effect : AnimatedSprite2D = jump_fx.instantiate()
+		get_tree().current_scene.add_child(effect)
+		effect.global_position = global_position - Vector2(0 , .1)
+	
+	

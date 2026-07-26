@@ -7,6 +7,8 @@ func _ready() -> void:
 		GlobalTimer.timer.start()
 	if GlobalTimer.timer.paused == true:
 		GlobalTimer.timer.paused = false
+	if name.contains("Tutorial"):
+		GlobalTimer.timer.paused = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
