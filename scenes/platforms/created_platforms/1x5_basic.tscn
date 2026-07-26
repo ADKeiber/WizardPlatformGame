@@ -32,12 +32,12 @@ shape = SubResource("RectangleShape2D_5obky")
 
 [node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1561633605]
 unique_name_in_owner = true
-collision_layer = 17
+collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1596479123]
 position = Vector2(80, 16)
 shape = SubResource("RectangleShape2D_g63xn")
 
-[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
-[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="body_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="body_exited"]

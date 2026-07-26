@@ -50,14 +50,13 @@ shape = SubResource("RectangleShape2D_5obky")
 
 [node name="Spikes" parent="." unique_id=1902292362 instance=ExtResource("4_3lx1k")]
 position = Vector2(18, -5)
-_static = false
 
 [node name="Spikes2" parent="." unique_id=121537007 instance=ExtResource("4_3lx1k")]
 position = Vector2(142, -5)
 
 [node name="SpaceTakenUp" type="Area2D" parent="." unique_id=1561633605]
 unique_name_in_owner = true
-collision_layer = 17
+collision_layer = 16
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1596479123]
@@ -71,5 +70,5 @@ component = NodePath("../BounceComponent")
 
 [node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("5_pmxai")]
 
-[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
-[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="body_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="body_exited"]

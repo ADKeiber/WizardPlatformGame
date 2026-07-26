@@ -1,4 +1,5 @@
-extends AnimatableBody2D
+class_name LShapeSPike
+extends BasePlatform
 
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
