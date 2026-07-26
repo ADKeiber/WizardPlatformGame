@@ -31,6 +31,7 @@ stream = ExtResource("4_rlc7i")
 volume_db = -1.824
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1622198581]
+process_mode = 3
 stream = ExtResource("2_nvdxq")
 volume_db = -16.582
 
