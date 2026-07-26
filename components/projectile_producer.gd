@@ -18,7 +18,7 @@ func start() -> void:
 func shoot_projectile() -> void:
 	var projectile: Projectile = PROJECTILE.instantiate()
 	add_child(projectile)
-	projectile.position = projectile.position + Vector2(20,0) * direction
+	projectile.position = projectile.position 
 	projectile.set_velocity_and_speed(direction, speed)
 	projectile.rotate_sprite(180)
 	projectile.fly()

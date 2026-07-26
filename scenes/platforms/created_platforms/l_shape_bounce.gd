@@ -1,7 +1,5 @@
-extends AnimatableBody2D
-
-
-
+class_name LShapeBounce
+extends BasePlatform
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var visuals: NinePatchRect = $Visuals
