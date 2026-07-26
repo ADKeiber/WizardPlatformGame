@@ -22,6 +22,7 @@ func shoot_projectile() -> void:
 	projectile.set_velocity_and_speed(direction, speed)
 	projectile.rotate_sprite(180)
 	projectile.fly()
+	GlobalAudio.cannon.play()
 
 func _on_frame_changed():
 	if animation == "shooting" and frame == 5:

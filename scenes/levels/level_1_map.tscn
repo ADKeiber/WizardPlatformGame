@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://ny31apxtx42o" path="res://assets/tile_maps/Foreground-Tileset.png" id="1_f3vxo"]
 [ext_resource type="Texture2D" uid="uid://do2ttiruwyykt" path="res://assets/tile_maps/clouds.png" id="2_gtejc"]
 [ext_resource type="PackedScene" uid="uid://c2drvg5n10vpi" path="res://scenes/character/wizard.tscn" id="3_gtejc"]
-[ext_resource type="PackedScene" uid="uid://d2ij7ifrd8v5r" path="res://scenes/platforms/created_platforms/1x5_cannon.tscn" id="4_5j0f8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5j0f8"]
 texture = ExtResource("1_f3vxo")
@@ -314,6 +313,8 @@ texture = ExtResource("1_f3vxo")
 [sub_resource type="TileSet" id="TileSet_j7uhm"]
 sources/0 = SubResource("TileSetAtlasSource_5j0f8")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_apqvv"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j7uhm"]
 texture = ExtResource("1_f3vxo")
 0:0/0 = 0
@@ -623,6 +624,7 @@ texture = ExtResource("1_f3vxo")
 
 [sub_resource type="TileSet" id="TileSet_f3vxo"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_apqvv")
 sources/0 = SubResource("TileSetAtlasSource_j7uhm")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vgf6b"]
@@ -701,6 +703,3 @@ shape = SubResource("WorldBoundaryShape2D_wnun6")
 position = Vector2(3000, 410)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_lw7gp")
-
-[node name="1x5Cannon" parent="." unique_id=2041258644 instance=ExtResource("4_5j0f8")]
-position = Vector2(173, 383)

@@ -6,11 +6,8 @@
 [ext_resource type="Script" uid="uid://dri8n2t8n40te" path="res://scenes/user_interface/pause_menu.gd" id="3_frjko"]
 [ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_f7rt6"]
 [ext_resource type="Script" uid="uid://dteh8eoa6cw8g" path="res://scenes/user_interface/time_left.gd" id="6_frjko"]
+[ext_resource type="PackedScene" uid="uid://cmskxf1pn6yey" path="res://scenes/user_interface/platform_manager.tscn" id="7_8w0pe"]
 [ext_resource type="Texture2D" uid="uid://bogc8tgmn7ghb" path="res://assets/art/Finish Flag.png" id="7_f7rt6"]
-[ext_resource type="Script" uid="uid://y8wxccyjic1b" path="res://scenes/platforms/platform_manager.gd" id="8_72x3h"]
-[ext_resource type="PackedScene" uid="uid://cacrsscvsj7lo" path="res://scenes/platforms/created_platforms/5x1_basic.tscn" id="9_wb0vq"]
-[ext_resource type="PackedScene" uid="uid://3dtnj6pcp3k4" path="res://scenes/platforms/created_platforms/5x1_sticky_bouncy.tscn" id="10_ah4rv"]
-[ext_resource type="PackedScene" uid="uid://buy6716h7j47m" path="res://scenes/platforms/created_platforms/5x1_enemy.tscn" id="11_522sc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5jb5"]
 
@@ -88,7 +85,7 @@ offset_bottom = 75.0
 script = ExtResource("6_frjko")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=205166903]
-position = Vector2(35, 111)
+position = Vector2(28, 115)
 monitorable = false
 metadata/_edit_group_ = true
 
@@ -100,11 +97,7 @@ shape = SubResource("RectangleShape2D_8w0pe")
 position = Vector2(2829, 289)
 texture = ExtResource("7_f7rt6")
 
-[node name="PlatformManager" type="Node2D" parent="." unique_id=1684677609]
-unique_name_in_owner = true
-script = ExtResource("8_72x3h")
-available_platforms = Array[PackedScene]([ExtResource("9_wb0vq"), ExtResource("10_ah4rv"), ExtResource("11_522sc")])
-num_available = Array[int]([2, 2, 2])
+[node name="PlatformManager" parent="." unique_id=411797401 instance=ExtResource("7_8w0pe")]
 
 [node name="PlatformPlacerMenu" parent="." unique_id=701604679 instance=ExtResource("1_t275y")]
 unique_name_in_owner = true

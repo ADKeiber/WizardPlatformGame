@@ -6,6 +6,7 @@ var interactable: bool = false
 func place() -> void:
 	interactable = true
 	self.modulate = Color.WHITE
+	GlobalAudio.platform.play()	
 	
 ## These are used for the placement areas
 var intersecting_body:Node2D

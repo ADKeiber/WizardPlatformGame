@@ -21,6 +21,7 @@ func navigate_to(scene_name:String) -> void:
 		if current_level == 5:
 			scene_name = "EndScene"
 			GlobalTimer.timer.stop()
+			GlobalAudio.win.play()
 		else:
 			current_level += 1
 	get_tree().change_scene_to_file(scenes[scene_name])

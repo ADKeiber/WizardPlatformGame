@@ -7,10 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_bfxgj"]
 [ext_resource type="Texture2D" uid="uid://bogc8tgmn7ghb" path="res://assets/art/Finish Flag.png" id="6_1seuy"]
 [ext_resource type="Script" uid="uid://dteh8eoa6cw8g" path="res://scenes/user_interface/time_left.gd" id="6_2r1tl"]
-[ext_resource type="Script" uid="uid://y8wxccyjic1b" path="res://scenes/platforms/platform_manager.gd" id="8_nkeig"]
-[ext_resource type="PackedScene" uid="uid://cacrsscvsj7lo" path="res://scenes/platforms/created_platforms/5x1_basic.tscn" id="9_nfihu"]
-[ext_resource type="PackedScene" uid="uid://3dtnj6pcp3k4" path="res://scenes/platforms/created_platforms/5x1_sticky_bouncy.tscn" id="10_lgguw"]
-[ext_resource type="PackedScene" uid="uid://buy6716h7j47m" path="res://scenes/platforms/created_platforms/5x1_enemy.tscn" id="11_jprdt"]
+[ext_resource type="PackedScene" uid="uid://cmskxf1pn6yey" path="res://scenes/user_interface/platform_manager.tscn" id="7_8a7m2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dywbp"]
 
@@ -92,7 +89,7 @@ offset_bottom = 75.0
 script = ExtResource("6_2r1tl")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=319866314]
-position = Vector2(6, 0)
+position = Vector2(4, 2)
 monitorable = false
 metadata/_edit_group_ = true
 
@@ -104,11 +101,7 @@ shape = SubResource("RectangleShape2D_vgf6b")
 position = Vector2(2829, 289)
 texture = ExtResource("6_1seuy")
 
-[node name="PlatformManager" type="Node2D" parent="." unique_id=343051501]
-unique_name_in_owner = true
-script = ExtResource("8_nkeig")
-available_platforms = Array[PackedScene]([ExtResource("9_nfihu"), ExtResource("10_lgguw"), ExtResource("11_jprdt")])
-num_available = Array[int]([2, 2, 2])
+[node name="PlatformManager" parent="." unique_id=411797401 instance=ExtResource("7_8a7m2")]
 
 [node name="PlatformPlacerMenu" parent="." unique_id=701604679 instance=ExtResource("1_4tcl0")]
 unique_name_in_owner = true

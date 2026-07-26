@@ -1,6 +1,99 @@
 [gd_scene format=3 uid="uid://ba7421oa0qk1i"]
 
 [ext_resource type="Script" uid="uid://b5glnoj8lyvmd" path="res://scenes/levels/tutorial_instructions.gd" id="1_fo7ag"]
+[ext_resource type="Texture2D" uid="uid://ck80y7kwi6pjn" path="res://scenes/main_menu/MainMenuButton.png" id="2_jfhnl"]
+[ext_resource type="Texture2D" uid="uid://bf11dpjcpsrp6" path="res://assets/speech_box3.png" id="2_nsdm3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aal3x"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_apqvv"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nsdm3"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rsyvj"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.52156866, 0.52156866, 0.52156866, 0.50980395)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jfhnl"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wtwym"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 10.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(-1, 0, 129, 32)
+modulate_color = Color(0.42352942, 0.42352942, 0.42352942, 0.5019608)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_swq2v"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g08rk"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.41960785, 0.41960785, 0.41960785, 0.4627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e5137"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pnatx"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.47788018, 0.47788012, 0.47788012, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xbu2u"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_te42o"]
+texture = ExtResource("2_jfhnl")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 128, 32)
+modulate_color = Color(0.45882353, 0.45882353, 0.45882353, 0.5372549)
 
 [node name="TutorialInstructions" type="Control" unique_id=1040012268]
 layout_mode = 3
@@ -18,10 +111,14 @@ offset_top = 91.0
 offset_right = 575.0
 offset_bottom = 171.0
 
-[node name="ColorRect" type="ColorRect" parent="1st" unique_id=2055921918]
-custom_minimum_size = Vector2(20, 60)
+[node name="ColorRect" type="NinePatchRect" parent="1st" unique_id=699541857]
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
-color = Color(0, 0, 0, 0.59607846)
+texture = ExtResource("2_nsdm3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="1st/ColorRect" unique_id=1188701979]
 layout_mode = 1
@@ -33,7 +130,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="1st/ColorRect/MarginContainer" unique_id=137692031]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Use the A and D Keys to Move"
 
 [node name="MarginContainer2" type="MarginContainer" parent="1st/ColorRect" unique_id=683453791]
@@ -44,6 +141,9 @@ offset_bottom = 95.0
 
 [node name="1stButton" type="Button" parent="1st/ColorRect/MarginContainer2" unique_id=691590849]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_aal3x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_apqvv")
 text = "Press to Continue"
 
 [node name="2nd" type="VBoxContainer" parent="." unique_id=1247213389]
@@ -54,13 +154,17 @@ offset_top = 129.0
 offset_right = 512.0
 offset_bottom = 189.0
 
-[node name="ColorRect" type="ColorRect" parent="2nd" unique_id=333546101]
+[node name="ColorRect" type="NinePatchRect" parent="2nd" unique_id=425745484]
 custom_minimum_size = Vector2(20, 60)
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(0, 0, 0, 0.37254903)
+texture = ExtResource("2_nsdm3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
-[node name="MarginContainer" type="MarginContainer" parent="2nd/ColorRect" unique_id=2061543107]
+[node name="_MarginContainer_173453" type="MarginContainer" parent="2nd/ColorRect" unique_id=2061543107]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,10 +172,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="2nd/ColorRect/MarginContainer" unique_id=1949897390]
+[node name="Label" type="Label" parent="2nd/ColorRect/_MarginContainer_173453" unique_id=1949897390]
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Use Space to Jump"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -81,6 +185,9 @@ layout_mode = 2
 
 [node name="2ndButton" type="Button" parent="2nd/MarginContainer2" unique_id=140595071]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_nsdm3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rsyvj")
 text = "Press to Continue"
 
 [node name="3rd" type="VBoxContainer" parent="." unique_id=1206933600]
@@ -91,17 +198,21 @@ offset_top = 121.0
 offset_right = 661.0
 offset_bottom = 205.0
 
-[node name="ColorRect" type="ColorRect" parent="3rd" unique_id=556577711]
+[node name="ColorRect" type="NinePatchRect" parent="3rd" unique_id=1917939221]
 custom_minimum_size = Vector2(20, 60)
 layout_mode = 2
-color = Color(0, 0, 0, 0.41568628)
+texture = ExtResource("2_nsdm3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="Label" type="Label" parent="3rd/ColorRect" unique_id=480146418]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 0
 offset_right = 400.0
 offset_bottom = 49.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Use the E and Q to pick a platform. The selected platform will be highlighted at the bottom."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -109,6 +220,9 @@ autowrap_mode = 2
 
 [node name="3rdButton" type="Button" parent="3rd" unique_id=471850023]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_jfhnl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wtwym")
 text = "Press to Continue"
 
 [node name="4th" type="VBoxContainer" parent="." unique_id=1028201728]
@@ -119,17 +233,21 @@ offset_top = 122.0
 offset_right = 583.0
 offset_bottom = 206.0
 
-[node name="ColorRect" type="ColorRect" parent="4th" unique_id=2111074638]
+[node name="ColorRect" type="NinePatchRect" parent="4th" unique_id=1655127955]
 custom_minimum_size = Vector2(20, 60)
 layout_mode = 2
-color = Color(0, 0, 0, 0.46666667)
+texture = ExtResource("2_nsdm3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="Label" type="Label" parent="4th/ColorRect" unique_id=2119213779]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
 offset_right = 300.0
 offset_bottom = 49.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Press Shift to enter Build Mode and Left Click to place Platform"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -137,6 +255,9 @@ autowrap_mode = 2
 
 [node name="4thButton" type="Button" parent="4th" unique_id=1002380830]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_swq2v")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g08rk")
 text = "Press to Continue"
 
 [node name="5th" type="VBoxContainer" parent="." unique_id=691923923]
@@ -147,17 +268,21 @@ offset_top = 115.0
 offset_right = 580.0
 offset_bottom = 199.0
 
-[node name="ColorRect" type="ColorRect" parent="5th" unique_id=1234172940]
+[node name="ColorRect" type="NinePatchRect" parent="5th" unique_id=1271818010]
 custom_minimum_size = Vector2(20, 60)
 layout_mode = 2
-color = Color(0, 0, 0, 0.5058824)
+texture = ExtResource("2_nsdm3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="Label" type="Label" parent="5th/ColorRect" unique_id=309907841]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
 offset_right = 300.0
 offset_bottom = 49.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "The Platform will glow green if placement is allowed and red if not."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -165,6 +290,9 @@ autowrap_mode = 2
 
 [node name="5thButton" type="Button" parent="5th" unique_id=170710557]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_e5137")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pnatx")
 text = "Press to Continue"
 
 [node name="6th" type="VBoxContainer" parent="." unique_id=599737055]
@@ -175,17 +303,21 @@ offset_top = 122.0
 offset_right = 591.0
 offset_bottom = 206.0
 
-[node name="ColorRect" type="ColorRect" parent="6th" unique_id=1760162646]
-custom_minimum_size = Vector2(20, 60)
+[node name="ColorRect" type="NinePatchRect" parent="6th" unique_id=2041809678]
+custom_minimum_size = Vector2(20, 35)
 layout_mode = 2
-color = Color(0, 0, 0, 0.5529412)
+texture = ExtResource("2_nsdm3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="Label" type="Label" parent="6th/ColorRect" unique_id=481883333]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
 offset_right = 300.0
 offset_bottom = 23.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Good luck and thank you for playing!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -193,6 +325,9 @@ autowrap_mode = 2
 
 [node name="6thButton" type="Button" parent="6th" unique_id=112687101]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_xbu2u")
+theme_override_styles/hover = SubResource("StyleBoxTexture_te42o")
 text = "Press to Continue"
 
 [connection signal="pressed" from="1st/ColorRect/MarginContainer2/1stButton" to="." method="_1st_button_pressed"]

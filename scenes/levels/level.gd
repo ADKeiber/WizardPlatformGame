@@ -24,3 +24,4 @@ func complete_level(body : Wizard) -> void:
 
 func game_over() -> void:
 	SceneNavigator.navigate_to("LoseScreen")
+	GlobalAudio.lose.play()

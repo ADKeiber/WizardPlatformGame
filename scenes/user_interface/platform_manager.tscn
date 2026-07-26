@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cmskxf1pn6yey"]
+
+[ext_resource type="Script" uid="uid://y8wxccyjic1b" path="res://scenes/platforms/platform_manager.gd" id="1_13e0m"]
+[ext_resource type="PackedScene" uid="uid://cacrsscvsj7lo" path="res://scenes/platforms/created_platforms/5x1_basic.tscn" id="2_4iw2r"]
+[ext_resource type="PackedScene" uid="uid://3dtnj6pcp3k4" path="res://scenes/platforms/created_platforms/5x1_sticky_bouncy.tscn" id="3_0us6x"]
+[ext_resource type="PackedScene" uid="uid://buy6716h7j47m" path="res://scenes/platforms/created_platforms/5x1_enemy.tscn" id="4_fqnpy"]
+
+[node name="PlatformManager" type="Node2D" unique_id=411797401]
+unique_name_in_owner = true
+script = ExtResource("1_13e0m")
+available_platforms = Array[PackedScene]([ExtResource("2_4iw2r"), ExtResource("3_0us6x"), ExtResource("4_fqnpy")])
+num_available = Array[int]([2, 2, 2])

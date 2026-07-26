@@ -1,11 +1,45 @@
 [gd_scene format=3 uid="uid://dtny6j45sckq"]
 
-[ext_resource type="Script" uid="uid://qyvn5738ffsv" path="res://global_audio.gd" id="1_ss17r"]
+[ext_resource type="Script" uid="uid://bkdnaqjampbmi" path="res://globals/global_audio.gd" id="1_ss17r"]
 [ext_resource type="AudioStream" uid="uid://cjhv0pf5ym7pk" path="res://assets/sound/nojisuma-rain-362782.mp3" id="2_nvdxq"]
+[ext_resource type="AudioStream" uid="uid://3scbk87o0wov" path="res://assets/sound/Platform_Summon.mp3" id="3_rtbpd"]
+[ext_resource type="AudioStream" uid="uid://dvej1x72jasmg" path="res://assets/sound/Win_Sound.mp3" id="4_rlc7i"]
+[ext_resource type="AudioStream" uid="uid://dajppccdippbw" path="res://assets/sound/Loss_Sound.mp3" id="5_atp1n"]
+[ext_resource type="AudioStream" uid="uid://c1e7ldky7sgyl" path="res://assets/sound/Not_Gonna_Make_it.mp3" id="6_ejff2"]
+[ext_resource type="AudioStream" uid="uid://ykug4jhmhe3h" path="res://assets/sound/Oh_Fiddlesticks.mp3" id="7_lw867"]
+[ext_resource type="AudioStream" uid="uid://cxt2t3dwl6po1" path="res://assets/sound/universfield-cannon-shot-352459.mp3" id="8_atp1n"]
+[ext_resource type="AudioStream" uid="uid://cr3twowqkca3l" path="res://assets/sound/universfield-cartoon-explosion-567193.mp3" id="9_ejff2"]
 
-[node name="GlobalAudio" type="Node" unique_id=423814542]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ffs2h"]
+streams_count = 3
+stream_0/stream = ExtResource("5_atp1n")
+stream_1/stream = ExtResource("7_lw867")
+stream_2/stream = ExtResource("6_ejff2")
+
+[node name="GlobalAudio" type="Node" unique_id=76624791]
 script = ExtResource("1_ss17r")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1974988684]
+[node name="PlatformPlacement" type="AudioStreamPlayer" parent="." unique_id=1101174174]
+stream = ExtResource("3_rtbpd")
+volume_db = -14.787
+
+[node name="Lose" type="AudioStreamPlayer" parent="." unique_id=791253117]
+stream = SubResource("AudioStreamRandomizer_ffs2h")
+
+[node name="Win" type="AudioStreamPlayer" parent="." unique_id=1079217788]
+stream = ExtResource("4_rlc7i")
+volume_db = -1.824
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1622198581]
 stream = ExtResource("2_nvdxq")
-volume_db = -14.776
+volume_db = -16.582
+
+[node name="Cannon" type="AudioStreamPlayer" parent="." unique_id=944814222]
+stream = ExtResource("8_atp1n")
+volume_db = -17.156
+pitch_scale = 0.68
+
+[node name="CannonBall" type="AudioStreamPlayer" parent="." unique_id=764894266]
+stream = ExtResource("9_ejff2")
+volume_db = -21.894
+pitch_scale = 0.71
