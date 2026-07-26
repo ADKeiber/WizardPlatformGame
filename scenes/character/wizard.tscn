@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://46uyojgs22yb" path="res://assets/art/wizard/Wizard-Walk.png" id="3_oixhv"]
 [ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_eriyo"]
 [ext_resource type="Texture2D" uid="uid://bf0mnn5j4ghut" path="res://assets/art/wizard/Wizard-WallSlide.png" id="6_ma2ac"]
-[ext_resource type="AudioStream" uid="uid://bds6e3tup64qn" path="res://assets/sound/steps.mp3" id="8_ma2ac"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgf6b"]
 radius = 8.0
@@ -284,6 +283,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_3s5xy"]
+
 [node name="Wizard" type="CharacterBody2D" unique_id=3259477 groups=["Wizard"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 17
@@ -316,7 +317,7 @@ limit_right = 3000
 limit_bottom = 543
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1159771125]
-stream = ExtResource("8_ma2ac")
+stream = SubResource("AudioStreamPlaylist_3s5xy")
 volume_db = -9.233
 pitch_scale = 1.01
 mix_target = 2
