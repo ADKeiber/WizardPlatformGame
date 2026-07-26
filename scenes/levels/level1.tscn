@@ -91,10 +91,12 @@ layout_mode = 2
 text = "Quit"
 
 [node name="TimeLeft" type="Label" parent="CanvasLayer" unique_id=766949805]
-offset_left = 791.0
-offset_top = 33.0
-offset_right = 881.0
-offset_bottom = 75.0
+offset_left = 695.0
+offset_top = 52.0
+offset_right = 785.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 script = ExtResource("6_2r1tl")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=319866314]

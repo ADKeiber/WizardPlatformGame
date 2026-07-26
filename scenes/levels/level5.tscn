@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b54wj44h8jwmb" path="res://scenes/levels/level_5_map.tscn" id="2_0yael"]
 [ext_resource type="Script" uid="uid://dri8n2t8n40te" path="res://scenes/user_interface/pause_menu.gd" id="3_v1pya"]
 [ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_qsj6i"]
+[ext_resource type="Script" uid="uid://cb7w2axxt6m85" path="res://scenes/user_interface/volume_slider.gd" id="4_v0vb7"]
 [ext_resource type="Script" uid="uid://dteh8eoa6cw8g" path="res://scenes/user_interface/time_left.gd" id="6_v1pya"]
 [ext_resource type="PackedScene" uid="uid://cmskxf1pn6yey" path="res://scenes/user_interface/platform_manager.tscn" id="7_dju2a"]
 [ext_resource type="Texture2D" uid="uid://bogc8tgmn7ghb" path="res://assets/art/Finish Flag.png" id="7_qsj6i"]
@@ -64,9 +65,13 @@ alignment = 1
 layout_mode = 2
 text = "Volume:"
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1991883835]
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=501955936]
 layout_mode = 2
 size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("4_v0vb7")
 
 [node name="Wizard" type="TextureRect" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=190088204]
 layout_mode = 2
@@ -79,10 +84,12 @@ layout_mode = 2
 text = "Quit"
 
 [node name="TimeLeft" type="Label" parent="CanvasLayer" unique_id=1991590381]
-offset_left = 791.0
-offset_top = 33.0
-offset_right = 881.0
-offset_bottom = 75.0
+offset_left = 742.0
+offset_top = 54.0
+offset_right = 832.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 script = ExtResource("6_v1pya")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2082646373]
