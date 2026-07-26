@@ -129,9 +129,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="1st/ColorRect/MarginContainer" unique_id=137692031]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Use the A and D Keys to Move"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="1st/ColorRect" unique_id=683453791]
 layout_mode = 0
@@ -142,6 +147,7 @@ offset_bottom = 95.0
 [node name="1stButton" type="Button" parent="1st/ColorRect/MarginContainer2" unique_id=691590849]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_aal3x")
 theme_override_styles/hover = SubResource("StyleBoxTexture_apqvv")
 text = "Press to Continue"
@@ -176,6 +182,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Use Space to Jump"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -186,6 +193,7 @@ layout_mode = 2
 [node name="2ndButton" type="Button" parent="2nd/MarginContainer2" unique_id=140595071]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_nsdm3")
 theme_override_styles/hover = SubResource("StyleBoxTexture_rsyvj")
 text = "Press to Continue"
@@ -199,8 +207,9 @@ offset_right = 661.0
 offset_bottom = 205.0
 
 [node name="ColorRect" type="NinePatchRect" parent="3rd" unique_id=1917939221]
-custom_minimum_size = Vector2(20, 60)
+custom_minimum_size = Vector2(20, 120)
 layout_mode = 2
+size_flags_vertical = 3
 texture = ExtResource("2_nsdm3")
 patch_margin_left = 6
 patch_margin_top = 6
@@ -208,11 +217,12 @@ patch_margin_right = 6
 patch_margin_bottom = 6
 
 [node name="Label" type="Label" parent="3rd/ColorRect" unique_id=480146418]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(400, 1)
 layout_mode = 0
 offset_right = 400.0
 offset_bottom = 49.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Use the E and Q to pick a platform. The selected platform will be highlighted at the bottom."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -221,6 +231,7 @@ autowrap_mode = 2
 [node name="3rdButton" type="Button" parent="3rd" unique_id=471850023]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_jfhnl")
 theme_override_styles/hover = SubResource("StyleBoxTexture_wtwym")
 text = "Press to Continue"
@@ -234,7 +245,7 @@ offset_right = 583.0
 offset_bottom = 206.0
 
 [node name="ColorRect" type="NinePatchRect" parent="4th" unique_id=1655127955]
-custom_minimum_size = Vector2(20, 60)
+custom_minimum_size = Vector2(20, 100)
 layout_mode = 2
 texture = ExtResource("2_nsdm3")
 patch_margin_left = 6
@@ -248,6 +259,7 @@ layout_mode = 0
 offset_right = 300.0
 offset_bottom = 49.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Press Shift to enter Build Mode and Left Click to place Platform"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -256,6 +268,7 @@ autowrap_mode = 2
 [node name="4thButton" type="Button" parent="4th" unique_id=1002380830]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_swq2v")
 theme_override_styles/hover = SubResource("StyleBoxTexture_g08rk")
 text = "Press to Continue"
@@ -269,7 +282,7 @@ offset_right = 580.0
 offset_bottom = 199.0
 
 [node name="ColorRect" type="NinePatchRect" parent="5th" unique_id=1271818010]
-custom_minimum_size = Vector2(20, 60)
+custom_minimum_size = Vector2(20, 100)
 layout_mode = 2
 texture = ExtResource("2_nsdm3")
 patch_margin_left = 6
@@ -283,6 +296,7 @@ layout_mode = 0
 offset_right = 300.0
 offset_bottom = 49.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "The Platform will glow green if placement is allowed and red if not."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -291,6 +305,7 @@ autowrap_mode = 2
 [node name="5thButton" type="Button" parent="5th" unique_id=170710557]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_e5137")
 theme_override_styles/hover = SubResource("StyleBoxTexture_pnatx")
 text = "Press to Continue"
@@ -304,7 +319,7 @@ offset_right = 591.0
 offset_bottom = 206.0
 
 [node name="ColorRect" type="NinePatchRect" parent="6th" unique_id=2041809678]
-custom_minimum_size = Vector2(20, 35)
+custom_minimum_size = Vector2(20, 75)
 layout_mode = 2
 texture = ExtResource("2_nsdm3")
 patch_margin_left = 6
@@ -318,6 +333,7 @@ layout_mode = 0
 offset_right = 300.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Good luck and thank you for playing!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -326,6 +342,7 @@ autowrap_mode = 2
 [node name="6thButton" type="Button" parent="6th" unique_id=112687101]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_xbu2u")
 theme_override_styles/hover = SubResource("StyleBoxTexture_te42o")
 text = "Press to Continue"

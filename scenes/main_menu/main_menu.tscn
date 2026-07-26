@@ -65,7 +65,8 @@ text = "Start Game"
 [node name="TutorialQuestionPopup" type="Popup" parent="." unique_id=1377527461]
 oversampling_override = 1.0
 initial_position = 1
-size = Vector2i(500, 400)
+size = Vector2i(331, 200)
+visible = true
 
 [node name="MarginContainer" type="MarginContainer" parent="TutorialQuestionPopup" unique_id=980795464]
 anchors_preset = 15
@@ -87,8 +88,10 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=940127458]
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Would you like to play the tutorial?"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=2064181631]
 layout_mode = 2
@@ -96,10 +99,12 @@ size_flags_vertical = 3
 
 [node name="YesButton" type="Button" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=70725091]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "Yes"
 
 [node name="NoButton" type="Button" parent="TutorialQuestionPopup/MarginContainer/VBoxContainer" unique_id=1747659634]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "No"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/PlayButton" to="." method="_on_play_button_pressed"]
