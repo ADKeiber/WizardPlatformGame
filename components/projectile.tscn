@@ -112,7 +112,7 @@ speed = 300.0
 position = Vector2(-5.722046e-06, 4.7683716e-07)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 animation = &"explode"
-frame_progress = 0.80120087
+frame_progress = 0.32392502
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1068132403]
 shape = SubResource("CircleShape2D_oc5yy")
