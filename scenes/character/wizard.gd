@@ -11,7 +11,7 @@ signal landed
 @export var wallslide_friction : int = 5
 @export var sticky : int = 15
 @export var wall_gravity_added : int = 30
-enum State {IDLE, WALK, JUMP, DOWN, WALLSLIDE}
+enum State {IDLE, WALK, JUMP, DOWN, WALLSLIDE, DEAD}
 var last_state : State = State.IDLE
 var current_state : State = State.IDLE
 var jump_locked = false
@@ -19,6 +19,7 @@ var last_wall = 0
 var current_wall : int
 var same_wall_jump : int = 0
 var current_wall_same : bool = false
+var starting_position : Vector2 
 
 #bounce related variables
 var impact_velocity: Vector2
@@ -28,15 +29,31 @@ var consecutive_bounces: int = 0
 @onready var jump_buffer_timer : Timer = $JumpBufferTimer
 @onready var coyote_timer : Timer = $CoyoteTimer
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
+@onready var camera : Camera2D = $Camera2D
+@onready var world_boundry : Area2D = %WorldBoundry
+@onready var audio : AudioStreamPlayer = $AudioStreamPlayer
+@onready var jump_fx : Resource = load("res://scenes/character/jump_fx.tscn")
 
+
+
+func _ready() -> void:
+	world_boundry.body_entered.connect(die)
+	camera.make_current()
+	animation.play("idle")
+	starting_position = global_position
 
 func _physics_process(delta: float) -> void:
+	if current_state == State.DEAD:
+		return
 	handle_input()
 	update_movement(delta)
 	update_state()
 	if last_state != current_state:
 		update_animation()
 		last_state = current_state
+		audio.stop()
+		if current_state == State.WALK:
+			audio.play()
 	
 	impact_velocity = velocity
 	move_and_slide()
@@ -56,6 +73,7 @@ func handle_input() -> void:
 			sticky = 15
 			gravity += wall_gravity_added
 			#print(gravity)
+		create_jump_effect()
 
 	
 	var direction = Input.get_axis("move_left", "move_right")
@@ -184,5 +202,18 @@ func update_current_wall() -> void:
 	else:
 		current_wall = 0
 
-func die() -> void:
-	print("You died!")
+func die(body : Wizard) -> void:
+	current_state = State.DEAD
+	animation.play("death")
+	await animation.animation_finished
+	velocity = Vector2.ZERO
+	global_position = starting_position
+	current_state = State.IDLE
+	
+func create_jump_effect() -> void:
+	if is_on_floor() or is_on_wall():
+		var effect : AnimatedSprite2D = jump_fx.instantiate()
+		get_tree().current_scene.add_child(effect)
+		effect.global_position = global_position - Vector2(0 , .1)
+	
+	

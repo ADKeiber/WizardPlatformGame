@@ -7,3 +7,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=263446265]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 204.0
+offset_right = 615.0
+offset_bottom = 347.0
+theme_override_font_sizes/font_size = 70
+text = "YOU WIN!"

@@ -1,8 +1,6 @@
 class_name BasePlatform
 extends AnimatableBody2D
 
-@export var point_cost: int = 10
-
 var interactable: bool = false
 
 func place() -> void:
@@ -10,17 +8,18 @@ func place() -> void:
 	self.modulate = Color.WHITE
 	
 ## These are used for the placement areas
-var intersecting_area:Area2D
-func _on_space_taken_up_area_entered(area: Area2D) -> void:
-	intersecting_area = area
+var intersecting_body:Node2D
 
-func _on_space_taken_up_area_exited(area: Area2D) -> void:
-	if intersecting_area != area:
+func body_entered(body:Node2D) -> void:
+	print(body)
+	intersecting_body = body
+
+func body_exited(body:Node2D) -> void:
+	if intersecting_body != body:
 		return
-	intersecting_area = null
-
+	intersecting_body = null
 func is_intersecting() -> bool:
-	return not intersecting_area == null
+	return not intersecting_body == null
 
 func get_component(type) -> Node:
 	for child in get_children():

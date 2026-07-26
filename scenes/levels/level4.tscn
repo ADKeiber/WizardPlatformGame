@@ -2,38 +2,37 @@
 
 [ext_resource type="PackedScene" uid="uid://bnte2doq2swpu" path="res://scenes/user_interface/platform_placer_menu.tscn" id="1_o34q2"]
 [ext_resource type="Script" uid="uid://dbvovbibgms2l" path="res://scenes/levels/level.gd" id="1_rdsj4"]
-[ext_resource type="PackedScene" uid="uid://dq2ocxyvl6a2b" path="res://scenes/levels/testlevel.tscn" id="2_rdsj4"]
+[ext_resource type="PackedScene" uid="uid://d2ax74bp64urm" path="res://scenes/levels/level_4_map.tscn" id="2_rdsj4"]
 [ext_resource type="Script" uid="uid://dri8n2t8n40te" path="res://scenes/user_interface/pause_menu.gd" id="3_e127x"]
 [ext_resource type="Texture2D" uid="uid://nxlgulxf568u" path="res://assets/art/wizard/Wizard.png" id="4_heu5o"]
+[ext_resource type="Script" uid="uid://dteh8eoa6cw8g" path="res://scenes/user_interface/time_left.gd" id="6_e127x"]
+[ext_resource type="Texture2D" uid="uid://bogc8tgmn7ghb" path="res://assets/art/Finish Flag.png" id="7_heu5o"]
+[ext_resource type="Script" uid="uid://y8wxccyjic1b" path="res://scenes/platforms/platform_manager.gd" id="8_t7v7a"]
+[ext_resource type="PackedScene" uid="uid://cacrsscvsj7lo" path="res://scenes/platforms/created_platforms/5x1_basic.tscn" id="9_xx6b8"]
+[ext_resource type="PackedScene" uid="uid://3dtnj6pcp3k4" path="res://scenes/platforms/created_platforms/5x1_sticky_bouncy.tscn" id="10_f62st"]
+[ext_resource type="PackedScene" uid="uid://buy6716h7j47m" path="res://scenes/platforms/created_platforms/5x1_enemy.tscn" id="11_w24lh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdsj4"]
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_g4v7s"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_e127x"]
 frame_0/texture = ExtResource("4_heu5o")
 
-[node name="Level4" type="Control" unique_id=943124275]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s45gt"]
+size = Vector2(34, 38)
+
+[node name="Level4" type="Node2D" unique_id=776537367]
 script = ExtResource("1_rdsj4")
 metadata/_edit_use_anchors_ = true
 
-[node name="PlatformPlacerMenu" parent="." unique_id=1881788653 instance=ExtResource("1_o34q2")]
-z_index = 4096
-z_as_relative = false
-layout_mode = 1
+[node name="Level4Map" parent="." unique_id=600446408 instance=ExtResource("2_rdsj4")]
 
-[node name="testlevel" parent="." unique_id=894645183 instance=ExtResource("2_rdsj4")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=54227609]
 
-[node name="PauseMenu" type="PanelContainer" parent="." unique_id=1151462677]
+[node name="PauseMenu" type="PanelContainer" parent="CanvasLayer" unique_id=1885450911]
 process_mode = 3
 visible = false
 z_index = 4096
 z_as_relative = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -41,51 +40,74 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_e127x")
 
-[node name="PanelContainer" type="PanelContainer" parent="PauseMenu" unique_id=7086468]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/PauseMenu" unique_id=1190530875]
 custom_minimum_size = Vector2(250, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rdsj4")
 
-[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/PanelContainer" unique_id=2094225828]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PauseMenu/PanelContainer" unique_id=343026911]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer/MarginContainer" unique_id=947244492]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer" unique_id=1548421750]
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=242670768]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=2075046623]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=833402277]
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=72265681]
 layout_mode = 2
 text = "Volume:"
 
-[node name="HSlider" type="HSlider" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=197678374]
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=601264535]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Wizard" type="TextureRect" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=158277603]
+[node name="Wizard" type="TextureRect" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1449192641]
 layout_mode = 2
 size_flags_vertical = 3
-texture = SubResource("AnimatedTexture_g4v7s")
+texture = SubResource("AnimatedTexture_e127x")
 expand_mode = 5
 
-[node name="Quit" type="Button" parent="PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1897637580]
+[node name="Quit" type="Button" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=323848501]
 layout_mode = 2
 text = "Quit"
 
-[node name="Button" type="Button" parent="." unique_id=108238161]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Complete Level 4"
+[node name="TimeLeft" type="Label" parent="CanvasLayer" unique_id=1170484542]
+offset_left = 791.0
+offset_top = 33.0
+offset_right = 881.0
+offset_bottom = 75.0
+script = ExtResource("6_e127x")
 
-[connection signal="pressed" from="PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
-[connection signal="pressed" from="Button" to="." method="complete_level"]
+[node name="Area2D" type="Area2D" parent="." unique_id=799703041]
+position = Vector2(94, 2)
+monitorable = false
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=925487906]
+position = Vector2(2829, 286)
+shape = SubResource("RectangleShape2D_s45gt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=265976262]
+position = Vector2(2829, 289)
+texture = ExtResource("7_heu5o")
+
+[node name="PlatformManager" type="Node2D" parent="." unique_id=340638220]
+unique_name_in_owner = true
+script = ExtResource("8_t7v7a")
+available_platforms = Array[PackedScene]([ExtResource("9_xx6b8"), ExtResource("10_f62st"), ExtResource("11_w24lh")])
+num_available = Array[int]([2, 2, 2])
+
+[node name="PlatformPlacerMenu" parent="." unique_id=701604679 instance=ExtResource("1_o34q2")]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Quit" to="CanvasLayer/PauseMenu" method="_on_quit_pressed"]
+[connection signal="body_entered" from="Area2D" to="." method="complete_level"]

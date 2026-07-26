@@ -14,7 +14,8 @@ size = Vector2(160, 32)
 size = Vector2(162, 48)
 
 [node name="1x5SpikesSlime" type="AnimatableBody2D" unique_id=2041258644]
-collision_layer = 4
+collision_layer = 17
+collision_mask = 17
 script = ExtResource("1_3lx1k")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
@@ -50,7 +51,6 @@ shape = SubResource("RectangleShape2D_5obky")
 
 [node name="Spikes" parent="." unique_id=1902292362 instance=ExtResource("4_3lx1k")]
 position = Vector2(18, -5)
-_static = false
 
 [node name="Spikes2" parent="." unique_id=121537007 instance=ExtResource("4_3lx1k")]
 position = Vector2(142, -5)
@@ -71,5 +71,5 @@ component = NodePath("../BounceComponent")
 
 [node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("5_pmxai")]
 
-[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
-[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="body_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="body_exited"]

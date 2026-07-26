@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="WizardPlatformer"
-run/main_scene="uid://d18f5vbpsa32e"
+run/main_scene="uid://7v4ghjpvnvlo"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SceneNavigator="*uid://dxyy4yit86uac"
+GlobalTimer="*uid://bwsog27dff1u7"
+GlobalAudio="*uid://dtny6j45sckq"
 
 [display]
 

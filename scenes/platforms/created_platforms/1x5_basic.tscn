@@ -10,7 +10,8 @@ size = Vector2(160, 32)
 size = Vector2(162, 34)
 
 [node name="1x5Base" type="AnimatableBody2D" unique_id=2041258644]
-collision_layer = 4
+collision_layer = 17
+collision_mask = 17
 script = ExtResource("1_ff4dd")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
@@ -39,5 +40,5 @@ collision_mask = 17
 position = Vector2(80, 16)
 shape = SubResource("RectangleShape2D_g63xn")
 
-[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
-[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="body_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="body_exited"]

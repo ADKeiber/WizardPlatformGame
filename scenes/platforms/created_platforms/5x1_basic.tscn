@@ -10,7 +10,8 @@ size = Vector2(32, 160)
 size = Vector2(32, 159)
 
 [node name="5x1Basic" type="AnimatableBody2D" unique_id=2041258644]
-collision_layer = 4
+collision_layer = 17
+collision_mask = 17
 script = ExtResource("1_4ww3s")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]

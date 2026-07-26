@@ -2,6 +2,7 @@ class_name PauseMenu
 extends PanelContainer
 
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action("ESC") and event.is_pressed():
 		visible = not visible

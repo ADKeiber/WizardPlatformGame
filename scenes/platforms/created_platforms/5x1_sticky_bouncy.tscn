@@ -81,11 +81,9 @@ component = NodePath("../BounceComponent")
 
 [node name="StickyComponent" type="Node" parent="." unique_id=171989068]
 script = ExtResource("6_e0bej")
-velocity_changes = Vector2(0.5, 0.8)
 default_sticky = 15.0
 
 [node name="BounceComponent" parent="." unique_id=959748051 instance=ExtResource("7_05lj6")]
-is_floor = false
 
 [connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
 [connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]

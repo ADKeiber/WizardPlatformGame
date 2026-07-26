@@ -1,8 +1,9 @@
 class_name PlatformPlacerMenu
-extends Control
+extends CanvasLayer
 
-@onready var platform_manager: PlatformManager = $PlatformManager
+@onready var platform_manager: PlatformManager = %PlatformManager
 @onready var platform_holder_row: HBoxContainer = %PlatformHolderRow
+@onready var platform_holder_area: PanelContainer = $PlatformHolderArea
 
 func _ready() -> void:
 	platform_manager.set_available_platforms_visuals()

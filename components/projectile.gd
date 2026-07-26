@@ -2,7 +2,7 @@ class_name Projectile
 extends Area2D
 
 @export var speed := 500.0
-@export var direction := Vector2.RIGHT
+@export var direction := Vector2.UP
 
 var flying: bool = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -31,5 +31,6 @@ func rotate_sprite(amt: float) -> void:
 func set_velocity_and_speed(new_velocity_direction: Vector2, new_speed: float) -> void:
 	direction = new_velocity_direction
 	speed = new_speed
+
 func remove() -> void:
 	queue_free()

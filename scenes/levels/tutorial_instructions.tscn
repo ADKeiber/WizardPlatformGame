@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://ba7421oa0qk1i"]
+
+[ext_resource type="Script" uid="uid://b5glnoj8lyvmd" path="res://scenes/levels/tutorial_instructions.gd" id="1_fo7ag"]
+
+[node name="TutorialInstructions" type="Control" unique_id=1040012268]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fo7ag")
+
+[node name="1st" type="VBoxContainer" parent="." unique_id=532869272]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 91.0
+offset_right = 575.0
+offset_bottom = 171.0
+
+[node name="ColorRect" type="ColorRect" parent="1st" unique_id=2055921918]
+custom_minimum_size = Vector2(20, 60)
+layout_mode = 2
+color = Color(0, 0, 0, 0.59607846)
+
+[node name="MarginContainer" type="MarginContainer" parent="1st/ColorRect" unique_id=1188701979]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="1st/ColorRect/MarginContainer" unique_id=137692031]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Use the A and D Keys to Move"
+
+[node name="MarginContainer2" type="MarginContainer" parent="1st/ColorRect" unique_id=683453791]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 230.0
+offset_bottom = 95.0
+
+[node name="1stButton" type="Button" parent="1st/ColorRect/MarginContainer2" unique_id=691590849]
+layout_mode = 2
+text = "Press to Continue"
+
+[node name="2nd" type="VBoxContainer" parent="." unique_id=1247213389]
+visible = false
+layout_mode = 0
+offset_left = 367.0
+offset_top = 129.0
+offset_right = 512.0
+offset_bottom = 189.0
+
+[node name="ColorRect" type="ColorRect" parent="2nd" unique_id=333546101]
+custom_minimum_size = Vector2(20, 60)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.37254903)
+
+[node name="MarginContainer" type="MarginContainer" parent="2nd/ColorRect" unique_id=2061543107]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="2nd/ColorRect/MarginContainer" unique_id=1949897390]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Use Space to Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="2nd" unique_id=1905472647]
+layout_mode = 2
+
+[node name="2ndButton" type="Button" parent="2nd/MarginContainer2" unique_id=140595071]
+layout_mode = 2
+text = "Press to Continue"
+
+[node name="3rd" type="VBoxContainer" parent="." unique_id=1206933600]
+visible = false
+layout_mode = 0
+offset_left = 261.0
+offset_top = 121.0
+offset_right = 661.0
+offset_bottom = 205.0
+
+[node name="ColorRect" type="ColorRect" parent="3rd" unique_id=556577711]
+custom_minimum_size = Vector2(20, 60)
+layout_mode = 2
+color = Color(0, 0, 0, 0.41568628)
+
+[node name="Label" type="Label" parent="3rd/ColorRect" unique_id=480146418]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Use the E and Q to pick a platform. The selected platform will be highlighted at the bottom."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="3rdButton" type="Button" parent="3rd" unique_id=471850023]
+layout_mode = 2
+text = "Press to Continue"
+
+[node name="4th" type="VBoxContainer" parent="." unique_id=1028201728]
+visible = false
+layout_mode = 0
+offset_left = 283.0
+offset_top = 122.0
+offset_right = 583.0
+offset_bottom = 206.0
+
+[node name="ColorRect" type="ColorRect" parent="4th" unique_id=2111074638]
+custom_minimum_size = Vector2(20, 60)
+layout_mode = 2
+color = Color(0, 0, 0, 0.46666667)
+
+[node name="Label" type="Label" parent="4th/ColorRect" unique_id=2119213779]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Press Shift to enter Build Mode and Left Click to place Platform"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="4thButton" type="Button" parent="4th" unique_id=1002380830]
+layout_mode = 2
+text = "Press to Continue"
+
+[node name="5th" type="VBoxContainer" parent="." unique_id=691923923]
+visible = false
+layout_mode = 0
+offset_left = 280.0
+offset_top = 115.0
+offset_right = 580.0
+offset_bottom = 199.0
+
+[node name="ColorRect" type="ColorRect" parent="5th" unique_id=1234172940]
+custom_minimum_size = Vector2(20, 60)
+layout_mode = 2
+color = Color(0, 0, 0, 0.5058824)
+
+[node name="Label" type="Label" parent="5th/ColorRect" unique_id=309907841]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "The Platform will glow green if placement is allowed and red if not."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="5thButton" type="Button" parent="5th" unique_id=170710557]
+layout_mode = 2
+text = "Press to Continue"
+
+[node name="6th" type="VBoxContainer" parent="." unique_id=599737055]
+visible = false
+layout_mode = 0
+offset_left = 291.0
+offset_top = 122.0
+offset_right = 591.0
+offset_bottom = 206.0
+
+[node name="ColorRect" type="ColorRect" parent="6th" unique_id=1760162646]
+custom_minimum_size = Vector2(20, 60)
+layout_mode = 2
+color = Color(0, 0, 0, 0.5529412)
+
+[node name="Label" type="Label" parent="6th/ColorRect" unique_id=481883333]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Good luck and thank you for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="6thButton" type="Button" parent="6th" unique_id=112687101]
+layout_mode = 2
+text = "Press to Continue"
+
+[connection signal="pressed" from="1st/ColorRect/MarginContainer2/1stButton" to="." method="_1st_button_pressed"]
+[connection signal="pressed" from="2nd/MarginContainer2/2ndButton" to="." method="_2nd_button_pressed"]
+[connection signal="pressed" from="3rd/3rdButton" to="." method="_3rd_button_pressed"]
+[connection signal="pressed" from="4th/4thButton" to="." method="_4th_button_pressed"]
+[connection signal="pressed" from="5th/5thButton" to="." method="_5th_button_pressed"]
+[connection signal="pressed" from="6th/6thButton" to="." method="_6th_button_pressed"]

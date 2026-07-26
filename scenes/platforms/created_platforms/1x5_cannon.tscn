@@ -8,13 +8,14 @@
 size = Vector2(160, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g63xn"]
-size = Vector2(162, 34)
+size = Vector2(162, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(42, 38)
 
 [node name="1x5Cannon" type="AnimatableBody2D" unique_id=2041258644]
-collision_layer = 4
+collision_layer = 17
+collision_mask = 17
 script = ExtResource("1_l56h7")
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=94771294]
@@ -45,14 +46,16 @@ collision_layer = 17
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceTakenUp" unique_id=1596479123]
-position = Vector2(80, 16)
+position = Vector2(80, 2)
 shape = SubResource("RectangleShape2D_g63xn")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1962379656]
+collision_layer = 17
+collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=149850432]
 position = Vector2(134, -9)
 shape = SubResource("RectangleShape2D_g4v7s")
 
-[connection signal="area_entered" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_entered"]
-[connection signal="area_exited" from="SpaceTakenUp" to="." method="_on_space_taken_up_area_exited"]
+[connection signal="body_entered" from="SpaceTakenUp" to="." method="body_entered"]
+[connection signal="body_exited" from="SpaceTakenUp" to="." method="body_exited"]

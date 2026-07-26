@@ -9,7 +9,7 @@ signal update_selected(index:int)
 @export var num_available: Array[int]
 @export var platform_holder_row: HBoxContainer
 
-@onready var platform_holder_area: PanelContainer = $"../PlatformHolderArea"
+@onready var platform_placer_menu: PlatformPlacerMenu = %PlatformPlacerMenu
 
 var current_platform: Node2D
 var displaying_platform: bool = false
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 func toggle_on() -> void:
 	displaying_platform = not displaying_platform
 	print("Building mode toggled to '%s'", displaying_platform)
-	for child in platform_holder_row.get_children():
+	for child in platform_placer_menu.platform_holder_row.get_children():
 		child.disable(not displaying_platform)
 	if displaying_platform:
 		if not current_platform == null:
@@ -102,5 +102,5 @@ func attempt_to_place_platform() -> void:
 func set_available_platforms_visuals() -> void:
 	for i in range(available_platforms.size()):
 		var platform_holder := PLATFORM_HOLDER.instantiate() as PlatformHolder
-		platform_holder_area.get_child(0).add_child(platform_holder)
+		platform_placer_menu.platform_holder_area.get_child(0).add_child(platform_holder)
 		platform_holder.set_platform(available_platforms[i], num_available[i])
