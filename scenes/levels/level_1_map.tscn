@@ -651,6 +651,7 @@ offset_left = -344.0
 offset_top = -982.0
 offset_right = 10540.0
 offset_bottom = 690.0
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2075337478]
